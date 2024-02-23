@@ -1,3 +1,4 @@
+function Get-LxComputerInfo {
 <#
 .SYNOPSIS
 Get basic computer and operating system info
@@ -10,7 +11,6 @@ Get-LxComputerInfo
 .LINK
 https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxComputerInfo.md
 #>
-function Get-LxComputerInfo {
 	param ()
 	$results = [ordered]@{}
 	$name = Invoke-Command -ScriptBlock { hostname }

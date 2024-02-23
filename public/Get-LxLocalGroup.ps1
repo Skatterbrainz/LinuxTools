@@ -1,23 +1,23 @@
-<#
-.SYNOPSIS
-Get local groups
-
-.DESCRIPTION
-Get local security groups
-
-.PARAMETER Identity
-Optional. Name of group to return. Default is to return all groups.
-
-.EXAMPLE
-Get-LxLocalGroup
-
-.EXAMPLE
-Get-LxLocalGroup -Identity "music.lovers"
-
-.LINK
-https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxLocalGroup.md
-#>
 function Get-LxLocalGroup {
+	<#
+	.SYNOPSIS
+	Get local groups
+
+	.DESCRIPTION
+	Get local security groups
+
+	.PARAMETER Identity
+	Optional. Name of group to return. Default is to return all groups.
+
+	.EXAMPLE
+	Get-LxLocalGroup
+
+	.EXAMPLE
+	Get-LxLocalGroup -Identity "music.lovers"
+
+	.LINK
+	https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxLocalGroup.md
+	#>
 	param (
 		[parameter()][string]$Identity
 	)

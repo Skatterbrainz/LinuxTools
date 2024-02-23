@@ -1,23 +1,23 @@
-<#
-.SYNOPSIS
-Get local users
-
-.DESCRIPTION
-Get local user accounts
-
-.PARAMETER Identity
-Optional. Name of user to return. Default is to return all users.
-
-.EXAMPLE
-Get-LxLocalUser
-
-.EXAMPLE
-Get-LxLocalUser -Identity "frank.zappa"
-
-.LINK
-https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxLocalUser.md
-#>
 function Get-LxLocalUser {
+	<#
+	.SYNOPSIS
+	Get local users
+
+	.DESCRIPTION
+	Get local user accounts
+
+	.PARAMETER Identity
+	Optional. Name of user to return. Default is to return all users.
+
+	.EXAMPLE
+	Get-LxLocalUser
+
+	.EXAMPLE
+	Get-LxLocalUser -Identity "frank.zappa"
+
+	.LINK
+	https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxLocalUser.md
+	#>
 	param (
 		[parameter()][string]$Identity
 	)

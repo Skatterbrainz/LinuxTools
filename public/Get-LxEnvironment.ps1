@@ -1,20 +1,20 @@
-<#
-.SYNOPSIS
-Get system environment variables
-
-.DESCRIPTION
-Returns system environment variables
-
-.PARAMETER Name
-Optional. Name of environment variable. Default is to return all variables.
-
-.EXAMPLE
-Get-LxEnvironment
-
-.LINK
-https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxEnvironment.md
-#>
 function Get-LxEnvironment {
+	<#
+	.SYNOPSIS
+	Get system environment variables
+
+	.DESCRIPTION
+	Returns system environment variables
+
+	.PARAMETER Name
+	Optional. Name of environment variable. Default is to return all variables.
+
+	.EXAMPLE
+	Get-LxEnvironment
+
+	.LINK
+	https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxEnvironment.md
+	#>
 	param(
 		[parameter()][string]$Name
 	)
