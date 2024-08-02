@@ -1,22 +1,17 @@
-function Get-LxServices {
+function Get-Services {
 	<#
 	.SYNOPSIS
-	Get Linux services
-
+		Get Linux services
 	.DESCRIPTION
-	Get Linux services and basic configuration settings
-
+		Get Linux services and basic configuration settings
 	.PARAMETER Name
-	Optional. Name of service to return. Default is to return all services.
-
+		Optional. Name of service to return. Default is to return all services.
 	.EXAMPLE
-	Get-LxLocalService
-
+		Get-Services
 	.EXAMPLE
-	Get-LxLocalService -Name "foo"
-
+		Get-Services -Name "foo"
 	.LINK
-	https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxService.md
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Services.md
 	#>
 	[CmdletBinding()]
 	param (

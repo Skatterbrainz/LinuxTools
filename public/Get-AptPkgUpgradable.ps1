@@ -1,4 +1,14 @@
 function Get-AptPkgUpgradable {
+	<#
+	.SYNOPSIS
+		Collects inventory of upgradable apt packages.
+	.DESCRIPTION
+		Collects inventory of upgradable apt packages.
+	.PARAMETER (none)
+		No parameters
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPkgUpgradable.md
+	#>
 	param()
 	try {
 		write-host "Updating apt cache..."

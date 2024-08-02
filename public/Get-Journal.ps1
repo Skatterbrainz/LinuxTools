@@ -1,17 +1,20 @@
-<#
-.SYNOPSIS
-.DESCRIPTION
+function Get-Journal {
+	<#
+	.SYNOPSIS
+		Invoke the journalctl command with various options.
+	.DESCRIPTION
+		Invoke the journalctl command with various options.
+	.PARAMETER omg
+		I'm not going to spend an evening documenting all the parameters. If you're using this function
+		you probably know about the journalctl command, and hopefully, you used the 'man' command on it
+		to read the options it provides. I'm too lazy.
 
-.PARAMETER omg
-I'm not going to spend an evening documenting all the parameters. If you're using this function
-you probably know about the journalctl command, and hopefully, you used the 'man' command on it
-to read the options it provides. I'm too lazy.
+	.EXAMPLE
+		Get-Journal -Lines 10 -Follow
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Journal.md
+	#>
 
-.EXAMPLE
-Invoke-LxJournalCtl -Lines 10 -Follow
-
-#>
-function Invoke-LxJournalCtl {
 	param (
 		[switch]$Boot,
 		[string]$Identifier,

@@ -1,4 +1,4 @@
-function New-LxLocalUser{
+function New-LocalUser{
 	<#
 	.SYNOPSIS
 		Creates a new local user account
@@ -7,11 +7,11 @@ function New-LxLocalUser{
 	.PARAMETER UserName
 		Name of the user to create
 	.EXAMPLE
-		New-LxLocalUser adammcchesney
+		New-LocalUser adammcchesney
 	.EXAMPLE
-		PS C:\> New-User adammcchesney -WhatIf
-	.NOTES
-		Creates user
+		New-LocalUser adammcchesney -WhatIf
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md
 	#>
 	[cmdletbinding(SupportsShouldProcess=$True)]
 	param(

@@ -1,4 +1,16 @@
 function Get-FlatpakInventory {
+	<#
+	.SYNOPSIS
+		Collects inventory of installed flatpak packages.
+	.DESCRIPTION
+		Collects inventory of installed flatpak packages.
+	.PARAMETER (none)
+		No parameters
+	.EXAMPLE
+		Get-FlatpakInventory
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-FlatpakInventory.md
+	#>
 	param()
 	try {
 		$flatpaks = flatpak list --columns=name,version,application,description,installation,size

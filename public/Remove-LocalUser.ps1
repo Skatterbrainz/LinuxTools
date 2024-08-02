@@ -1,4 +1,4 @@
-function Remove-LxLocalUser {
+function Remove-LocalUser {
 	<#
 	.SYNOPSIS
 		Remove a local user account
@@ -7,15 +7,11 @@ function Remove-LxLocalUser {
 	.PARAMETER UserName
 		Name of the user to remove
 	.EXAMPLE
-		PS C:\> Remove-User -UserName AdamMcchesney
+		Remove-LocalUser -UserName AdamMcchesney
 	.EXAMPLE
-		PS C:\> Remove-User -UserName AdamMcchesne
-	.INPUTS
-		System.String.UserName The username for the user to be deleted.
-	.OUTPUTS
-		System.String. The Remove-User returns the output of userdel command
-	.NOTES
-		General notes
+		Remove-LocalUser -UserName AdamMcchesne
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md
 	#>
 	[cmdletbinding(SupportsShouldProcess)]
 	param (

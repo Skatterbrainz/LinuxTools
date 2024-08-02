@@ -1,22 +1,25 @@
-function Get-LxLocalGroup {
+function Get-LocalGroup {
 	<#
 	.SYNOPSIS
-	Get local groups
-
+		Get local groups
 	.DESCRIPTION
-	Get local security groups
-
+		Get local security groups
 	.PARAMETER Identity
-	Optional. Name of group to return. Default is to return all groups.
-
+		Optional. Name of group to return. Default is to return all groups.
 	.EXAMPLE
-	Get-LxLocalGroup
+		Get-LocalGroup
 
+		Returns a list of all local groups on the system in tabular format.
 	.EXAMPLE
-	Get-LxLocalGroup -Identity "music.lovers"
+		Get-LocalGroup -Identity "lpadmin"
 
+		Returns details for the "lpadmin" group on the local system in tabular format.
+
+		Name    ID  Members  Computer
+		----    --  -------  --------
+		lpadmin 105 {user42} mint22
 	.LINK
-	https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LxLocalGroup.md
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md
 	#>
 	param (
 		[parameter()][string]$Identity

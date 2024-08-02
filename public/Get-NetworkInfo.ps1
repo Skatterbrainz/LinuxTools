@@ -14,6 +14,8 @@ function Get-NetworkInfo {
 		Get-NetworkInfo -IncludePublicIP
 	.EXAMPLE
 		Get-NetworkInfo -IncludePublicIP -PublicResolver 'https://checkip.amazonaws.com'
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-NetworkInfo.md
 	#>
 	[CmdletBinding()]
 	param(
