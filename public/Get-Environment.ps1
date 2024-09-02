@@ -20,10 +20,11 @@ function Get-Environment {
 		$parts = $item.Split("=")
 		$key   = $parts[0]
 		$val   = $parts[1].Split(":")
-		$null  = $results.Add(([pscustomobject]@{
+		$item  = [pscustomobject]@{
 			Name  = $key
 			Value = if ($val.Count -gt 1) { $val } else { $val[0] }
-		}))
+		}
+		$null  = $results.Add($item)
 	}
 	if (![string]::IsNullOrWhiteSpace($Name)) {
 		$results | Where-Object {$_.Name -eq $Name}

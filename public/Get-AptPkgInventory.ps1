@@ -23,7 +23,7 @@ function Get-AptPkgInventory {
 			$pkg  = $tpkg[0].Split(" ")
 			$stat = $tpkg[1]
 			if (![string]::IsNullOrEmpty($stat)) {
-				$stat = $stat.TrimEnd("]")
+				$stat   = $stat.TrimEnd("]")
 				$latest = $stat.Replace("upgradable from: ", "")
 			}
 			[pscustomobject]@{

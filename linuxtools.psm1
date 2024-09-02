@@ -4,5 +4,5 @@
 # Import functions within module
 write-host "Importing functions from LinuxTools module: $($PSScriptRoot)"
 ('private','public') | Foreach-Object {
-	Get-ChildItem -Path $(Join-Path -Path $PSScriptRoot -ChildPath $_) -Filter "*.ps1" | Foreach-Object { . $_.FullName }
+	Get-ChildItem -Path $(Join-Path -Path $PSScriptRoot -ChildPath $_) -Filter "*.ps1" | Foreach-Object { write-verbose $_.FullName; . $_.FullName }
 }
