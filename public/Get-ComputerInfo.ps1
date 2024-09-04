@@ -33,6 +33,13 @@ function Get-ComputerInfo {
 				$results[$parts[0].Replace(' ','_').Replace('(','').Replace(')','')] = $parts[1]
 			}
 		}
+		$sn = sudo dmidecode -t system | grep Serial
+		if (![string]::IsNullOrEmpty($sn)) {
+			$sn = $sn.Split(':')[1].Trim()
+		} else {
+			$sn = "N/A"
+		}
+		$results['SerialNumber'] = $sn
 		$cpu = Invoke-Command -ScriptBlock { lscpu }
 		foreach ($item in $cpu) {
 			if ($item.Contains(':')) {
