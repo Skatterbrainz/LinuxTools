@@ -8,33 +8,29 @@ schema: 2.0.0
 # New-LocalUser
 
 ## SYNOPSIS
-Creates a new local user account
+Create a new local user account
 
 ## SYNTAX
 
 ```
-New-LocalUser [-UserName] <String> [-DisabledPassword] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-LocalUser [-Name] <String> [-Description] <String> [[-Password] <String>] [[-AccountExpires] <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new local user account
+Create a new local user account
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-LocalUser adammcchesney
-```
-
-### EXAMPLE 2
-```
-New-LocalUser adammcchesney -WhatIf
+New-LocalUser -Name "Fu Barr" -Description "The Fubar of Tarfu"
+New-LocalUser -Name "Fu Barr" -Description "The Fubar of Tarfu" -AccountExpires "2025-12-31"
 ```
 
 ## PARAMETERS
 
-### -UserName
+### -Name
 Name of the user to create
 
 ```yaml
@@ -49,47 +45,47 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisabledPassword
-{{ Fill DisabledPassword Description }}
+### -Description
+Description of the user
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Password
+{{ Fill Password Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
-Position: Named
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountExpires
+Optional.
+Date when the account expires
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -1,42 +1,53 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalUser.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Unlock-LocalUser.md
 schema: 2.0.0
 ---
 
-# Get-LocalUser
+# Unlock-LocalUser
 
 ## SYNOPSIS
-Get local users
+Unlock a local user account
 
 ## SYNTAX
 
 ```
-Get-LocalUser [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Unlock-LocalUser [-Name] <String> [[-Password] <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get local user accounts
+Unlock a local user account.
+Optionally set a new password.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-LocalUser
-```
-
-### EXAMPLE 2
-```
-Get-LocalUser -Name "frank.zappa"
+Unlock-LocalUser -Name "AdamMcchesney"
 ```
 
 ## PARAMETERS
 
 ### -Name
+Name of the user to unlock
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Password
 Optional.
-Name of user to return.
-Default is to return all users.
+Password to set for the user
 
 ```yaml
 Type: String
@@ -44,7 +55,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -76,5 +87,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalUser.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalUser.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Unlock-LocalUser.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Unlock-LocalUser.md)
 

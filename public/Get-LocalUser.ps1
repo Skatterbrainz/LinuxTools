@@ -4,17 +4,17 @@ function Get-LocalUser {
 		Get local users
 	.DESCRIPTION
 		Get local user accounts
-	.PARAMETER Identity
+	.PARAMETER Name
 		Optional. Name of user to return. Default is to return all users.
 	.EXAMPLE
 		Get-LocalUser
 	.EXAMPLE
-		Get-LocalUser -Identity "frank.zappa"
+		Get-LocalUser -Name "frank.zappa"
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalUser.md
 	#>
 	param (
-		[parameter()][string]$Identity
+		[parameter()][string]$Name
 	)
 	try {
 		$results = [System.Collections.ArrayList]::new()
@@ -29,7 +29,7 @@ function Get-LocalUser {
 			} else {
 				$groups = $null
 			}
-			$row = [pscustomobject]@{
+			$row = [ordered]@{
 				Name     = $udata[0]
 				Password = if ($udata[1] -eq 'x') { '********'} else { $udata[1] }
 				ID       = $udata[2]
@@ -40,12 +40,20 @@ function Get-LocalUser {
 				Shell    = $udata[6]
 				Computer = $computer
 			}
+			sudo chage -l $uname |
+				ForEach-Object {
+					$keyset = $_.Split(':')
+					$keyname = $keyset[0].Trim() -replace ' ','_'
+					$keyval  = $keyset[1].Trim()
+					$row[$keyname] = $keyval
+				}
+			$row = [pscustomobject]$row
 			$null = $results.Add($row)
 		}
-		if (![string]::IsNullOrWhiteSpace($Identity)) {
-			$results | Where-Object {($_.Name -eq $Identity)}
+		if (![string]::IsNullOrWhiteSpace($Name)) {
+			$results | Where-Object {($_.Name -eq $Name)}
 		} else {
-			$results | Sort-Object ID,Name
+			$results | Sort-Object Name
 		}
 	} catch {
 		Write-Error $_.Exception.Message

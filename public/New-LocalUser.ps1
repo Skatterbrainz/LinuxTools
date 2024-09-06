@@ -1,29 +1,29 @@
-function New-LocalUser{
+function New-LocalUser {
 	<#
 	.SYNOPSIS
-		Creates a new local user account
+		Create a new local user account
 	.DESCRIPTION
-		Creates a new local user account
-	.PARAMETER UserName
+		Create a new local user account
+	.PARAMETER Name
 		Name of the user to create
+	.PARAMETER Description
+		Description of the user
+	.PARAMETER AccountExpires
+		Optional. Date when the account expires
 	.EXAMPLE
-		New-LocalUser adammcchesney
-	.EXAMPLE
-		New-LocalUser adammcchesney -WhatIf
+		New-LocalUser -Name "Fu Barr" -Description "The Fubar of Tarfu"
+		New-LocalUser -Name "Fu Barr" -Description "The Fubar of Tarfu" -AccountExpires "2025-12-31"
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md
 	#>
-	[cmdletbinding(SupportsShouldProcess=$True)]
-	param(
-		[Parameter(Mandatory=$true)][string] $UserName,
-		[Parameter()][switch] $DisabledPassword
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$true)][string]$Name,
+		[Parameter(Mandatory=$true)][string]$Description,
+		[Parameter(Mandatory=$false)][string]$Password,
+		[Parameter(Mandatory=$false)][string]$AccountExpires
 	)
-	if (-not ($PSCmdlet.ShouldProcess("User:Create:$UserName"))) {
-		return
-	}
-	if ($DisabledPassword){
-		$result = adduser $UserName --disabled-password
-	}
-	$result = adduser $UserName
-	return  $result
+	sudo useradd --create-home --shell '/bin/bash' --comment "$Description" $Name
+	sudo usermod -p $Password $Name
+	Get-LocalUser -Name $Name
 }

@@ -1,81 +1,70 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CronTabs.md
 schema: 2.0.0
 ---
 
-# Remove-LocalUser
+# Get-CronTabs
 
 ## SYNOPSIS
-Remove a local user account
+Get the list of cron jobs.
+If a file is specified, it will return the contents of that file.
 
 ## SYNTAX
 
 ```
-Remove-LocalUser [-Name] <String> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Get-CronTabs [[-CronTabFile] <String>] [[-Path] <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove a local user account
+This function reads the contents of a cron file and returns the list of cron jobs.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-LocalUser -Name AdamMcchesney
+Get-CronTabs -CronTabFile "mycronjob"
+Returns the list of cron jobs in the file /etc/cron.d/mycronjob.
 ```
 
 ### EXAMPLE 2
 ```
-Remove-LocalUser -Name AdamMcchesne
+Get-CronTabs
+Returns the list of cron files in /etc/cron.d.
 ```
 
 ## PARAMETERS
 
-### -Name
-Name of the user to remove
+### -CronTabFile
+The name of the cron file to read.
+If not provided, it will list all cron files in /etc/cron.d.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -Path
+The path to the cron files.
+Default is /etc/cron.d.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
+Position: 2
+Default value: /etc/cron.d
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -106,5 +95,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CronTabs.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CronTabs.md)
 

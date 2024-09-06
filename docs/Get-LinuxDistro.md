@@ -1,42 +1,37 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalUser.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md
 schema: 2.0.0
 ---
 
-# Get-LocalUser
+# Get-LinuxDistro
 
 ## SYNOPSIS
-Get local users
+Get the Linux distribution name.
 
 ## SYNTAX
 
 ```
-Get-LocalUser [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-LinuxDistro [[-distro] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get local user accounts
+This function reads the /etc/os-release file to determine the Linux distribution name.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-LocalUser
-```
-
-### EXAMPLE 2
-```
-Get-LocalUser -Name "frank.zappa"
+Get-LinuxDistro
+Returns the Linux distribution name.
 ```
 
 ## PARAMETERS
 
-### -Name
-Optional.
-Name of user to return.
-Default is to return all users.
+### -distro
+The Linux distribution name.
+If not provided, the function will attempt to determine it.
 
 ```yaml
 Type: String
@@ -76,5 +71,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalUser.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalUser.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md)
 

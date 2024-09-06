@@ -1,62 +1,58 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-FlatpakPackages.md
 schema: 2.0.0
 ---
 
-# Remove-LocalUser
+# Update-LocalUser
 
 ## SYNOPSIS
-Remove a local user account
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Remove-LocalUser [-Name] <String> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-LocalUser [-Name] <String> [-NewPassword] [-LockAccount] [[-Comment] <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove a local user account
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-Remove-LocalUser -Name AdamMcchesney
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-### EXAMPLE 2
-```
-Remove-LocalUser -Name AdamMcchesne
-```
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Name
-Name of the user to remove
+### -Comment
+{{ Fill Comment Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -LockAccount
+{{ Fill LockAccount Description }}
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
 
 Required: False
 Position: Named
@@ -65,13 +61,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Name
+{{ Fill Name Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NewPassword
+{{ Fill NewPassword Description }}
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
@@ -100,11 +111,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
 ## OUTPUTS
 
+### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md)
-

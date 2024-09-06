@@ -4,21 +4,21 @@ function Remove-LocalUser {
 		Remove a local user account
 	.DESCRIPTION
 		Remove a local user account
-	.PARAMETER UserName
+	.PARAMETER Name
 		Name of the user to remove
 	.EXAMPLE
-		Remove-LocalUser -UserName AdamMcchesney
+		Remove-LocalUser -Name AdamMcchesney
 	.EXAMPLE
-		Remove-LocalUser -UserName AdamMcchesne
+		Remove-LocalUser -Name AdamMcchesne
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md
 	#>
 	[cmdletbinding(SupportsShouldProcess)]
 	param (
-		[Parameter(Mandatory=$true)][string] $UserName
+		[Parameter(Mandatory=$true)][string]$Name
 	)
-	if (-not ($PSCmdlet.ShouldProcess("User:Delete:$UserName"))) {
+	if (-not ($PSCmdlet.ShouldProcess("User:Delete:$Name"))) {
 		return
 	}
-	return userdel -r $UserName
+	sudo userdel -r $Name
 }

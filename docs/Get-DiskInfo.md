@@ -1,7 +1,7 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ComputerInfo.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultBrowser.md
 schema: 2.0.0
 ---
 
