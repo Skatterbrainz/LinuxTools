@@ -1,57 +1,43 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroupMember.md
 schema: 2.0.0
 ---
 
-# Get-LocalGroup
+# Get-LocalGroupMember
 
 ## SYNOPSIS
-Get local groups
+Get local group members
 
 ## SYNTAX
 
 ```
-Get-LocalGroup [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-LocalGroupMember [-Name] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get local security groups
+Get local security group members
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-LocalGroup
+Get-LocalGroupMember -Name "lpadmin"
+Returns a list of members in the "lpadmin" group on the local system.
 ```
-
-Returns a list of all local groups on the system in tabular format.
-
-### EXAMPLE 2
-```
-Get-LocalGroup -Name "lpadmin"
-```
-
-Returns details for the "lpadmin" group on the local system in tabular format.
-
-Name    ID  Members  Computer
-----    --  -------  --------
-lpadmin 105 {user42} mint22
 
 ## PARAMETERS
 
 ### -Name
-Optional.
-Name of group to return.
-Default is to return all groups.
+Name of the group to return members for
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -84,5 +70,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroupMember.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroupMember.md)
 

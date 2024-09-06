@@ -1,58 +1,59 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalGroupMember.md
 schema: 2.0.0
 ---
 
-# Get-LocalGroup
+# Remove-LocalGroupMember
 
 ## SYNOPSIS
-Get local groups
+Remove a user from a local group
 
 ## SYNTAX
 
 ```
-Get-LocalGroup [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Remove-LocalGroupMember [-Name] <String> [-Member] <String> [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get local security groups
+Remove a user from a local security group
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-LocalGroup
+Remove-LocalGroupMember -Name "lpadmin" -Member "user42"
 ```
-
-Returns a list of all local groups on the system in tabular format.
-
-### EXAMPLE 2
-```
-Get-LocalGroup -Name "lpadmin"
-```
-
-Returns details for the "lpadmin" group on the local system in tabular format.
-
-Name    ID  Members  Computer
-----    --  -------  --------
-lpadmin 105 {user42} mint22
 
 ## PARAMETERS
 
 ### -Name
-Optional.
-Name of group to return.
-Default is to return all groups.
+Name of the group to remove the user from.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Member
+Name of the user to remove from the group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -84,5 +85,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalGroupMember.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalGroupMember.md)
 

@@ -1,57 +1,42 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalGroup.md
 schema: 2.0.0
 ---
 
-# Get-LocalGroup
+# New-LocalGroup
 
 ## SYNOPSIS
-Get local groups
+Create a new local group
 
 ## SYNTAX
 
 ```
-Get-LocalGroup [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-LocalGroup [-Name] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get local security groups
+Create a new local security group
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-LocalGroup
+New-LocalGroup -Name "mygroup"
 ```
-
-Returns a list of all local groups on the system in tabular format.
-
-### EXAMPLE 2
-```
-Get-LocalGroup -Name "lpadmin"
-```
-
-Returns details for the "lpadmin" group on the local system in tabular format.
-
-Name    ID  Members  Computer
-----    --  -------  --------
-lpadmin 105 {user42} mint22
 
 ## PARAMETERS
 
 ### -Name
-Optional.
-Name of group to return.
-Default is to return all groups.
+Name of the group to create
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -84,5 +69,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalGroup.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalGroup.md)
 
