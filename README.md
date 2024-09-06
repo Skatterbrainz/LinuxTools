@@ -4,6 +4,13 @@ PowerShell Module: Tools for Linux
 
 Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
 
+-1.0.5 - 9/6/2024
+  - Added Add-LocalGroupMember
+  - Added Get-LocalGroupMember
+  - Added New-LocalGroup
+  - Added Remove-LocalGroupMember
+  - Updated Get-LocalGroup to change -Identity to -Name for consistency
+
 -1.0.4 - 9/6/2024
   - Added Get-CronTabs
   - Added Get-DefaultAudioPlayer

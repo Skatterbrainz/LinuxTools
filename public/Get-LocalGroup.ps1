@@ -4,14 +4,14 @@ function Get-LocalGroup {
 		Get local groups
 	.DESCRIPTION
 		Get local security groups
-	.PARAMETER Identity
+	.PARAMETER Name
 		Optional. Name of group to return. Default is to return all groups.
 	.EXAMPLE
 		Get-LocalGroup
 
 		Returns a list of all local groups on the system in tabular format.
 	.EXAMPLE
-		Get-LocalGroup -Identity "lpadmin"
+		Get-LocalGroup -Name "lpadmin"
 
 		Returns details for the "lpadmin" group on the local system in tabular format.
 
@@ -22,7 +22,7 @@ function Get-LocalGroup {
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LocalGroup.md
 	#>
 	param (
-		[parameter()][string]$Identity
+		[parameter()][string]$Name
 	)
 	try {
 		$groups = Invoke-Command -ScriptBlock { cat /etc/group }
@@ -38,8 +38,8 @@ function Get-LocalGroup {
 			}
 			$null = $results.Add($row)
 		}
-		if (![string]::IsNullOrWhiteSpace($Identity)) {
-			$results | Where-Object {$_.Name -eq $Identity}
+		if (![string]::IsNullOrWhiteSpace($Name)) {
+			$results | Where-Object {$_.Name -eq $Name}
 		} else {
 			$results | Sort-Object Id,Name
 		}
