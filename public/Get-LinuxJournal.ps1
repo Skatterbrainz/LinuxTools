@@ -1,4 +1,4 @@
-function Get-Journal {
+function Get-LinuxJournal {
 	<#
 	.SYNOPSIS
 		Invoke the journalctl command with various options.
@@ -10,9 +10,9 @@ function Get-Journal {
 		to read the options it provides. I'm too lazy.
 
 	.EXAMPLE
-		Get-Journal -Lines 10 -Follow
+		Get-LinuxJournal -Lines 10 -Follow
 	.LINK
-		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Journal.md
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxJournal.md
 	#>
 
 	param (

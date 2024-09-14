@@ -1,4 +1,4 @@
-function Get-Services {
+function Get-LinuxServices {
 	<#
 	.SYNOPSIS
 		Get Linux services
@@ -7,11 +7,11 @@ function Get-Services {
 	.PARAMETER Name
 		Optional. Name of service to return. Default is to return all services.
 	.EXAMPLE
-		Get-Services
+		Get-LinuxServices
 	.EXAMPLE
-		Get-Services -Name "foo"
+		Get-LinuxServices -Name "foo"
 	.LINK
-		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Services.md
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxServices.md
 	#>
 	[CmdletBinding()]
 	param (

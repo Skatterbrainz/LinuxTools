@@ -1,11 +1,11 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Journal.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxJournal.md
 schema: 2.0.0
 ---
 
-# Get-Journal
+# Get-LinuxJournal
 
 ## SYNOPSIS
 Invoke the journalctl command with various options.
@@ -13,11 +13,12 @@ Invoke the journalctl command with various options.
 ## SYNTAX
 
 ```
-Get-Journal [-Boot] [[-Identifier] <String>] [[-UnitName] <String>] [[-UserUnit] <String>] [[-User] <String>]
- [[-SystemdUnit] <String>] [[-ID] <String>] [[-GrepPattern] <String>] [[-CaseSensitive] <String>] [-Reverse]
- [[-Lines] <Int32>] [[-Since] <String>] [[-Until] <String>] [[-Cursor] <String>] [[-After] <String>]
- [[-Follow] <String>] [-Merge] [-ThisBoot] [-OutputFields] [-OutputVerbose] [-OutputCatalog] [-UTC]
- [-NoHostname] [-NoFullyQualifiedDomainName] [-NoPageSize] [-NoTail] [-Quiet]
+Get-LinuxJournal [-Boot] [[-Identifier] <String>] [[-UnitName] <String>] [[-UserUnit] <String>]
+ [[-User] <String>] [[-SystemdUnit] <String>] [[-ID] <String>] [[-GrepPattern] <String>]
+ [[-CaseSensitive] <String>] [-Reverse] [[-Lines] <Int32>] [[-Since] <String>] [[-Until] <String>]
+ [[-Cursor] <String>] [[-After] <String>] [[-Follow] <String>] [-Merge] [-ThisBoot] [-OutputFields]
+ [-OutputVerbose] [-OutputCatalog] [-UTC] [-NoHostname] [-NoFullyQualifiedDomainName] [-NoPageSize] [-NoTail]
+ [-Quiet]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,7 @@ Invoke the journalctl command with various options.
 
 ### EXAMPLE 1
 ```
-Get-Journal -Lines 10 -Follow
+Get-LinuxJournal -Lines 10 -Follow
 ```
 
 ## PARAMETERS
@@ -445,5 +446,5 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Journal.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Journal.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxJournal.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxJournal.md)
 

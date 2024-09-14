@@ -1,38 +1,52 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md
 schema: 2.0.0
 ---
 
-# Update-LocalUser
+# Get-LinuxPackages
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get Linux packages
 
 ## SYNTAX
 
 ```
-Update-LocalUser [-Name] <String> [-NewPassword] [-LockAccount] [[-Comment] <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-LinuxPackages [[-Type] <String>] [-Upgradable] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get Linux packages and basic configuration settings
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-LinuxPackages
 ```
 
-{{ Add example description here }}
+Returns all packages
+
+### EXAMPLE 2
+```
+Get-LinuxPackages -Type "flatpak"
+```
+
+Returns only flatpak packages
+
+### EXAMPLE 3
+```
+Get-LinuxPackages -Type "apt" -Upgradable
+```
+
+Returns only upgradable apt packages
 
 ## PARAMETERS
 
-### -Comment
-{{ Fill Comment Description }}
+### -Type
+Valid values are "apt", "snap", "flatpak", or "all".
+Default is "all".
 
 ```yaml
 Type: String
@@ -41,13 +55,14 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: All
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LockAccount
-{{ Fill LockAccount Description }}
+### -Upgradable
+Only valid for "apt" type.
+If present, returns only upgradable packages.
 
 ```yaml
 Type: SwitchParameter
@@ -56,37 +71,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NewPassword
-{{ Fill NewPassword Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -111,10 +96,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md)
+

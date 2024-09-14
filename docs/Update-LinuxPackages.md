@@ -1,42 +1,45 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Services.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md
 schema: 2.0.0
 ---
 
-# Get-Services
+# Update-LinuxPackages
 
 ## SYNOPSIS
-Get Linux services
+Update and upgrade Linux packages
 
 ## SYNTAX
 
 ```
-Get-Services [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-LinuxPackages [[-Type] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Linux services and basic configuration settings
+Update and upgrade Linux packages
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-Services
+Update-LinuxPackages
 ```
+
+Updates all packages
 
 ### EXAMPLE 2
 ```
-Get-Services -Name "foo"
+Update-LinuxPackages -Type "apt"
 ```
+
+Updates only apt packages
 
 ## PARAMETERS
 
-### -Name
-Optional.
-Name of service to return.
-Default is to return all services.
+### -Type
+Valid values are "apt", "snap", "flatpak", or "all".
+Default is "all".
 
 ```yaml
 Type: String
@@ -45,7 +48,7 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: All
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,5 +79,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Services.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Services.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md)
 
