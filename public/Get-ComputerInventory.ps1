@@ -16,6 +16,8 @@ function Get-ComputerInventory {
 		1.0.0 - 2024-08-05 - Initial release, David Stein
 
 		Blob Container requires permissions: Add, Create, Write, List
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ComputerInventory.md
 	#>
 	[CmdletBinding()]
 	param(

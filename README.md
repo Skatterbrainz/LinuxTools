@@ -4,10 +4,15 @@ PowerShell Module: Tools for Linux
 
 Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
 
+-1.0.7 - 9/17/2024
+  - Added Get-DesktopEnvironment
+  - Fixed missing LINK ref for Get-ComputerInventory
+
 -1.0.6 - 9/15/2024
   - Added Get-SysCtl
   - Added Get-MemoryInfo
   - Added Get-MemoryPressure
+
 -1.0.5 - 9/6/2024
   - Added Add-LocalGroupMember
   - Added Get-LocalGroupMember
@@ -16,6 +21,7 @@ Just because I could, not that I should. What's missing or broken? Let me know b
   - Updated Get-LocalGroup to change -Identity to -Name for consistency
 
 -1.0.4 - 9/6/2024
+  - Added Get-ComputerInventory
   - Added Get-CronTabs
   - Added Get-DefaultAudioPlayer
   - Added Get-DefaultBrowser
