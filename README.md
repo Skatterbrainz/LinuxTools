@@ -5,14 +5,15 @@ PowerShell Module: Tools for Linux
 Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
 
 -1.0.7 - 9/19/2024
-  - Added Get-DesktopEnvironment
-  - Added Get-FireFoxProfiles, Start-FireFoxProfile
-  - Fixed missing LINK ref for Get-ComputerInventory
+  - Added [Get-DesktopEnvironment](./docs/Get-DesktopEnvironment.md)
+  - Added [Get-FireFoxProfiles](./docs/Get-FireFoxProfiles.md)
+  - Added [Start-FireFoxProfile](./docs/Start-FireFoxProfile.md)
+  - Fixed missing LINK ref for [Get-ComputerInventory](./docs/Get-ComputerInventory.md)
 
 -1.0.6 - 9/15/2024
-  - Added Get-SysCtl
-  - Added Get-MemoryInfo
-  - Added Get-MemoryPressure
+  - Added [Get-SysCtl](./docs/Get-SysCtl.md)
+  - Added [Get-MemoryInfo](./docs/Get-MemoryInfo.md)
+  - Added [Get-MemoryPressure](./docs/Get-MemoryPressure.md)
 
 -1.0.5 - 9/6/2024
   - Added Add-LocalGroupMember
