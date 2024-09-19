@@ -1,7 +1,6 @@
 function Get-ComputerInventory {
 	<#
 	.SYNOPSIS
-		Get-ComputerInventory
 		Get hardware and software inventory of the local computer.
 	.DESCRIPTION
 		This script will gather hardware and software inventory of the local computer and output the results to a JSON file.
@@ -10,12 +9,24 @@ function Get-ComputerInventory {
 		The path to save the inventory files to.
 		Example \\server\share
 	.PARAMETER SasURI
-		The Azure Storage Account SAS URI to send the inventory files to.
+		Optional SAS URI for an Azure Storage Account to upload the inventory file to.
 		Format is https://<storageaccount>.blob.core.windows.net/<container>/<blob>?<sas-token>
-	.NOTES
-		1.0.0 - 2024-08-05 - Initial release, David Stein
+	.EXAMPLE
+		Get-ComputerInventory -DestinationPath "\\server\share"
 
-		Blob Container requires permissions: Add, Create, Write, List
+		Saves the inventory file to \\server\share. The file name is <hostname>_inventory.json
+	.EXAMPLE
+		Get-ComputerInventory -SasURI "https://<storageaccount>.blob.core.windows.net/<container>/<blob>?<sas-token>"
+
+		Sends the inventory file to Azure Blob Storage. The file name is <hostname>_inventory.json
+	.EXAMPLE
+		Get-ComputerInventory
+
+		Saves the inventory file to the user's Documents folder. File name is <hostname>_inventory.json
+	.NOTES
+		Azure Blob Container requires permissions: Add, Create, Write, List
+
+		Any data missing? Let me know!
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ComputerInventory.md
 	#>
@@ -77,7 +88,7 @@ function Get-ComputerInventory {
 			write-verbose "uploading inventory file to $DestinationPath"
 			Copy-Item -Path $invFile -Destination $DestinationPath -Force
 		} else {
-			Write-Verbose "File saved to: $invFile"
+			Write-Host "File saved to: $invFile"
 		}
 		Write-Output 0
 	} catch {
