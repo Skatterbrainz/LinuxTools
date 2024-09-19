@@ -4,8 +4,9 @@ PowerShell Module: Tools for Linux
 
 Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
 
--1.0.7 - 9/17/2024
+-1.0.7 - 9/19/2024
   - Added Get-DesktopEnvironment
+  - Added Get-FireFoxProfiles, Start-FireFoxProfile
   - Fixed missing LINK ref for Get-ComputerInventory
 
 -1.0.6 - 9/15/2024
