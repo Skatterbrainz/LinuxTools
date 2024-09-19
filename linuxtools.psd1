@@ -4,13 +4,13 @@
 # Last Updated: 09/19/2024
 @{
 RootModule = './linuxtools.psm1'
-ModuleVersion = '1.0.7'
+ModuleVersion = '1.0.8'
 # CompatiblePSEditions = @()
 GUID   = 'd2159ed4-ad33-4e57-a295-a7eb29ac60a3'
 Author = 'skatterbrainz'
 CompanyName = 'skatterbrainz'
 Copyright   = '(c) MMXXIV Skatterus Maximus. All rights reserved.'
-Description = 'An experimental PowerShell thing for Linux nerds. Laugh if you want. I have my earbuds on full volume.'
+Description = 'An experimental PowerShell module for Linux nerds. Because: why not?'
 PowerShellVersion = '7.0'
 # PowerShellHostName     = ''
 # PowerShellHostVersion  = ''
@@ -32,7 +32,7 @@ AliasesToExport   = '*'
 # FileList   = @()
 PrivateData = @{
     PSData = @{
-        Tags       = @('linux','disk','service','computer','account','user','group','network','applications','inventory','skatterbrainz')
+        Tags       = @('linux','disk','service','computer','account','user','group','network','applications','inventory','skatterbrainz','browser','firefox')
         LicenseUri = 'https://github.com/Skatterbrainz/LinuxTools/blob/main/LICENSE'
         ProjectUri = 'https://github.com/Skatterbrainz/LinuxTools'
         IconUri    = 'https://github.com/user-attachments/assets/73df7f19-0c77-4353-a04d-dd67bb1274c3'
