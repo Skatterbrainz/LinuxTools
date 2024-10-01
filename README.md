@@ -4,6 +4,11 @@ PowerShell Module: Tools for Linux
 
 Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
 
+-1.0.8 - 10/1/2024
+  - Added [Get-AppLaunchers](./docs/Get-AppLaunchers.md)
+  - Added [Test-ServiceRebootPending](./docs/Test-ServiceRebootPending.md)
+  - Added [Get-FirewallStatus](./docs/Get-FirewallStatus.md)
+
 -1.0.7 - 9/19/2024
   - Added [Get-DesktopEnvironment](./docs/Get-DesktopEnvironment.md)
   - Added [Get-FireFoxProfiles](./docs/Get-FireFoxProfiles.md)

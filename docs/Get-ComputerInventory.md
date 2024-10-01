@@ -8,7 +8,6 @@ schema: 2.0.0
 # Get-ComputerInventory
 
 ## SYNOPSIS
-Get-ComputerInventory
 Get hardware and software inventory of the local computer.
 
 ## SYNTAX
@@ -24,12 +23,29 @@ Optionally, the results can be sent to a REST API endpoint.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-ComputerInventory -DestinationPath "\\server\share"
 ```
 
-{{ Add example description here }}
+Saves the inventory file to \\\\server\share.
+The file name is \<hostname\>_inventory.json
+
+### EXAMPLE 2
+```
+.blob.core.windows.net/<container>/<blob>?<sas-token>"
+```
+
+Sends the inventory file to Azure Blob Storage.
+The file name is \<hostname\>_inventory.json
+
+### EXAMPLE 3
+```
+Get-ComputerInventory
+```
+
+Saves the inventory file to the user's Documents folder.
+File name is \<hostname\>_inventory.json
 
 ## PARAMETERS
 
@@ -49,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -SasURI
-The Azure Storage Account SAS URI to send the inventory files to.
+Optional SAS URI for an Azure Storage Account to upload the inventory file to.
 Format is https://\<storageaccount\>.blob.core.windows.net/\<container\>/\<blob\>?\<sas-token\>
 
 ```yaml
@@ -87,9 +103,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-1.0.0 - 2024-08-05 - Initial release, David Stein
+Azure Blob Container requires permissions: Add, Create, Write, List
 
-Blob Container requires permissions: Add, Create, Write, List
+Any data missing?
+Let me know!
 
 ## RELATED LINKS
 
