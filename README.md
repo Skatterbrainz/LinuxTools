@@ -4,6 +4,16 @@ PowerShell Module: Tools for Linux
 
 Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
 
+- 1.0.10 - 
+  - Added [Get-CinnamonApplets](./docs/Get-CinnamonApplets.md)
+  - Added [Get-CinnamonExtension](./docs/Get-CinnamonExtensions.md)
+  - Added [Get-CinnamonSpices](./docs/Get-CinnamonSpices.md)
+  - Added [Get-DegradedSystemInfo](./docs/Get-DegradedSystemInfo.md)
+  - Added [Get-DesktopThemes](./docs/Get-DesktopThemes.md)
+  - Added [Get-ShutDownTimeOut](./docs/Get-ShutDownTimeOut.md)
+  - Added [Get-SystemCtl](./docs/Get-SystemCtl.md)
+  - Updated [Get-ProcessList](./docs/Get-ProcessList.md)
+
 - 1.0.9 - 10/15/2024 "almost to 10!!"
   - Added [Get-MemoryConfiguration](./docs/Get-MemoryConfiguration.md)
 
