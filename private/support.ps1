@@ -237,3 +237,37 @@ function Get-GridSelect {
 		Write-Warning "Linux platforms require module: microsoft.powershell.consoleguitools"
 	}
 }
+
+function IsCinnamonInstalled {
+	<#
+	.SYNOPSIS
+		Determine if Cinnamon desktop is installed
+	.DESCRIPTION
+		Determine if Cinnamon desktop is installed
+	#>
+	param()
+	$desktop = Get-ChildItem -Path "/usr/share/xsessions" -Filter "cinnamon.desktop" -ErrorAction SilentlyContinue
+	if ($desktop) {
+		Write-Output $true
+		$global:IsCinnamon = $true
+	} else {
+		Write-Output $false
+		$global:IsCinnamon = $false
+	}
+}
+
+function Get-CinnamonVersion {
+	<#
+	.SYNOPSIS
+		Get the version of the installed Cinnamon desktop
+	.DESCRIPTION
+		Get the version of the installed Cinnamon desktop
+	#>
+	param()
+	if ($IsCinnamon) {
+		try {$cver = Invoke-Command -ScriptBlock { cinnamon --version }} catch {}
+		$cver
+	} else {
+		Write-Warning "Cinnamon desktop is not installed"
+	}
+}

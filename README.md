@@ -4,7 +4,11 @@ PowerShell Module: Tools for Linux
 
 Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
 
-- 1.0.10 - 
+- 1.0.11 - MM/dd/2024
+  - Added [Get-CinnamonVersion](./docs/Get-CinnamonVersion.md)
+  - Added $IsCinnamon global variable
+
+- 1.0.10 - 10/22/2024
   - Added [Get-CinnamonApplets](./docs/Get-CinnamonApplets.md)
   - Added [Get-CinnamonExtension](./docs/Get-CinnamonExtensions.md)
   - Added [Get-CinnamonSpices](./docs/Get-CinnamonSpices.md)
