@@ -1,52 +1,46 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ProcessList.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonExtensions.md
 schema: 2.0.0
 ---
 
-# Get-ProcessList
+# Get-CinnamonSpices
 
 ## SYNOPSIS
-Get-ProcessList retrieves a list of processes
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Get-ProcessList [[-Top] <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-CinnamonSpices [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get-ProcessList retrieves a list of processes and sorts them by CPU usage in descending order
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-Get-ProcessList
-Get-ProcessList retrieves a list of processes and sorts them by CPU usage in descending order
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-### EXAMPLE 2
-```
-Get-ProcessList -Top 5
-Get-ProcessList retrieves a list of the top 5 processes sorted by CPU usage in descending order
-```
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Top
-Top number of processes to display.
-Default is 10
+### -Name
+{{ Fill Name Description }}
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: 10
+Position: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -71,11 +65,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
 ## OUTPUTS
 
+### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ProcessList.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ProcessList.md)
-
