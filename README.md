@@ -7,6 +7,7 @@ Just because I could, not that I should. What's missing or broken? Let me know b
 - 1.0.11 - MM/dd/2024
   - Added [Get-CinnamonVersion](./docs/Get-CinnamonVersion.md)
   - Added $IsCinnamon global variable
+  - Updated [Get-DesktopEnvironment](./docs/Get-DesktopEnvironment.md)
 
 - 1.0.10 - 10/22/2024
   - Added [Get-CinnamonApplets](./docs/Get-CinnamonApplets.md)
