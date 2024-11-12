@@ -1,41 +1,63 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopThemes.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DiskInfo.md
 schema: 2.0.0
 ---
 
 # Get-DiskInfo
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get local disk information
 
 ## SYNTAX
 
 ```
-Get-DiskInfo
+Get-DiskInfo [-FormatNumbers]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get local disk information using the "df" command.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-DiskInfo
+Enumerate all local disk information
 ```
 
-{{ Add example description here }}
+### EXAMPLE 2
+```
+Get-DiskInfo -FormatNumbers
+Enumerate all local disk information with formatted numbers
+```
 
 ## PARAMETERS
 
+### -FormatNumbers
+Return number values in units (e.g.
+12GB, 1.2TB, etc.)
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ## INPUTS
 
-### None
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DiskInfo.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DiskInfo.md)
+
