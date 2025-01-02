@@ -9,7 +9,7 @@
 	GUID              = 'd2159ed4-ad33-4e57-a295-a7eb29ac60a3'
 	Author            = 'skatterbrainz'
 	CompanyName       = 'skatterbrainz'
-	Copyright         = '(c) MMXXIV Skatterus Maximus. All rights reserved.'
+	Copyright         = '(c) 2023-2025 Skatterus Maximus. All rights reserved.'
 	Description       = 'An experimental PowerShell module for Linux nerds. A bit Debian/Cinnamon focused, but no reason to limit this. Because: why not?'
 	PowerShellVersion = '7.4'
 	# PowerShellHostName     = ''
