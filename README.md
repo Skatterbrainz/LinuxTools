@@ -1,12 +1,23 @@
 # LinuxTools
 
-PowerShell Module: Tools for Linux
+PowerShell Tools for Linux
 
-Just because I could, not that I should. What's missing or broken? Let me know by posting an [Issue](https://github.com/Skatterbrainz/LinuxTools/issues)
+Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
+
+- 1.0.14 - 01/02/2025
+  - Added [Get-YouTubeAudio](./docs/Get-YouTubeAudio.md)
+
+- 1.0.13 - 11/11/2024
+  - Added [New-ToastNotification](./docs/New-ToastNotification.md)
+
+- 1.0.12 - 11/2/2024
+  - Cleaned up Repository content
 
 - 1.0.11 - 10/24/2024
   - Added [Get-CinnamonVersion](./docs/Get-CinnamonVersion.md)
   - Added $IsCinnamon global variable
+  - Added [Get-UbuntuAdjustments](./docs/Get-UbuntuAdjustments.md)
+  - Added [Get-DiskInfo](./docs/Get-DiskInfo.md)
   - Updated [Get-DesktopEnvironment](./docs/Get-DesktopEnvironment.md)
 
 - 1.0.10 - 10/22/2024
