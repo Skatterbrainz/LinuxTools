@@ -4,6 +4,10 @@ PowerShell Tools for Linux
 
 Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
 
+- 1.0.15 - 01/05/2025
+  - Added [Get-XsessionErrors](./docs/Get-XsessionErrors.md)
+  - Added [Invoke-LogAssessment](./docs/Invoke-LogAssessment.md) (requires module: PSAI)
+
 - 1.0.14 - 01/02/2025
   - Added [Get-YouTubeAudio](./docs/Get-YouTubeAudio.md)
 

@@ -271,3 +271,8 @@ function Get-CinnamonVersion {
 		Write-Warning "Cinnamon desktop is not installed"
 	}
 }
+
+function Get-LogFile {
+    param()
+    Get-Content -Path $global:LogFilePath -ErrorAction SilentlyContinue
+}
