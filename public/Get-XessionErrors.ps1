@@ -1,5 +1,14 @@
 function Get-XsessionErrors {
     <#
+    .SYNOPSIS
+        Get the contents of the ~/.xsession-errors file
+    .DESCRIPTION
+        Get the contents of the ~/.xsession-errors file, which is a common location for error messages in Linux desktop environments.
+    .PARAMETER logPath
+        The path to the log file to be read. Default is "~/.xsession-errors".
+    .EXAMPLE
+        Get-XsessionErrors
+        Returns the contents of the ~/.xsession-errors file.
     #>
     [CmdletBinding()]
     param (
