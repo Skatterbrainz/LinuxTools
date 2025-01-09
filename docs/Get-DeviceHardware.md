@@ -1,49 +1,33 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UsbDevices.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DeviceHardware.md
 schema: 2.0.0
 ---
 
-# Get-XsessionErrors
+# Get-DeviceHardware
 
 ## SYNOPSIS
-Get the contents of the ~/.xsession-errors file
+Get hardware information for the current device
 
 ## SYNTAX
 
 ```
-Get-XsessionErrors [[-logPath] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-DeviceHardware [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the contents of the ~/.xsession-errors file, which is a common location for error messages in Linux desktop environments.
+This script will gather hardware information for the current device.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-XsessionErrors
-Returns the contents of the ~/.xsession-errors file.
+Get-DeviceHardware
+Returns hardware information for the current device
 ```
 
 ## PARAMETERS
-
-### -logPath
-The path to the log file to be read.
-Default is "~/.xsession-errors".
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: ~/.xsession-errors
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
@@ -70,3 +54,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DeviceHardware.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DeviceHardware.md)
+

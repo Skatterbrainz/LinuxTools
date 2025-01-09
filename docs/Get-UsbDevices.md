@@ -5,45 +5,29 @@ online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get
 schema: 2.0.0
 ---
 
-# Get-XsessionErrors
+# Get-UsbDevices
 
 ## SYNOPSIS
-Get the contents of the ~/.xsession-errors file
+Get USB devices attached to the system
 
 ## SYNTAX
 
 ```
-Get-XsessionErrors [[-logPath] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-UsbDevices [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the contents of the ~/.xsession-errors file, which is a common location for error messages in Linux desktop environments.
+This script will gather USB devices attached to the system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-XsessionErrors
-Returns the contents of the ~/.xsession-errors file.
+Get-UsbDevices
+Returns USB devices attached to the system
 ```
 
 ## PARAMETERS
-
-### -logPath
-The path to the log file to be read.
-Default is "~/.xsession-errors".
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: ~/.xsession-errors
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
@@ -70,3 +54,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UsbDevices.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UsbDevices.md)
+
