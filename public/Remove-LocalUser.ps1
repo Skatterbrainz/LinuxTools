@@ -13,7 +13,7 @@ function Remove-LocalUser {
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalUser.md
 	#>
-	[cmdletbinding(SupportsShouldProcess)]
+	[cmdletbinding(SupportsShouldProcess=$True)]
 	param (
 		[Parameter(Mandatory=$true)][string]$Name
 	)

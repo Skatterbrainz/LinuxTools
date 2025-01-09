@@ -4,6 +4,15 @@ PowerShell Tools for Linux
 
 Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
 
+- 1.0.16 - 01/08/2025
+  - Updated [New-LocalUser](./docs/New-LocalUser.md) with steroids and a testosterone vape. Also -Password requires a SecureString
+  - Updated [Update-LocalUser](./docs/Update-LocalUser.md) with even more steroids, caffeine and some sort of white powder substance. -NewPassword requires a SecureString.
+  - Updated [New-LocalGroup](./docs/New-LocalGroup.md) but only with cold coffee
+  - Added [Update-LocalGroup](./docs/Update-LocalGroup.md)
+  - Added [Remove-LocalGroup](./docs/Remove-LocalGroup.md)
+  - Added [Get-DeviceHardware](./docs/Get-DeviceHardware.md)
+  - Added [Get-UsbDevices](./docs/Get-UsbDevices.md)
+
 - 1.0.15 - 01/05/2025
   - Added [Get-XsessionErrors](./docs/Get-XsessionErrors.md)
   - Added [Invoke-LogAssessment](./docs/Invoke-LogAssessment.md) (requires module: PSAI)
