@@ -7,6 +7,8 @@ function Get-MemoryPressure {
 	.EXAMPLE
 		Get-MemoryPressure
 		Get the current memory pressure.
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-MemoryPressure.md
 	#>
 	[CmdletBinding()]
 	param()

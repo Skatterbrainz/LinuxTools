@@ -7,6 +7,8 @@ function Get-MemoryInfo {
 	.EXAMPLE
 		Get-MemoryInfo
 		Get memory information.
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-MemoryInfo.md
 	#>
 	[CmdletBinding()]
 	param()

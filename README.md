@@ -4,6 +4,11 @@ PowerShell Tools for Linux
 
 Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
 
+- 1.0.17 - 01/16/2025
+  - Added [Get-OpenFiles](./docs/Get-OpenFiles.md)
+  - Added [Update-AllModules](./docs/Update-AllModules.md)
+  - Fixed: missing LINK properties on multiple function comments
+
 - 1.0.16 - 01/08/2025
   - Updated [New-LocalUser](./docs/New-LocalUser.md) with steroids and a testosterone vape. Also -Password requires a SecureString
   - Updated [Update-LocalUser](./docs/Update-LocalUser.md) with even more steroids, caffeine and some sort of white powder substance. -NewPassword requires a SecureString.

@@ -1,5 +1,19 @@
 function Get-CinnamonSpices {
 	<#
+	.SYNOPSIS
+		Retrieves a list of installed Cinnamon spices
+	.DESCRIPTION
+		Retrieves a list of installed Cinnamon spices from the user's home directory
+	.PARAMETER Name
+		Name of the spice to retrieve details for.
+	.EXAMPLE
+		Get-CinnamonSpices
+		Retrieves a list of installed Cinnamon spices
+	.EXAMPLE
+		Get-CinnamonSpices -Name "Cinnamon-Spices-Applet"
+		Retrieves details for the specified spice
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonSpices.md
 	#>
 	[CmdletBinding()]
 	param(

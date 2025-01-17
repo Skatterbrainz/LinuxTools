@@ -35,6 +35,8 @@ function New-ToastNotification {
 		Displays a notification with the message "Hello World!" and the icon dialog-warning.png
 	.NOTES
 		#notify-send "<b>Hello World!</b>This is a message from PowerShell" -u critical -i /usr/share/icons/gnome/48x48/status/dialog-warning.png
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-ToastNotification.md
 	#>
 	[CmdletBinding()]
 	param (

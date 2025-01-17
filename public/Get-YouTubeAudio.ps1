@@ -26,6 +26,8 @@ function Get-YouTubeAudio {
     .EXAMPLE
         Get-YouTubeAudio -URL "https://www.youtube.com/watch?v=video_id" -OutputPath "~/Music" -ytdlpOptions "-f 139"
         Downloads the audio from the YouTube video with the specified video ID using the specified yt-dlp options.
+    .LINK
+        https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-YouTubeAudio.md
     #>
     [CmdletBinding()]
     param(

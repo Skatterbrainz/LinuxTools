@@ -9,6 +9,8 @@ function Get-XsessionErrors {
     .EXAMPLE
         Get-XsessionErrors
         Returns the contents of the ~/.xsession-errors file.
+    .LINK
+        https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-XsessionErrors.md
     #>
     [CmdletBinding()]
     param (

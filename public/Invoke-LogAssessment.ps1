@@ -18,6 +18,8 @@ function Invoke-LogAssessment {
         Returns the response from the assistant based on the log file analysis using the specified instructions and prompt.
     .OUTPUTS
         STRING - The response from the assistant based on the log file analysis.
+    .LINK
+        https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Invoke-LogAssessment.md
     #>
     [CmdletBinding()]
     param (

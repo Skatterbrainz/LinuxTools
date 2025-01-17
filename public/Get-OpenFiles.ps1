@@ -30,6 +30,7 @@ function Get-OpenFiles {
 		Get-OpenFiles -Path /home/user123 -UserName user123
 		Get open files in the /home/user123 directory owned by the user123 user.
 	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-OpenFiles.md
 	#>
 	[CmdletBinding()]
 	param(
