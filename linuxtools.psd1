@@ -4,7 +4,7 @@
 # Last Updated: 01/08/2025
 @{
 	RootModule        = './linuxtools.psm1'
-	ModuleVersion     = '1.0.16'
+	ModuleVersion     = '1.0.17'
 	CompatiblePSEditions = @('Core')
 	GUID              = 'd2159ed4-ad33-4e57-a295-a7eb29ac60a3'
 	Author            = 'skatterbrainz'
