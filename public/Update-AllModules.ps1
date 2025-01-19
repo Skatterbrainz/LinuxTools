@@ -1,9 +1,9 @@
 function Update-AllModules {
 	<#
 	.SYNOPSIS
-		Check installed modules against the PSGallery and update if necessary
+		Check installed modules against the PSGallery and update if requested
 	.DESCRIPTION
-		Check installed modules against the PSGallery and update if necessary
+		Check installed modules against the PSGallery and update if requested
 	.PARAMETER Update
 		Perform the update. Otherwise, just report on the status
 	.LINK
@@ -55,6 +55,5 @@ function Update-AllModules {
 			Available = $galleryVersion.ToString()
 			State     = $mstate
 		}
-		#Update-Module -Name $moduleName -Force
 	}
 }

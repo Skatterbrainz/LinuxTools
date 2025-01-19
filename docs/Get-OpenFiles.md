@@ -1,7 +1,7 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version:
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-OpenFiles.md
 schema: 2.0.0
 ---
 
@@ -155,3 +155,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-OpenFiles.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-OpenFiles.md)
+

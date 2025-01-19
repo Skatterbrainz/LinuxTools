@@ -1,7 +1,7 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UsbDevices.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Invoke-LogAssessment.md
 schema: 2.0.0
 ---
 
@@ -110,3 +110,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Invoke-LogAssessment.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Invoke-LogAssessment.md)
+

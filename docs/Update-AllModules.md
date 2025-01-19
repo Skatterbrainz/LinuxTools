@@ -1,51 +1,47 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonSpices.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AllModules.md
 schema: 2.0.0
 ---
 
-# Get-CinnamonSpices
+# Update-AllModules
 
 ## SYNOPSIS
-Retrieves a list of installed Cinnamon spices
+Check installed modules against the PSGallery and update if requested
 
 ## SYNTAX
 
 ```
-Get-CinnamonSpices [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-AllModules [-Update] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves a list of installed Cinnamon spices from the user's home directory
+Check installed modules against the PSGallery and update if requested
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-Get-CinnamonSpices
-Retrieves a list of installed Cinnamon spices
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-### EXAMPLE 2
-```
-Get-CinnamonSpices -Name "Cinnamon-Spices-Applet"
-Retrieves details for the specified spice
-```
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Name
-Name of the spice to retrieve details for.
+### -Update
+Perform the update.
+Otherwise, just report on the status
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,5 +72,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonSpices.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonSpices.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AllModules.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AllModules.md)
 

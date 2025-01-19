@@ -1,7 +1,7 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-ToastNotification.md
 schema: 2.0.0
 ---
 
@@ -161,3 +161,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 #notify-send "\<b\>Hello World!\</b\>This is a message from PowerShell" -u critical -i /usr/share/icons/gnome/48x48/status/dialog-warning.png
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-ToastNotification.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-ToastNotification.md)
+
