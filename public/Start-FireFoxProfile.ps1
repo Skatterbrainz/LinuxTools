@@ -38,7 +38,7 @@ function Start-FireFoxProfile {
 		$ffprofile = $ffprofiles | Where-Object { $_.Name -eq $ProfileName }
 	} else {
 		Write-Host "Select a Firefox profile to launch..." -ForegroundColor Yellow
-		$ffprofile = Get-GridSelect -DataSet $ffprofiles -Title "Select Profile to Launch" -OutputMode Single
+		$ffprofile = getGridSelect -DataSet $ffprofiles -Title "Select Profile to Launch" -OutputMode Single
 	}
 	if ($ffprofile) {
 		Start-Process -FilePath "firefox" -ArgumentList "-P $($ffprofile.Name) -no-remote"

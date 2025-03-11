@@ -14,21 +14,5 @@ function Get-Environment {
 	param(
 		[parameter()][string]$Name
 	)
-	$results = [System.Collections.ArrayList]::new()
-	$items = Invoke-Command -ScriptBlock { cat /etc/environment }
-	foreach ($item in $items) {
-		$parts = $item.Split("=")
-		$key   = $parts[0]
-		$val   = $parts[1].Split(":")
-		$item  = [pscustomobject]@{
-			Name  = $key
-			Value = if ($val.Count -gt 1) { $val } else { $val[0] }
-		}
-		$null  = $results.Add($item)
-	}
-	if (![string]::IsNullOrWhiteSpace($Name)) {
-		$results | Where-Object {$_.Name -eq $Name}
-	} else {
-		$results
-	}
+	[pscustomobject]$([System.Environment]::GetEnvironmentVariables())
 }
