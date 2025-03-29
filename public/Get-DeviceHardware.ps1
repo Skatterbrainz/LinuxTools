@@ -13,8 +13,15 @@ function Get-DeviceHardware {
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DeviceHardware.md
 	#>
 	[CmdletBinding()]
-	param()
+	param(
+		[parameter()][switch]$Json
+	)
 	try {
+		if ($Json.IsPresent) {
+			# Get hardware information in JSON format
+			$hardwareInfo = Invoke-Command -ScriptBlock { sudo lshw -json } | ConvertFrom-Json
+			return $hardwareInfo
+		} else {}
 		Invoke-Command -ScriptBlock { sudo lshw -json } | ConvertFrom-Json
 	} catch {
 		Write-Error $_.Exception.Message
