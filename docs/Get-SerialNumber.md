@@ -1,48 +1,33 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DeviceHardware.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SerialNumber.md
 schema: 2.0.0
 ---
 
-# Get-DeviceHardware
+# Get-SerialNumber
 
 ## SYNOPSIS
-Get hardware information for the current device
+Gets the serial number of the system.
 
 ## SYNTAX
 
 ```
-Get-DeviceHardware [-Json] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-SerialNumber [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This script will gather hardware information for the current device.
+Gets the serial number of the system.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-DeviceHardware
-Returns hardware information for the current device
+Get-SerialNumber
+Returns the serial number of the system.
 ```
 
 ## PARAMETERS
-
-### -Json
-{{ Fill Json Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
@@ -66,9 +51,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.String
 ## NOTES
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DeviceHardware.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DeviceHardware.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SerialNumber.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SerialNumber.md)
 

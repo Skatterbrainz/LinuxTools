@@ -4,6 +4,10 @@ PowerShell Tools for Linux
 
 Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
 
+- 1.0.19 - TBD
+  - Added: Get-SerialNumber
+  - Updated: Get-DeviceHardware
+
 - 1.0.18 - 03/10/2025
   - Added: [Get-AutoStartApps](./docs/Get-AutoStartApps.md)
   - Fixed: bug in Get-CinnamonVersion
