@@ -23,10 +23,16 @@ function Get-DnfPackages {
 		if (-not (Test-Path -Path '/usr/bin/dnf')) {
 			throw "Required file not found: dnf"
 		}
-		#write-host "Updating dnf cache..."
-		$rawdata = dnf list --installed
-		$rawdata[1..$($rawdata.length-1)] | ForEach-Object {
-			$_.Split(' ') | Where-Object {![string]::IsNullOrWhiteSpace($_)}
+		if (Test-Path -Path '/usr/bin/dnf') {
+			$pkgs = dnf list --installed
+			foreach ($row in $pkgs[1..$($pkgs.Count-1)]) {
+				$items = $row.Split(' ') | Where-Object {![string]::IsNullOrWhiteSpace($_)}
+				[pscustomobject]@{
+					Name    = $items[0]
+					Version = $items[1]
+					Source  = $items[2]
+				}
+			}
 		}
 	} catch {
 		Write-Error $($_.Exception.Message -join(";"))
