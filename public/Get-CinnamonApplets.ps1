@@ -12,6 +12,9 @@ function Get-CinnamonApplets {
 	#>
 	[CmdletBinding()]
 	param()
+	if (-Test-Path -Path "~/.local/share/cinnamon/applets") {
+		throw "Required path not found: ~/.local/share/cinnamon/applets"
+	}
 	Get-ChildItem -Path "~/.local/share/cinnamon/applets" -File -Filter "metadata.json" -Recurse | ForEach-Object {
 		Get-Content -Path $_.FullName | ConvertFrom-Json }
 }

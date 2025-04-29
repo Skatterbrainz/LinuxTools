@@ -14,6 +14,9 @@ function Get-AptPkgUpgradeable {
 	#>
 	param()
 	try {
+		if (-not (Test-Path -Path '/usr/bin/apt')) {
+			throw "Required file not found: apt"
+		}
 		write-host "Updating apt cache..."
 		sudo apt update
 		$apps = sudo apt list --upgradable

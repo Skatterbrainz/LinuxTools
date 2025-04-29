@@ -1,4 +1,4 @@
-function Get-AptPkgInventory {
+function Get-AptPackages {
 	<#
 	.SYNOPSIS
 		Get a list of installed APT packages
@@ -7,13 +7,16 @@ function Get-AptPkgInventory {
 	.PARAMETER (none)
 		No parameters
 	.EXAMPLE
-		Get-AptPkgInventory
+		Get-AptPackages
 	.LINK
-		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPkgInventory.md
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPackages.md
 	#>
 	[CmdletBinding()]
 	param()
 	try {
+		if (-not (Test-Path -Path '/usr/bin/apt')) {
+			throw "Required file not found: apt"
+		}
 		write-host "Updating apt cache..."
 		sudo apt update
 		$apps = sudo apt list

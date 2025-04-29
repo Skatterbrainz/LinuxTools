@@ -38,6 +38,11 @@ function IsCinnamonInstalled {
 		Determine if Cinnamon desktop is installed
 	#>
 	param()
+	if (-not (Test-Path -Path "/usr/bin/cinnamon")) {
+		Write-Output $false
+		$global:IsCinnamon = $false
+		return
+	}
 	$desktop = Get-ChildItem -Path "/usr/share/xsessions" -Filter "cinnamon.desktop" -ErrorAction SilentlyContinue
 	if ($desktop) {
 		Write-Output $true
