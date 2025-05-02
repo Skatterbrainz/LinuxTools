@@ -13,10 +13,18 @@ function Update-AptPackages {
 	#>
 	param()
 	try {
-		write-host "Updating apt cache..."
-		sudo apt update
-		write-host "Upgrading packages..."
-		sudo apt upgrade -y
+		if (-not (Test-Path -Path '/usr/bin/apt')) {
+			throw "Required file not found: apt"
+		}
+		if (Test-Path -Path '/usr/bin/nala') {
+			write-host "Using Nala for package management..."
+			sudo nala update
+			sudo nala upgrade -y
+		} else {
+			write-host "Using APT for package management..."
+			apt update
+			apt upgrade -y
+		}
 	} catch {
 		Write-Error $($_.Exception.Message -join(";"))
 	}

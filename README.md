@@ -12,10 +12,12 @@ Just because I could, not that I should. This is currently somewhat Debian/Ubunt
   - Added: Get-SystemLocks
   - Added: Get-SerialNumber
   - Added: Update-DnfPackages
+  - Updated: Update-AptPackages to support nala
   - Updated: Get-DeviceHardware
   - Updated: Get-LinuxPackages
   - Renamed: Get-AptPackageInventory to Get-AptPackages
   - Renamed: Get-AptPkgUpgradeable to Get-AptPackageUpgradeable
+  - OmG! Are you NOT entertained? Why am I doing this? I keep asking myself that too.
 
 - 1.0.18 - 03/10/2025
   - Added: [Get-AutoStartApps](./docs/Get-AutoStartApps.md)

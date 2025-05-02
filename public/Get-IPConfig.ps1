@@ -3,12 +3,12 @@ function Get-IPConfig {
 	.SYNOPSIS
         Get TCP/IP configuration
 	.DESCRIPTION
+        Get TCP/IP configuration and basic settings
 	.PARAMETER none
 	.EXAMPLE
         Get-IPConfig
         
         Returns IP configuration information
-	.EXAMPLE
 	.LINK
         https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md
 	#>

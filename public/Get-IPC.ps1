@@ -3,12 +3,12 @@ function Get-IPC {
     .SYNOPSIS
         Get IPC information
     .DESCRIPTION
+        Get IPC information and basic configuration settings
     .PARAMETER name
     .EXAMPLE
         Get-IPC
 
         Returns current IPC information
-    .EXAMPLE
     .LINK
         https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPC.md
     #>

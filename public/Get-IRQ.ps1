@@ -3,12 +3,17 @@ function Get-IRQ {
 	.SYNOPSIS
 		Get IRQ interrupts
 	.DESCRIPTION
-	.PARAMETER name
+		Get IRQ interrupts and basic configuration settings
+	.PARAMETER Id
+		Interrupt ID to search for. If not specified, all interrupts are returned.
 	.EXAMPLE
 		Get-IRQ
 
 		Returns current IRQ information
 	.EXAMPLE
+		Get-IRQ -Id 1
+
+		Returns only the IRQ with ID 1
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IRQ.md
 	#>

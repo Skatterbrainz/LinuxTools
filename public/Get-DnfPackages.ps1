@@ -14,6 +14,8 @@ function Get-DnfPackages {
 		Get-DnfPackages -Name "vim"
 		
 		Returns only the vim package
+	.NOTES
+		dnf is a package manager for RPM-based distributions, such as Fedora and CentOS.
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DnfPackages.md
 	#>
