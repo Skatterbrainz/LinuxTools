@@ -4,9 +4,18 @@ PowerShell Tools for Linux
 
 Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
 
-- 1.0.19 - TBD
+- 1.1.0 - 05/01/2025
+  - Added: Get-IPC
+  - Added: Get-IPConfig
+  - Added: Get-IRQ
+  - Added: Get-DnfPackages
+  - Added: Get-SystemLocks
   - Added: Get-SerialNumber
+  - Added: Update-DnfPackages
   - Updated: Get-DeviceHardware
+  - Updated: Get-LinuxPackages
+  - Renamed: Get-AptPackageInventory to Get-AptPackages
+  - Renamed: Get-AptPkgUpgradeable to Get-AptPackageUpgradeable
 
 - 1.0.18 - 03/10/2025
   - Added: [Get-AutoStartApps](./docs/Get-AutoStartApps.md)

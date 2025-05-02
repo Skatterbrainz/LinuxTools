@@ -26,7 +26,8 @@ Get Linux packages and basic configuration settings
 Get-LinuxPackages
 ```
 
-Returns all packages
+Returns all packages.
+Same as Get-LinuxPackages -Type "all"
 
 ### EXAMPLE 2
 ```
@@ -42,10 +43,24 @@ Get-LinuxPackages -Type "apt" -Upgradable
 
 Returns only upgradable apt packages
 
+### EXAMPLE 4
+```
+Get-LinuxPackages -Type "snap"
+```
+
+Returns only snap packages
+
+### EXAMPLE 5
+```
+Get-LinuxPackages -Type "dnf"
+```
+
+Returns only dnf packages
+
 ## PARAMETERS
 
 ### -Type
-Valid values are "apt", "snap", "flatpak", or "all".
+Valid values are "apt", "snap", "flatpak", "dnf" or "all".
 Default is "all".
 
 ```yaml

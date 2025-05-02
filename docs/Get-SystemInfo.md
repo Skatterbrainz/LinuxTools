@@ -1,29 +1,29 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPkgInventory.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemCtl.md
 schema: 2.0.0
 ---
 
-# Get-AptPkgInventory
+# Get-SystemInfo
 
 ## SYNOPSIS
-Get a list of installed APT packages
+Gets detailed system information from a Linux system.
 
 ## SYNTAX
 
 ```
-Get-AptPkgInventory [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-SystemInfo [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a list of installed APT packages
+Collects information about CPU, memory, disk, and operating system.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AptPkgInventory
+Get-SystemInfo
 ```
 
 ## PARAMETERS
@@ -53,6 +53,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPkgInventory.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPkgInventory.md)
-

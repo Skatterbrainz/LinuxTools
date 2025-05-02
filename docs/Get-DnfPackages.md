@@ -1,37 +1,43 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DnfPackages.md
 schema: 2.0.0
 ---
 
-# Get-LinuxDistro
+# Get-DnfPackages
 
 ## SYNOPSIS
-Get the Linux distribution name.
+Get DNF packages
 
 ## SYNTAX
 
 ```
-Get-LinuxDistro [[-distro] <String>] [-Detailed] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-DnfPackages [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function reads the /etc/os-release file to determine the Linux distribution name.
+Get DNF packages and basic configuration settings
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-LinuxDistro
-Returns the Linux distribution name.
+Get-DnfPackages
+Returns all DNF packages
+```
+
+### EXAMPLE 2
+```
+Get-DnfPackages -Name "vim"
+Returns only the vim package
 ```
 
 ## PARAMETERS
 
-### -distro
-The Linux distribution name.
-If not provided, the function will attempt to determine it.
+### -Name
+Package name to search for.
+If not specified, all packages are returned.
 
 ```yaml
 Type: String
@@ -41,22 +47,6 @@ Aliases:
 Required: False
 Position: 1
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Detailed
-Include PSVersionTable OS value with output.
-This is appended following a semi-colon
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -87,5 +77,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md)
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DnfPackages.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DnfPackages.md)
 
