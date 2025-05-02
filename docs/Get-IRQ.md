@@ -17,7 +17,7 @@ Get-IRQ [[-Id] <Object>] [-ProgressAction <ActionPreference>] [<CommonParameters
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get IRQ interrupts and basic configuration settings
 
 ## EXAMPLES
 
@@ -30,13 +30,16 @@ Returns current IRQ information
 
 ### EXAMPLE 2
 ```
-
+Get-IRQ -Id 1
 ```
+
+Returns only the IRQ with ID 1
 
 ## PARAMETERS
 
 ### -Id
-{{ Fill Id Description }}
+Interrupt ID to search for.
+If not specified, all interrupts are returned.
 
 ```yaml
 Type: Object

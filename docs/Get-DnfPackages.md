@@ -24,14 +24,16 @@ Get DNF packages and basic configuration settings
 ### EXAMPLE 1
 ```
 Get-DnfPackages
-Returns all DNF packages
 ```
+
+Returns all DNF packages
 
 ### EXAMPLE 2
 ```
 Get-DnfPackages -Name "vim"
-Returns only the vim package
 ```
+
+Returns only the vim package
 
 ## PARAMETERS
 
@@ -74,6 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+dnf is a package manager for RPM-based distributions, such as Fedora and CentOS.
 
 ## RELATED LINKS
 

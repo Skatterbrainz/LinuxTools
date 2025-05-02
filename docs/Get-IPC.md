@@ -17,7 +17,7 @@ Get-IPC [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get IPC information and basic configuration settings
 
 ## EXAMPLES
 
@@ -27,11 +27,6 @@ Get-IPC
 ```
 
 Returns current IPC information
-
-### EXAMPLE 2
-```
-
-```
 
 ## PARAMETERS
 

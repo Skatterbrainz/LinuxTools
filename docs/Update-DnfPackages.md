@@ -1,32 +1,32 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md
 schema: 2.0.0
 ---
 
-# Get-IPConfig
+# Update-DnfPackages
 
 ## SYNOPSIS
-Get TCP/IP configuration
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Get-IPConfig [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-DnfPackages [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get TCP/IP configuration and basic settings
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-Get-IPConfig
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-Returns IP configuration information
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -50,11 +50,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
 ## OUTPUTS
 
+### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md)
-
