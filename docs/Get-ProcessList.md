@@ -13,7 +13,8 @@ Get-ProcessList retrieves a list of processes
 ## SYNTAX
 
 ```
-Get-ProcessList [[-Top] <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-ProcessList [-Top <Int32>] [-Detailed] [-ProcessName <String>] [-PortNumber <Int32>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,14 +25,37 @@ Get-ProcessList retrieves a list of processes and sorts them by CPU usage in des
 ### EXAMPLE 1
 ```
 Get-ProcessList
-Get-ProcessList retrieves a list of processes and sorts them by CPU usage in descending order
 ```
+
+Get-ProcessList retrieves a list of processes and sorts them by CPU usage in descending order
 
 ### EXAMPLE 2
 ```
 Get-ProcessList -Top 5
-Get-ProcessList retrieves a list of the top 5 processes sorted by CPU usage in descending order
 ```
+
+Get-ProcessList retrieves a list of the top 5 processes sorted by CPU usage in descending order
+
+### EXAMPLE 3
+```
+Get-ProcessList -Detailed
+```
+
+Get-ProcessList retrieves detailed information about all processes
+
+### EXAMPLE 4
+```
+Get-ProcessList -Detailed -ProcessName 'nginx'
+```
+
+Get-ProcessList retrieves detailed information about the 'nginx' process
+
+### EXAMPLE 5
+```
+Get-ProcessList -Detailed -PortNumber 443
+```
+
+Get-ProcessList retrieves detailed information about processes using port 443
 
 ## PARAMETERS
 
@@ -45,8 +69,54 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: 10
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Detailed
+Retrieves detailed information about processes.
+If specified, you can also filter by ProcessName or PortNumber
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProcessName
+Name of the process to filter by when Detailed is specified
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PortNumber
+Port number to filter processes by when Detailed is specified
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
