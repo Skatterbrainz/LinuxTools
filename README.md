@@ -7,6 +7,7 @@ Just because I could, not that I should. This is currently somewhat Debian/Ubunt
 - 1.1.1 - 05/27/2025
   - Updated: Get-ProcessList
   - Added: Get-TimeZone.md
+  - Added: Get-AuthLog
 
 - 1.1.0 - 05/01/2025
   - Added: Get-IPC
