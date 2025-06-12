@@ -8,6 +8,7 @@ Just because I could, not that I should. This is currently somewhat Debian/Ubunt
   - Updated: Get-ProcessList
   - Added: Get-TimeZone.md
   - Added: Get-AuthLog
+  - Added: Out-GridForm
 
 - 1.1.0 - 05/01/2025
   - Added: Get-IPC
