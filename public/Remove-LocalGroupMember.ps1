@@ -10,8 +10,14 @@ function Remove-LocalGroupMember {
 		Name of the user to remove from the group.
 	.EXAMPLE
 		Remove-LocalGroupMember -Name "lpadmin" -Member "user42"
+		Removes the user "user42" from the "lpadmin" group.
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Remove-LocalGroupMember.md
+	.NOTES
+		This function requires superuser privileges to modify group memberships.
+		Ensure that you have the necessary permissions to run this command.
+		Use with caution, as it will permanently remove the user from the specified group.
+		Be sure to back up any important data before proceeding.
 	#>
 	[CmdletBinding()]
 	param(

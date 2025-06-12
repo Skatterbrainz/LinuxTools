@@ -39,6 +39,10 @@ function New-LocalUser {
 		Creates a new user account named "Fu Barr" with the comment "The Fubar of Tarfu" and does not create a home directory
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md
+	.NOTES
+		This function requires superuser privileges to create a user account.
+		Ensure that you have the necessary permissions to run this command.
+		Use with caution, as it will permanently create a new user account.
 	#>
 	[CmdletBinding()]
 	param (

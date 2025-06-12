@@ -9,6 +9,13 @@ Just because I could, not that I should. This is currently somewhat Debian/Ubunt
   - Added: Get-TimeZone.md
   - Added: Get-AuthLog
   - Added: Out-GridForm
+  - Updated: New-LocalGroup
+  - Updated: New-LocalUser
+  - Updated: Remove-LocalGroup
+  - Updated: Remove-LocalGroupmember
+  - Updated: Remove-LocalUser
+  - Updated: Update-DnfPackage
+  - Updated: Invoke-LogAssessment
 
 - 1.1.0 - 05/01/2025
   - Added: Get-IPC

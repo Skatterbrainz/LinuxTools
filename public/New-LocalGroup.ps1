@@ -16,6 +16,11 @@ function New-LocalGroup {
 		Creates a new local group named "mygroup" with the group ID 1001
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalGroup.md
+	.NOTES
+		This function requires superuser privileges to create a group.
+		Ensure that you have the necessary permissions to run this command.
+		Use with caution, as it will permanently create a new group.
+		Be sure to back up any important data before proceeding.
 	#>
 	[CmdletBinding()]
 	param(
