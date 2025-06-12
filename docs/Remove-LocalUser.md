@@ -24,10 +24,16 @@ Remove a local user account
 
 ### EXAMPLE 1
 ```
-Remove-LocalUser -Name AdamMcchesney
+Remove-LocalUser -Name AdamMcchesney -WhatIf
+This example shows what would happen if the user "AdamMcchesney" were to be removed without actually executing the command.
 ```
 
 ### EXAMPLE 2
+```
+Remove-LocalUser -Name AdamMcchesney
+```
+
+### EXAMPLE 3
 ```
 Remove-LocalUser -Name AdamMcchesne
 ```
@@ -103,6 +109,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+This function requires superuser privileges to remove a user account.
+Ensure that you have the necessary permissions to run this command.
+Use with caution, as it will permanently delete the user and their home directory if specified.
+Be sure to back up any important data before proceeding.
 
 ## RELATED LINKS
 

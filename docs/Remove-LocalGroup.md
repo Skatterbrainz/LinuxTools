@@ -34,6 +34,12 @@ Remove-LocalGroup -Name "mygroup" -Force
 Removes the local security group named "mygroup" even if users have it as their primary group
 ```
 
+### EXAMPLE 3
+```
+Remove-LocalGroup -Name "mygroup" -WhatIf
+This example shows what would happen if the group "mygroup" were to be removed without actually executing the command.
+```
+
 ## PARAMETERS
 
 ### -Name
@@ -120,6 +126,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+This function requires superuser privileges to remove a group.
+Ensure that you have the necessary permissions to run this command.
+Use with caution, as it will permanently delete the group and its members.
+Be sure to back up any important data before proceeding.
 
 ## RELATED LINKS
 

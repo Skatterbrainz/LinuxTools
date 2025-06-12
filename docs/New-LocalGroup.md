@@ -89,6 +89,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+This function requires superuser privileges to create a group.
+Ensure that you have the necessary permissions to run this command.
+Use with caution, as it will permanently create a new group.
+Be sure to back up any important data before proceeding.
 
 ## RELATED LINKS
 

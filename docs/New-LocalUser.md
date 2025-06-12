@@ -223,6 +223,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+This function requires superuser privileges to create a user account.
+Ensure that you have the necessary permissions to run this command.
+Use with caution, as it will permanently create a new user account.
 
 ## RELATED LINKS
 

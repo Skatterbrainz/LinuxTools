@@ -1,14 +1,14 @@
 ---
 external help file: linuxtools-help.xml
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md
+online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md
 schema: 2.0.0
 ---
 
 # Update-DnfPackages
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update DNF packages
 
 ## SYNTAX
 
@@ -17,16 +17,15 @@ Update-DnfPackages [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Update DNF packages on a Linux system using the dnf package manager.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Update-DnfPackages
+Updates all installed DNF packages to their latest versions.
+```
 
 ## PARAMETERS
 
@@ -50,10 +49,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
 ## OUTPUTS
 
-### System.Object
 ## NOTES
+This function requires the dnf package manager to be installed on the system.
+Ensure that you have the necessary permissions to run this command, as it may require superuser privileges.
 
 ## RELATED LINKS
+
+[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md)
+
