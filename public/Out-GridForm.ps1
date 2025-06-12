@@ -27,6 +27,7 @@ function Out-GridForm {
 	.EXAMPLE
 		$files = Get-ChildItem -Path "C:\MyFiles" | Select-Object Name, Length, LastWriteTime
 		$selected = $files | Out-GridForm -Title "File List" -Text "Select files to process" -Width 800 -Height 600
+		
 		This example creates a YAD grid form dialog displaying a list of files in a specified directory, allowing the user to select one or more files for further processing.
 	.EXAMPLE
 		$data = @(
@@ -34,10 +35,13 @@ function Out-GridForm {
 			[pscustomobject]@{ ID = 2; Name = "Bob"; Email = "bob@contoso.com" }
 		)
 		$selected = $data | Out-GridForm -Title "User Table" -Text "Select users" -Width 600 -Height 400
+
 		This example creates a YAD grid form dialog displaying a table of users with their IDs, names, and emails. The user can select one or more users from the list.
 	.NOTES
 		This function requires YAD (Yet Another Dialog) to be installed on the system. It is typically used in Linux environments where YAD is available.
 		To play with this directly, type 'yad --help' in a terminal.
+	.LINK
+		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Out-GridForm.md
 	#>
 	[CmdletBinding()]
 	param (
