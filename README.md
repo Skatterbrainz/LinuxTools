@@ -4,6 +4,9 @@ PowerShell Tools for Linux
 
 Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
 
+- 1.1.2 - 06/13/2025
+  - Fixed: PSD1 didn't load Out-GridForm (not enough coffee that day)
+
 - 1.1.1 - 05/29/2025
   - Updated: Get-ProcessList
   - Added: Get-TimeZone.md
