@@ -6,6 +6,7 @@ Just because I could, not that I should. This is currently somewhat Debian/Ubunt
 
 - 1.1.3 - 07/31/2025
   - Added: Get-RootCertificates
+  - Added: Get-Certificates
 
 - 1.1.2 - 06/13/2025
   - Fixed: PSD1 didn't load Out-GridForm (not enough coffee that day)
