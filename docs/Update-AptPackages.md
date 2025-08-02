@@ -1,30 +1,42 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Update-AptPackages
 ---
 
 # Update-AptPackages
 
 ## SYNOPSIS
+
 Update and upgrade APT packages
 
 ## SYNTAX
+
+### __AllParameterSets
 
 ```
 Update-AptPackages
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Update and upgrade APT packages
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Update-AptPackages
-```
 
 ## PARAMETERS
 
@@ -36,5 +48,4 @@ Update-AptPackages
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md)

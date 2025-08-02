@@ -1,44 +1,54 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-TimeZone.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-TimeZone.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-TimeZone
 ---
 
 # Get-TimeZone
 
 ## SYNOPSIS
-Get current time zone setting
+
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
+### __AllParameterSets
+
 ```
 Get-TimeZone
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
-Get current time zone setting
+
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-Get-TimeZone
-```
+### Example 1
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ## INPUTS
 
-### System.String[]
 ## OUTPUTS
 
-### System.TimeZoneInfo
 ## NOTES
+
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-TimeZone.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-TimeZone.md)
-
-[https://go.microsoft.com/fwlink/?LinkId=2096904](https://go.microsoft.com/fwlink/?LinkId=2096904)
+{{ Fill in the related links here }}
 

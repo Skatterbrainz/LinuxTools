@@ -1,75 +1,81 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SysCtl.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SysCtl.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-SysCtl
 ---
 
 # Get-SysCtl
 
 ## SYNOPSIS
+
 Get the value of sysctl parameters.
 
 ## SYNTAX
 
+### __AllParameterSets
+
 ```
-Get-SysCtl [[-Name] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-SysCtl [[-Name] <string>] [<CommonParameters>]
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Get the value of sysctl parameters, or for a specified parameter.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Get-SysCtl
-```
 
 Get all sysctl parameters.
 
 ### EXAMPLE 2
-```
+
 Get-SysCtl -Name vm.swappiness
-```
 
 Get the value of the vm.swappiness sysctl parameter.
 
 ## PARAMETERS
 
 ### -Name
+
 The name of the sysctl parameter to get.
 If not specified, all parameters are returned.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -79,5 +85,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SysCtl.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SysCtl.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SysCtl.md)

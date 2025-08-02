@@ -1,31 +1,43 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopThemes.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopThemes.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-DesktopThemes
 ---
 
 # Get-DesktopThemes
 
 ## SYNOPSIS
+
 Retrieves a list of installed desktop themes
 
 ## SYNTAX
+
+### __AllParameterSets
 
 ```
 Get-DesktopThemes
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Retrieves a list of installed desktop themes from the user's home directory
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Get-DesktopThemes
 Retrieves a list of installed desktop themes
-```
 
 ## PARAMETERS
 
@@ -37,5 +49,4 @@ Retrieves a list of installed desktop themes
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopThemes.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopThemes.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopThemes.md)

@@ -1,52 +1,53 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-IPConfig
 ---
 
 # Get-IPConfig
 
 ## SYNOPSIS
+
 Get TCP/IP configuration
 
 ## SYNTAX
 
+### __AllParameterSets
+
 ```
-Get-IPConfig [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-IPConfig [<CommonParameters>]
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Get TCP/IP configuration and basic settings
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Get-IPConfig
-```
 
 Returns IP configuration information
 
 ## PARAMETERS
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -56,5 +57,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-IPConfig.md)

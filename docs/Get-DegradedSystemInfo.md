@@ -1,31 +1,43 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DegradedSystemInfo.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DegradedSystemInfo.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-DegradedSystemInfo
 ---
 
 # Get-DegradedSystemInfo
 
 ## SYNOPSIS
+
 Get-DegradedSystemInfo retrieves systemctl --failed information
 
 ## SYNTAX
+
+### __AllParameterSets
 
 ```
 Get-DegradedSystemInfo
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Get-DegradedSystemInfo retrieves systemctl --failed information
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Get-DegradedSystemInfo
 Get-DegradedSystemInfo retrieves systemctl --failed information
-```
 
 ## PARAMETERS
 
@@ -37,5 +49,4 @@ Get-DegradedSystemInfo retrieves systemctl --failed information
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DegradedSystemInfo.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DegradedSystemInfo.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DegradedSystemInfo.md)

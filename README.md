@@ -4,9 +4,10 @@ PowerShell Tools for Linux
 
 Just because I could, not that I should. This is currently somewhat Debian/Ubuntu/LinuxMint focused with a tiny bit of KDE-compatible chunks stirred into the pot. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here.  Thank you!
 
-- 1.1.3 - 07/31/2025
+- 1.1.3 - 08/02/2025
   - Added: Get-RootCertificates
   - Added: Get-Certificates
+  - Added: Start-FileSync
 
 - 1.1.2 - 06/13/2025
   - Fixed: PSD1 didn't load Out-GridForm (not enough coffee that day)

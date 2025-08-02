@@ -1,31 +1,43 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UbuntuAdjustments.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UbuntuAdjustments.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-UbuntuAdjustments
 ---
 
 # Get-UbuntuAdjustments
 
 ## SYNOPSIS
+
 Retrieves a list of Ubuntu system adjustments
 
 ## SYNTAX
+
+### __AllParameterSets
 
 ```
 Get-UbuntuAdjustments
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Retrieves a list of Ubuntu system adjustments from the mimeapps.list file
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Get-UbuntuAdjustments
 Retrieves a list of Ubuntu system adjustments
-```
 
 ## PARAMETERS
 
@@ -37,5 +49,4 @@ Retrieves a list of Ubuntu system adjustments
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UbuntuAdjustments.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UbuntuAdjustments.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UbuntuAdjustments.md)

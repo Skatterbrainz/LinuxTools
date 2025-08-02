@@ -1,30 +1,42 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-SnapPackages.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-SnapPackages.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Update-SnapPackages
 ---
 
 # Update-SnapPackages
 
 ## SYNOPSIS
+
 Update snap packages
 
 ## SYNTAX
+
+### __AllParameterSets
 
 ```
 Update-SnapPackages
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Update snap packages
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Update-SnapPackages
-```
 
 ## PARAMETERS
 
@@ -36,5 +48,4 @@ Update-SnapPackages
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-SnapPackages.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-SnapPackages.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-SnapPackages.md)

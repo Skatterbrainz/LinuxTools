@@ -1,233 +1,285 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: New-LocalUser
 ---
 
 # New-LocalUser
 
 ## SYNOPSIS
+
 Create a new local user account
 
 ## SYNTAX
 
+### __AllParameterSets
+
 ```
-New-LocalUser [-Name] <String> [[-UID] <Int32>] [-Comment] <String> [[-Password] <SecureString>]
- [[-HomeDirectory] <String>] [[-ShellPath] <String>] [[-GroupID] <Int32>] [[-AccountExpires] <String>]
- [-NoHomeDirectory] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-LocalUser [-Name] <string> [[-UID] <int>] [-Comment] <string> [[-Password] <securestring>]
+ [[-HomeDirectory] <string>] [[-ShellPath] <string>] [[-GroupID] <int>] [[-AccountExpires] <string>]
+ [-NoHomeDirectory] [<CommonParameters>]
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Create a new local user account
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 New-LocalUser -Name "Fu Barr" Comment "The Fubar of Tarfu"
 Creates a new user account named "Fu Barr" with the comment "The Fubar of Tarfu"
-```
 
 ### EXAMPLE 2
-```
+
 New-LocalUser -Name "Fu Barr" Comment "The Fubar of Tarfu" -AccountExpires "5/1/2025"
 Creates a new user account named "Fu Barr" with the comment "The Fubar of Tarfu" and expires on May 1, 2025
-```
 
 ### EXAMPLE 3
-```
+
 New-LocalUser -Name "Fu Barr" Comment "The Fubar of Tarfu" -Password (ConvertTo-SecureString -String "P@ssw0rd" -AsPlainText -Force)
 Creates a new user account named "Fu Barr" with the comment "The Fubar of Tarfu" and sets the password to "P@ssw0rd"
-```
 
 ### EXAMPLE 4
-```
+
 New-LocalUser -Name "Fu Barr" Comment "The Fubar of Tarfu" -HomeDirectory "/home/fubar" -ShellPath "/bin/zsh"
 Creates a new user account named "Fu Barr" with the comment "The Fubar of Tarfu", home directory "/home/fubar", and shell path "/bin/zsh"
-```
 
 ### EXAMPLE 5
-```
+
 New-LocalUser -Name "Fu Barr" Comment "The Fubar of Tarfu" -NoHomeDirectory
 Creates a new user account named "Fu Barr" with the comment "The Fubar of Tarfu" and does not create a home directory
-```
 
 ## PARAMETERS
 
-### -Name
-Name of the user to create
+### -AccountExpires
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UID
 Optional.
-User ID
+Date when the account expires
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 7
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### -Comment
+
 Comment to assign to the new user account
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Password
+### -GroupID
+
 Optional.
-Password for the user.
-Must be a secure string.
+Group ID
 
 ```yaml
-Type: SecureString
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 6
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### -HomeDirectory
+
 Optional.
 Home directory for the user.
 Default is "/home/$Name"
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
+Type: System.String
+DefaultValue: '"/home/$Name"'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-Required: False
-Position: 5
-Default value: "/home/$Name"
-Accept pipeline input: False
-Accept wildcard characters: False
+### -Name
+
+Name of the user to create
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -NoHomeDirectory
+
+Optional.
+Do not create a home directory
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Password
+
+Optional.
+Password for the user.
+Must be a secure string.
+
+```yaml
+Type: System.Security.SecureString
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### -ShellPath
+
 Optional.
 Path to the user's shell.
 Default is "/bin/bash"
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: /bin/bash
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: /bin/bash
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 5
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -GroupID
+### -UID
+
 Optional.
-Group ID
+User ID
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AccountExpires
-Optional.
-Date when the account expires
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoHomeDirectory
-Optional.
-Do not create a home directory
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ## NOTES
+
 This function requires superuser privileges to create a user account.
 Ensure that you have the necessary permissions to run this command.
 Use with caution, as it will permanently create a new user account.
 
+
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-LocalUser.md)

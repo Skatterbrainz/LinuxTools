@@ -1,83 +1,96 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-LinuxDistro
 ---
 
 # Get-LinuxDistro
 
 ## SYNOPSIS
+
 Get the Linux distribution name.
 
 ## SYNTAX
 
+### __AllParameterSets
+
 ```
-Get-LinuxDistro [[-distro] <String>] [-Detailed] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-LinuxDistro [[-distro] <string>] [-Detailed] [<CommonParameters>]
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 This function reads the /etc/os-release file to determine the Linux distribution name.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Get-LinuxDistro
 Returns the Linux distribution name.
-```
 
 ## PARAMETERS
 
-### -distro
-The Linux distribution name.
-If not provided, the function will attempt to determine it.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Detailed
+
 Include PSVersionTable OS value with output.
 This is appended following a semi-colon
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -distro
+
+The Linux distribution name.
+If not provided, the function will attempt to determine it.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -87,5 +100,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxDistro.md)

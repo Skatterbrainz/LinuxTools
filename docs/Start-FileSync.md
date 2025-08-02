@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-OpenFiles.md
+HelpUri: https://example.com/Start-FileSynchttps://github.com/Skatterbrainz/linuxtools/blob/master/docs/Start-FileSync.md
 Locale: en-US
 Module Name: linuxtools
 ms.date: 08/02/2025
 PlatyPS schema version: 2024-05-01
-title: Get-OpenFiles
+title: Start-FileSync
 ---
 
-# Get-OpenFiles
+# Start-FileSync
 
 ## SYNOPSIS
 
-Get open files on a Linux system.
+Synchronizes files from a source directory to a destination directory.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-OpenFiles [[-Path] <string>] [[-UserName] <string[]>] [[-ProcessId] <int[]>] [-IPv4] [-IPv6]
+Start-FileSync [-SourcePath] <string> [-DestinationPath] <string> [-Prune] [-ForceCopy]
  [<CommonParameters>]
 ```
 
@@ -31,41 +31,51 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get open files on a Linux system.
-This cmdlet uses the lsof command to list open files on a Linux system.
+This function uses rsync to synchronize files from a source directory to a destination directory, with options for pruning and forced copying.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-OpenFiles -Path /tmp
-Get open files in the /tmp directory.
+Start-FileSync -SourcePath "/var/www/html" -DestinationPath "/backup/html"
+This example synchronizes files from the source directory to the destination directory without pruning.
 
 ### EXAMPLE 2
 
-Get-OpenFiles -UserName root
-Get open files owned by the root user.
+Start-FileSync -SourcePath "/var/www/html" -DestinationPath "/backup/html" -Prune
+This example synchronizes files and prunes the destination directory, removing files that are not present in the source directory.
 
 ### EXAMPLE 3
 
-Get-OpenFiles -ProcessId 1234
-Get open files for process ID 1234.
-
-### EXAMPLE 4
-
-Get-OpenFiles -IPv4
-Get open files using IPv4.
-
-### EXAMPLE 5
-
-Get-OpenFiles -Path /home/user123 -UserName user123
-Get open files in the /home/user123 directory owned by the user123 user.
+Start-FileSync -SourcePath "/var/www/html" -DestinationPath "/backup/html" -ForceCopy
+This example synchronizes files and forces the creation of the destination directory if it does not exist.
 
 ## PARAMETERS
 
-### -IPv4
+### -DestinationPath
 
-Filter by IPv4.
+The path to the destination directory where files will be synchronized.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -ForceCopy
+
+Whether to force the creation of the destination directory if it does not exist.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -84,9 +94,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -IPv6
+### -Prune
 
-Filter by IPv6.
+Whether to prune files in the destination that are not present in the source directory.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -105,9 +115,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Path
+### -SourcePath
 
-Filter by path.
+The path to the source directory containing files to synchronize.
 
 ```yaml
 Type: System.String
@@ -117,49 +127,7 @@ Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 0
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -ProcessId
-
-Filter by process ID.
-
-```yaml
-Type: System.Int32[]
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 2
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -UserName
-
-Filter by user name.
-
-```yaml
-Type: System.String[]
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 1
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
@@ -183,4 +151,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-OpenFiles.md)
+- [](https://example.com/Start-FileSynchttps://github.com/Skatterbrainz/linuxtools/blob/master/docs/Start-FileSync.md)

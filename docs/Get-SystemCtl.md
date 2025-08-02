@@ -1,31 +1,43 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemCtl.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemCtl.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Get-SystemCtl
 ---
 
 # Get-SystemCtl
 
 ## SYNOPSIS
+
 Get-SystemCtl retrieves systemctl information
 
 ## SYNTAX
+
+### __AllParameterSets
 
 ```
 Get-SystemCtl
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Get-SystemCtl retrieves systemctl information
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Get-SystemCtl
 Get-SystemCtl retrieves systemctl information
-```
 
 ## PARAMETERS
 
@@ -37,5 +49,4 @@ Get-SystemCtl retrieves systemctl information
 
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemCtl.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemCtl.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemCtl.md)

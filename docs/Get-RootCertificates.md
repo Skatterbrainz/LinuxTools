@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-RootCertificates.md
 Locale: en-US
 Module Name: linuxtools
 ms.date: 08/02/2025
 PlatyPS schema version: 2024-05-01
-title: Get-LinuxPackages
+title: Get-RootCertificates
 ---
 
-# Get-LinuxPackages
+# Get-RootCertificates
 
 ## SYNOPSIS
 
-Get Linux packages
+Gets information about root certificates in the specified directory.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-LinuxPackages [[-Type] <string>] [-Upgradable] [<CommonParameters>]
+Get-RootCertificates [[-CertPath] <string>] [-Detailed] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,51 +30,34 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get Linux packages and basic configuration settings
+This function retrieves details about root certificates, including their subject, issuer, and expiration dates.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-LinuxPackages
-
-Returns all packages.
-Same as Get-LinuxPackages -Type "all"
+Get-RootCertificates | Select-Object CommonName, ExpiryDate, DaysUntilExpiry
+This example retrieves root certificates and selects specific properties for display.
 
 ### EXAMPLE 2
 
-Get-LinuxPackages -Type "flatpak"
-
-Returns only flatpak packages
+Get-RootCertificates -Detailed | Where-Object { $_.DaysUntilExpiry -lt 365 }
+This example retrieves detailed information about root certificates that are expiring within the next year.
 
 ### EXAMPLE 3
 
-Get-LinuxPackages -Type "apt" -Upgradable
-
-Returns only upgradable apt packages
-
-### EXAMPLE 4
-
-Get-LinuxPackages -Type "snap"
-
-Returns only snap packages
-
-### EXAMPLE 5
-
-Get-LinuxPackages -Type "dnf"
-
-Returns only dnf packages
+Get-RootCertificates | Where-Object IsExpired | Select-Object CommonName, ExpiryDate
+This example retrieves root certificates that have already expired and selects their common names and expiration dates.
 
 ## PARAMETERS
 
-### -Type
+### -CertPath
 
-Valid values are "apt", "snap", "flatpak", "dnf" or "all".
-Default is "all".
+The path to the directory containing the certificate files (default: /etc/ssl/certs).
 
 ```yaml
 Type: System.String
-DefaultValue: all
+DefaultValue: /etc/ssl/certs
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -89,10 +72,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Upgradable
+### -Detailed
 
-Only valid for "apt" type.
-If present, returns only upgradable packages.
+Whether to include detailed information about each certificate.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -126,4 +108,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-RootCertificates.md)

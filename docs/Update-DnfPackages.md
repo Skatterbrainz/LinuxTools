@@ -1,61 +1,63 @@
 ---
-external help file: linuxtools-help.xml
+document type: cmdlet
+external help file: linuxtools-Help.xml
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md
+Locale: en-US
 Module Name: linuxtools
-online version: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md
-schema: 2.0.0
+ms.date: 08/02/2025
+PlatyPS schema version: 2024-05-01
+title: Update-DnfPackages
 ---
 
 # Update-DnfPackages
 
 ## SYNOPSIS
+
 Update DNF packages
 
 ## SYNTAX
 
+### __AllParameterSets
+
 ```
-Update-DnfPackages [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-DnfPackages [<CommonParameters>]
 ```
 
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
 ## DESCRIPTION
+
 Update DNF packages on a Linux system using the dnf package manager.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
 Update-DnfPackages
 Updates all installed DNF packages to their latest versions.
-```
 
 ## PARAMETERS
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ## NOTES
+
 This function requires the dnf package manager to be installed on the system.
 Ensure that you have the necessary permissions to run this command, as it may require superuser privileges.
 
+
 ## RELATED LINKS
 
-[https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md)
