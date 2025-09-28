@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Start-FireFoxProfile.md
+HelpUri: ''
 Locale: en-US
 Module Name: linuxtools
 ms.date: 09/27/2025
 PlatyPS schema version: 2024-05-01
-title: Start-FireFoxProfile
+title: Start-FlatpakApplication
 ---
 
-# Start-FireFoxProfile
+# Start-FlatpakApplication
 
 ## SYNOPSIS
 
-Starts a Firefox profile.
+Starts a Flatpak application by name or Application ID.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Start-FireFoxProfile [[-ProfileName] <string>] [-DefaultProfile] [<CommonParameters>]
+Start-FlatpakApplication [[-Name] <string>] [[-ApplicationID] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,43 +30,41 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Starts a Firefox profile.
-If a profile name is not provided, the function will prompt for one.
+This function allows you to start a Flatpak application installed on your system.
+It can accept either the application name or the Application ID as parameters.
+If neither parameter is provided, it will prompt you to select an application from a list.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Start-FireFoxProfile
-
-Prompts user to select a profile from a list, and starts Firefox with the selected profile.
+Start-FlatpakApplication -Name "GIMP"
+Starts the Flatpak application with the name "GIMP".
 
 ### EXAMPLE 2
 
-Start-FireFoxProfile -ProfileName "Contoso"
-
-Starts Firefox with the profile named "Contoso".
+Start-FlatpakApplication -ApplicationID "org.gimp.GIMP"
+Starts the Flatpak application with the Application ID "org.gimp.GIMP".
 
 ### EXAMPLE 3
 
-Start-FireFoxProfile -DefaultProfile
-
-Starts Firefox with the default profile.
+Start-FlatpakApplication
+Prompts the user to select a Flatpak application from a list to start.
 
 ## PARAMETERS
 
-### -DefaultProfile
+### -ApplicationID
 
-Indicates to start the default profile.
+The Application ID of the Flatpak application to start.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
+Type: System.String
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: Named
+  Position: 1
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -76,11 +74,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -ProfileName
+### -Name
 
-The name of the profile to start.
-If not provided, the function will prompt for one, unless
-the -DefaultProfile switch is used.
+The name of the Flatpak application to start.
 
 ```yaml
 Type: System.String
@@ -112,9 +108,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-To view, manage or create Firefox profiles, use the "about:profiles" URL in Firefox.
+Requires Flatpak to be installed on the system.
 
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Start-FireFoxProfile.md)
+{{ Fill in the related links here }}
+
