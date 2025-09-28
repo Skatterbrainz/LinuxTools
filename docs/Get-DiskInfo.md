@@ -4,7 +4,7 @@ external help file: linuxtools-Help.xml
 HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DiskInfo.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 08/02/2025
+ms.date: 09/27/2025
 PlatyPS schema version: 2024-05-01
 title: Get-DiskInfo
 ---
