@@ -25,6 +25,9 @@ function Get-FireFoxProfiles {
 	try {
 		$basepath = "~/.mozilla/firefox"
 		if (Test-Path -Path $basepath) {
+			if (-not (Get-Command -Name Get-IniContent -ErrorAction SilentlyContinue)) {
+				Import-Module -Name psIni -ErrorAction Stop
+			}
 			# expand path to full name
 			$bpath = (Get-Item -Path $basepath).FullName
 			$pfile = Join-Path $bpath "profiles.ini"
