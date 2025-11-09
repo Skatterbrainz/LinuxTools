@@ -6,6 +6,8 @@ function Get-Certificates {
 		This function retrieves details about installed certificates, including their subject, issuer, and expiration dates.
 	.PARAMETER CertPath
 		The path to the directory containing the certificate files (default: /etc/ssl/certs).
+	.PARAMETER CertFilter
+		The file filter to identify certificate files (default: *.pem).
 	.PARAMETER Detailed
 		Whether to include detailed information about each certificate.
 	.EXAMPLE
@@ -22,13 +24,16 @@ function Get-Certificates {
 	#>
 	[CmdletBinding()]
 	param(
-		[string]$CertPath = "/etc/ssl/certs",
-		[switch]$Detailed
+		[parameter(Mandatory=$false)][string]$CertPath = "/etc/ssl/certs",
+		[parameter(Mandatory=$false)][string]$CertFilter = "*.pem",
+		[parameter(Mandatory=$false)][switch]$Detailed
 	)
 	try {
-		$certFiles = Get-ChildItem -Path $CertPath -Filter "*.pem"
+		[array]$certFiles = Get-ChildItem -Path $CertPath -Filter $CertFilter
+		Write-Host "$($certFiles.Count) certificate files found in $CertPath" -ForegroundColor Green
 		$results = @()
 		foreach ($certFile in $certFiles) {
+			Write-Verbose "Processing certificate: $($certFile.FullName)"
 			try {
 				# Initialize variables with default values
 				$cn = "N/A"
@@ -98,6 +103,7 @@ function Get-Certificates {
 					$certInfo | Add-Member -NotePropertyName SignatureAlgorithm -NotePropertyValue $sigAlgo
 					$certInfo | Add-Member -NotePropertyName PublicKeyAlgorithm -NotePropertyValue $pubKeyAlgo
 					$certInfo | Add-Member -NotePropertyName KeySize -NotePropertyValue $keySize
+					$certInfo | Add-Member -NotePropertyName Path -NotePropertyValue $certFile.FullName
 				}
 
 				$results += $certInfo
