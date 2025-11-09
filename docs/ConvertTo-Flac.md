@@ -1,27 +1,27 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Certificates.md
+HelpUri: ''
 Locale: en-US
 Module Name: linuxtools
 ms.date: 11/09/2025
 PlatyPS schema version: 2024-05-01
-title: Get-Certificates
+title: ConvertTo-Flac
 ---
 
-# Get-Certificates
+# ConvertTo-Flac
 
 ## SYNOPSIS
 
-Collects information about installed certificates.
+Converts audio files to FLAC format using ffmpeg.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-Certificates [[-CertPath] <string>] [[-CertFilter] <string>] [-Detailed] [-Quiet]
- [<CommonParameters>]
+ConvertTo-Flac [-SourcePath] <string> [-DestinationPath] <string> [[-fileTypes] <string>]
+ [-Overwrite] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -31,39 +31,50 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-This function retrieves details about installed certificates, including their subject, issuer, and expiration dates.
+This function takes a source directory containing audio files and converts them to FLAC format, saving them in the specified destination directory.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-Certificates | Select-Object CommonName, ExpiryDate, DaysUntilExpiry
-This example retrieves certificates and selects specific properties for display.
-
-### EXAMPLE 2
-
-Get-Certificates -Detailed | Where-Object { $_.DaysUntilExpiry -lt 365 }
-This example retrieves detailed information about certificates that are expiring within the next year.
-
-### EXAMPLE 3
-
-Get-Certificates | Where-Object IsExpired | Select-Object CommonName, ExpiryDate
-This example retrieves certificates that have already expired and selects their common names and expiration dates.
+ConvertTo-Flac -SourcePath "C:\Music\ToConvert" -DestinationPath "C:\Music\FLAC" -fileTypes "mp3,wav" -Overwrite
+Converts all mp3 and wav files in "C:\Music\ToConvert" to FLAC format and saves them in "C:\Music\FLAC", overwriting any existing FLAC files.
 
 ## PARAMETERS
 
-### -CertFilter
+### -DestinationPath
 
-The file filter to identify certificate files (default: *.pem).
+The path to the destination directory where converted FLAC files will be saved.
 
 ```yaml
 Type: System.String
-DefaultValue: '*.pem'
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -fileTypes
+
+A comma-separated list of audio file extensions to convert (default: "mp3,wav,aac,ogg,m4a").
+
+```yaml
+Type: System.String
+DefaultValue: mp3,wav,aac,ogg,m4a
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -73,61 +84,40 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -CertPath
+### -Overwrite
 
-The path to the directory containing the certificate files (default: /etc/ssl/certs).
+Switch to overwrite existing FLAC files in the destination directory.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -SourcePath
+
+The path to the source directory containing audio files to be converted.
 
 ```yaml
 Type: System.String
-DefaultValue: /etc/ssl/certs
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 0
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Detailed
-
-Whether to include detailed information about each certificate.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Quiet
-
-{{ Fill Quiet Description }}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
@@ -149,6 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+Requires ffmpeg to be installed and accessible in the system PATH.
+
+
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Certificates.md)
+{{ Fill in the related links here }}
+

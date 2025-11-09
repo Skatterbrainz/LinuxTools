@@ -4,7 +4,7 @@ external help file: linuxtools-Help.xml
 HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPackages.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 09/27/2025
+ms.date: 11/09/2025
 PlatyPS schema version: 2024-05-01
 title: Get-AptPackages
 ---
@@ -20,7 +20,7 @@ Get a list of installed APT packages
 ### __AllParameterSets
 
 ```
-Get-AptPackages [<CommonParameters>]
+Get-AptPackages [-Upgradeable] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -37,8 +37,35 @@ Get a list of installed APT packages
 ### EXAMPLE 1
 
 Get-AptPackages
+Lists all installed APT packages
+
+### EXAMPLE 2
+
+Get-AptPackages -Upgradeable
+Lists only upgradable APT packages
 
 ## PARAMETERS
+
+### -Upgradeable
+
+Whether to list only upgradable packages
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
 ### CommonParameters
 

@@ -4,7 +4,7 @@ external help file: linuxtools-Help.xml
 HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AutoStartApps.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 09/27/2025
+ms.date: 11/09/2025
 PlatyPS schema version: 2024-05-01
 title: Get-AutoStartApps
 ---
@@ -20,7 +20,7 @@ Get a list of applications set to auto-start on login
 ### __AllParameterSets
 
 ```
-Get-AutoStartApps [[-Name] <string>] [<CommonParameters>]
+Get-AutoStartApps [[-Name] <string>] [[-Filter] <string>] [[-Path] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -46,9 +46,30 @@ Returns the desktop file for the specified application
 
 ## PARAMETERS
 
+### -Filter
+
+The file filter to identify desktop files (default: *.desktop)
+
+```yaml
+Type: System.String
+DefaultValue: '*.desktop'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
 ### -Name
 
-{{ Fill Name Description }}
+The name of the desktop file to retrieve (e.g., "firefox.desktop")
 
 ```yaml
 Type: System.String
@@ -58,6 +79,27 @@ Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Path
+
+The path to the autostart directory (default: $env:HOME/.config/autostart)
+
+```yaml
+Type: System.String
+DefaultValue: '"$env:HOME/.config/autostart"'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
