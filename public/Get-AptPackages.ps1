@@ -4,22 +4,33 @@ function Get-AptPackages {
 		Get a list of installed APT packages
 	.DESCRIPTION
 		Get a list of installed APT packages
-	.PARAMETER (none)
-		No parameters
+	.PARAMETER Upgradeable
+		Whether to list only upgradable packages
 	.EXAMPLE
 		Get-AptPackages
+		Lists all installed APT packages
+	.EXAMPLE
+		Get-AptPackages -Upgradeable
+		Lists only upgradable APT packages
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPackages.md
 	#>
 	[CmdletBinding()]
-	param()
+	param(
+		[parameter(Mandatory=$false)][switch]$Upgradeable
+	)
 	try {
 		if (-not (Test-Path -Path '/usr/bin/apt')) {
 			throw "Required file not found: apt"
 		}
 		write-host "Updating apt cache..."
 		sudo apt update
-		$apps = sudo apt list
+		if ($Upgradeable) {
+			$apps = sudo apt list --upgradable
+		} else {
+			$apps = sudo apt list
+		}
+
 		$apps | ForEach-Object {
 			$tpkg = $null
 			$tpkg = $_.Split("[")
