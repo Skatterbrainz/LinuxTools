@@ -26,14 +26,21 @@ function Get-Certificates {
 	param(
 		[parameter(Mandatory=$false)][string]$CertPath = "/etc/ssl/certs",
 		[parameter(Mandatory=$false)][string]$CertFilter = "*.pem",
-		[parameter(Mandatory=$false)][switch]$Detailed
+		[parameter(Mandatory=$false)][switch]$Detailed,
+		[parameter(Mandatory=$false)][switch]$Quiet
 	)
 	try {
 		[array]$certFiles = Get-ChildItem -Path $CertPath -Filter $CertFilter
 		Write-Host "$($certFiles.Count) certificate files found in $CertPath" -ForegroundColor Green
 		$results = @()
+		$counter = 1
+		$total = $certFiles.Count
 		foreach ($certFile in $certFiles) {
-			Write-Verbose "Processing certificate: $($certFile.FullName)"
+			if (!$Quiet.IsPresent) {
+				Write-Progress -Activity "Processing Certificates" -Status "Processing $($certFile.Name)" -PercentComplete (($counter / $total) * 100)
+			} else {
+				Write-Verbose "Processing $counter of $total : $($certFile.FullName)"
+			}
 			try {
 				# Initialize variables with default values
 				$cn = "N/A"
@@ -110,8 +117,9 @@ function Get-Certificates {
 			} catch {
 				Write-Verbose "Error processing certificate $($certFile.FullName): $_"
 			}
+			$counter++
 		}
-		return $results
+		Write-Output $results
 
 	} catch {
 		Write-Error "Failed to retrieve certificate information: $($_.Exception.Message)"
