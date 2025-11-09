@@ -9,6 +9,9 @@ Just because I could, not that I should. This is currently somewhat Debian/Ubunt
   - Updated: Get-AutoStartApps to add missing comments and parameters
   - Updated: Get-AptPackages merged -Upgradeable and removed separate function
   - Updated: Get-SystemLocks to add -Name and correct the filtering, add comments
+  - Updated: Get-MemoryInfo to correct output type
+  - Updated: Get-USBDevices / complete rewrite to capture interfaces and endpoints data
+  - Updated: support.ps1 to add Get-NullString function
 - 1.1.6
   - Added: ConvertTo-Flac
 - 1.1.5 - 09/27/2025
