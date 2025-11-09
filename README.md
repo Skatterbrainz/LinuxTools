@@ -6,6 +6,7 @@ Just because I could, not that I should. This is currently somewhat Debian/Ubunt
 
 - 1.1.7 - 11/09/2025
   - Fixed: Get-Certificates added missing properties and added verbose output
+  - Updated: Get-AutoStartApps to add missing comments and parameters
 - 1.1.6
   - Added: ConvertTo-Flac
 - 1.1.5 - 09/27/2025
