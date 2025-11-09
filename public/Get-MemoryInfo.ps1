@@ -12,14 +12,19 @@ function Get-MemoryInfo {
 	#>
 	[CmdletBinding()]
 	param()
-	$meminfo = Invoke-Command -ScriptBlock { sudo cat /proc/meminfo }
-	$memdata = [System.Collections.Generic.List[object]]::new()
-	foreach ($row in $meminfo) {
-		$rowdata = @{
-			Name  = $row.Split(':')[0].Trim()
-			Value = $row.Split(':')[1].Trim()
+	try {
+		if (!(Test-Path -Path '/proc/meminfo')) {
+			throw "File not found: /proc/meminfo"
 		}
-		$memdata.Add([PSCustomObject]$rowdata)
+		$meminfo = Invoke-Command -ScriptBlock { sudo cat /proc/meminfo }
+		$result = @{}
+		foreach ($row in $meminfo) {
+			$name  = Get-NullString -String $row.Split(':')[0]
+			$value = Get-NullString -String $row.Split(':')[1]
+			$result[$name] = $value
+		}
+		[pscustomobject]$result
+	} catch {
+		Write-Error $_.Exception.Message
 	}
-	$memdata
 }

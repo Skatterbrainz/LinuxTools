@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UsbDevices.md
+HelpUri: ''
 Locale: en-US
 Module Name: linuxtools
 ms.date: 11/09/2025
 PlatyPS schema version: 2024-05-01
-title: Get-UsbDevices
+title: get-NullString
 ---
 
-# Get-UsbDevices
+# get-NullString
 
 ## SYNOPSIS
 
-Get USB devices attached to the system
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-UsbDevices [<CommonParameters>]
+get-NullString [[-String] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,16 +30,36 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-This script will gather USB devices attached to the system
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1
 
-Get-UsbDevices
-Returns USB devices attached to the system
+{{ Add example description here }}
 
 ## PARAMETERS
+
+### -String
+
+{{ Fill String Description }}
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
 ### CommonParameters
 
@@ -52,8 +72,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Object
+
+{{ Fill in the Description }}
+
 ## NOTES
+
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-UsbDevices.md)
+{{ Fill in the related links here }}
+

@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemLocks.md
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-USBDevices.md
 Locale: en-US
 Module Name: linuxtools
 ms.date: 11/09/2025
 PlatyPS schema version: 2024-05-01
-title: Get-SystemLocks
+title: Get-USBDevices
 ---
 
-# Get-SystemLocks
+# Get-USBDevices
 
 ## SYNOPSIS
 
-Get system locks
+Get a list of USB devices.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-SystemLocks [[-Name] <string>] [<CommonParameters>]
+Get-USBDevices [-ShowVerbose] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,34 +30,35 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get system locks using lslocks
+Get a list of USB devices.
+This function uses the `lsusb` command to retrieve information about connected USB devices and organizes it into a structured format.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-SystemLocks
-Returns current system locks
+Get-USBDevices
+Returns a list of connected USB devices with their details.
 
 ### EXAMPLE 2
 
-Get-SystemLocks -Name "lockname"
-Returns locks matching the specified name
+Get-USBDevices -ShowVerbose
+Returns a list of connected USB devices with verbose output during processing.
 
 ## PARAMETERS
 
-### -Name
+### -ShowVerbose
 
-The name of the command associated with the lock to filter by
+Whether to show verbose output during processing.
 
 ```yaml
-Type: System.String
-DefaultValue: ''
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: 0
+  Position: Named
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -82,4 +83,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemLocks.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-USBDevices.md)

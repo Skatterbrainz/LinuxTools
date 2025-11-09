@@ -54,6 +54,17 @@ function IsCinnamonInstalled {
 }
 
 function Get-LogFile {
-    param()
-    Get-Content -Path $global:LogFilePath -ErrorAction SilentlyContinue
+	param()
+	Get-Content -Path $global:LogFilePath -ErrorAction SilentlyContinue
+}
+
+function get-NullString {
+	param(
+		[parameter(Mandatory=$false)][string]$String
+	)
+	if ([string]::IsNullOrEmpty($String)) {
+		return ""
+	} else {
+		return $String.Trim()
+	}
 }
