@@ -30,7 +30,7 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-This function reads the ~/.config/mimeapps.list file to determine the default browser.
+Compatibility wrapper for `Get-DefaultApplication -Category browser`.
 
 ## EXAMPLES
 
@@ -47,6 +47,9 @@ Returns the default browser.
 
 ## NOTES
 
+For structured MIME default mappings, use `Get-DefaultApplication`.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultBrowser.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultApplication.md)

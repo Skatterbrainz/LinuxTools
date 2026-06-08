@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-This function retrieves details about root certificates, including their subject, issuer, and expiration dates.
+Compatibility wrapper for `Get-Certificates -CertFilter *.pem`.
+Retrieves root certificate details and displays a summary.
 
 ## EXAMPLES
 
@@ -106,6 +107,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+For a broader certificate query surface, use `Get-Certificates`.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-RootCertificates.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Certificates.md)

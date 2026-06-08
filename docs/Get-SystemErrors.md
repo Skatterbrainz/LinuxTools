@@ -1,80 +1,56 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AutoStartApps.md
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemErrors.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 06/07/2026
 PlatyPS schema version: 2024-05-01
-title: Get-AutoStartApps
+title: Get-SystemErrors
 ---
 
-# Get-AutoStartApps
+# Get-SystemErrors
 
 ## SYNOPSIS
 
-Get a list of applications set to auto-start on login
+Gets error events from common Linux log sources.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-AutoStartApps [[-Name] <string>] [[-Filter] <string>] [[-Path] <string>] [<CommonParameters>]
+Get-SystemErrors [[-Source] <string>] [[-Since] <string>] [[-Severity] <string>] [[-Lines] <int>] [<CommonParameters>]
 ```
-
-## ALIASES
-
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
 
 ## DESCRIPTION
 
-Compatibility wrapper for `Get-DesktopEntries -Location AutoStart`.
-Gets applications set to auto-start on login.
+Aggregates error entries from journalctl, syslog, auth.log, and xsession logs.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-AutoStartApps
-Returns a list of applications set to auto-start on login
+Get-SystemErrors
+
+Returns recent error entries from all available sources.
 
 ### EXAMPLE 2
 
-Get-AutoStartApps -Name "firefox.desktop"
-Returns the desktop file for the specified application
+Get-SystemErrors -Source journal -Since "-2h" -Severity warning -Lines 100
+
+Returns journal errors for the last two hours.
 
 ## PARAMETERS
 
-### -Filter
+### -Source
 
-The file filter to identify desktop files (default: *.desktop)
-
-```yaml
-Type: System.String
-DefaultValue: '*.desktop'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 1
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Name
-
-The name of the desktop file to retrieve (e.g., "firefox.desktop")
+Log source to query.
+Valid values are "all", "journal", "syslog", "auth", or "xsession".
 
 ```yaml
 Type: System.String
-DefaultValue: ''
+DefaultValue: all
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -89,18 +65,60 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Path
+### -Since
 
-The path to the autostart directory (default: $env:HOME/.config/autostart)
+Time window used by journalctl.
 
 ```yaml
 Type: System.String
-DefaultValue: '"$env:HOME/.config/autostart"'
+DefaultValue: -24h
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Severity
+
+Journal severity level filter.
+
+```yaml
+Type: System.String
+DefaultValue: err
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Lines
+
+Maximum number of lines to return per source.
+
+```yaml
+Type: System.Int32
+DefaultValue: 200
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -123,9 +141,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-For a unified desktop entry query surface, use `Get-DesktopEntries`.
-
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AutoStartApps.md)
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopEntries.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemErrors.md)

@@ -13,14 +13,14 @@ title: Get-CinnamonSpices
 
 ## SYNOPSIS
 
-Retrieves a list of installed Cinnamon spices
+Retrieves Cinnamon spices, applets, or extensions.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-CinnamonSpices [[-Name] <string>] [<CommonParameters>]
+Get-CinnamonSpices [[-Type] <string>] [[-Name] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Retrieves a list of installed Cinnamon spices from the user's home directory
+Retrieves Cinnamon components from the user's home directory.
+By default it returns Cinnamon spices, but it can also return applets, extensions, or all supported component types.
 
 ## EXAMPLES
 
@@ -41,14 +42,46 @@ Retrieves a list of installed Cinnamon spices
 
 ### EXAMPLE 2
 
+Get-CinnamonSpices -Type applets
+Retrieves installed Cinnamon applets
+
+### EXAMPLE 3
+
 Get-CinnamonSpices -Name "Cinnamon-Spices-Applet"
 Retrieves details for the specified spice
 
+### EXAMPLE 4
+
+Get-CinnamonSpices -Type all
+Retrieves all available Cinnamon component types
+
 ## PARAMETERS
+
+### -Type
+
+Component type to return.
+Valid values are "spices", "applets", "extensions" or "all".
+
+```yaml
+Type: System.String
+DefaultValue: spices
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
 ### -Name
 
-Name of the spice to retrieve details for.
+Name of the component to retrieve details for.
 
 ```yaml
 Type: System.String
@@ -80,6 +113,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+`Get-CinnamonApplets` and `Get-CinnamonExtensions` are compatibility wrappers over this command.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonSpices.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonApplets.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonExtensions.md)

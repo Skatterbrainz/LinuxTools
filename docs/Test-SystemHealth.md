@@ -1,67 +1,51 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: ''
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Test-SystemHealth.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 06/07/2026
 PlatyPS schema version: 2024-05-01
-title: Get-SystemInfo
+title: Test-SystemHealth
 ---
 
-# Get-SystemInfo
+# Test-SystemHealth
 
 ## SYNOPSIS
 
-Gets system information from a Linux system.
+Runs a consolidated Linux system health check.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-SystemInfo [[-Detail] <string>] [-NeoFetch] [<CommonParameters>]
+Test-SystemHealth [[-WarningDiskPercent] <int>] [[-WarningMemoryPressure] <int>] [<CommonParameters>]
 ```
-
-## ALIASES
-
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
 
 ## DESCRIPTION
 
-Collects system information in basic or detailed mode.
+Collects health indicators from disk, memory, failed services, package updates, and reboot state.
+Returns the summary score and status together with top-level detail properties for each check.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-SystemInfo
+Test-SystemHealth
 
-Returns basic system details.
-
-### EXAMPLE 2
-
-Get-SystemInfo -Detail Detailed
-
-Returns expanded system details including dmidecode and lscpu fields where available.
-
-### EXAMPLE 3
-
-Get-SystemInfo -NeoFetch
-
-Runs neofetch and returns its output.
+Returns a health summary object for the local system, including disk, memory, service,
+update, and reboot detail fields.
 
 ## PARAMETERS
 
-### -Detail
+### -WarningDiskPercent
 
-Detail level to return.
-Valid values are "Basic" or "Detailed".
+Disk usage threshold considered warning level.
 
 ```yaml
-Type: System.String
-DefaultValue: Basic
+Type: System.Int32
+DefaultValue: 85
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -76,18 +60,18 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -NeoFetch
+### -WarningMemoryPressure
 
-If present, runs neofetch and returns its output instead of object data.
+Memory pressure threshold considered warning level.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
+Type: System.Int32
+DefaultValue: 60
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: Named
+  Position: 1
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -108,10 +92,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+Returns a PSCustomObject with HealthScore, Status, MaxDiskPercent,
+MemoryPressureAvg10, FailedServices, PendingUpdates, RebootPending,
+WarningCount, Warnings, and Checks properties.
+
 ## NOTES
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemInfo.md)
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ComputerInfo.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Test-SystemHealth.md)

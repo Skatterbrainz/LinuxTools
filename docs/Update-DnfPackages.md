@@ -31,6 +31,7 @@ This cmdlet has the following aliases,
 ## DESCRIPTION
 
 Update DNF packages on a Linux system using the dnf package manager.
+This command now performs a DNF upgrade and can also be reached through `Update-LinuxPackages -Type dnf`.
 
 ## EXAMPLES
 
@@ -61,3 +62,4 @@ Ensure that you have the necessary permissions to run this command, as it may re
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-DnfPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md)

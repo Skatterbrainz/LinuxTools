@@ -1,27 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Certificates.md
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopEntries.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 06/07/2026
 PlatyPS schema version: 2024-05-01
-title: Get-Certificates
+title: Get-DesktopEntries
 ---
 
-# Get-Certificates
+# Get-DesktopEntries
 
 ## SYNOPSIS
 
-Collects information about installed certificates.
+Gets desktop entry files from user, system, or autostart locations.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-Certificates [[-CertPath] <string>] [[-CertFilter] <string>] [-Detailed] [-Quiet]
- [<CommonParameters>]
+Get-DesktopEntries [[-Location] <string>] [[-Name] <string>] [-Contents] [[-Path] <string>] [[-Filter] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -31,55 +30,32 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-This function retrieves details about installed certificates, including their subject, issuer, and expiration dates.
+Queries `.desktop` entry files and returns metadata with optional file contents.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-Certificates | Select-Object CommonName, ExpiryDate, DaysUntilExpiry
-This example retrieves certificates and selects specific properties for display.
+Get-DesktopEntries -Location User
+
+Returns user desktop entries.
 
 ### EXAMPLE 2
 
-Get-Certificates -Detailed | Where-Object { $_.DaysUntilExpiry -lt 365 }
-This example retrieves detailed information about certificates that are expiring within the next year.
+Get-DesktopEntries -Location AutoStart -Name firefox -Contents
 
-### EXAMPLE 3
-
-Get-Certificates | Where-Object IsExpired | Select-Object CommonName, ExpiryDate
-This example retrieves certificates that have already expired and selects their common names and expiration dates.
+Returns matching autostart entry content.
 
 ## PARAMETERS
 
-### -CertFilter
+### -Location
 
-The file filter to identify certificate files (default: *.pem).
-
-```yaml
-Type: System.String
-DefaultValue: '*.pem'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 1
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -CertPath
-
-The path to the directory containing the certificate files (default: /etc/ssl/certs).
+Location scope to query.
+Valid values are "User", "System", "AutoStart", or "All".
 
 ```yaml
 Type: System.String
-DefaultValue: /etc/ssl/certs
+DefaultValue: User
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -94,9 +70,30 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Detailed
+### -Name
 
-Whether to include detailed information about each certificate.
+Optional name filter for desktop entries.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Contents
+
+If present, includes each matching desktop file content.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -115,18 +112,39 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Quiet
+### -Path
 
-Suppresses progress output while processing certificate files.
+Optional path override, only used when Location is AutoStart.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
+Type: System.String
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: Named
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Filter
+
+File filter pattern.
+
+```yaml
+Type: System.String
+DefaultValue: '*.desktop'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -149,7 +167,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+`Get-AppLaunchers` and `Get-AutoStartApps` are compatibility wrappers over this command.
+
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-Certificates.md)
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-RootCertificates.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopEntries.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AppLaunchers.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AutoStartApps.md)

@@ -31,12 +31,15 @@ This cmdlet has the following aliases,
 ## DESCRIPTION
 
 Collects inventory of installed flatpak packages.
+For cross-package-manager inventory, use `Get-LinuxPackages`.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
 Get-FlatpakInventory
+
+Returns installed flatpak packages.
 
 ## PARAMETERS
 
@@ -49,3 +52,4 @@ Get-FlatpakInventory
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-FlatpakInventory.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md)

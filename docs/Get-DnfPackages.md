@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get DNF packages and basic configuration settings
+Gets installed DNF packages.
+This remains useful for DNF-only workflows, while `Get-LinuxPackages` provides the consolidated multi-manager view.
 
 ## EXAMPLES
 
@@ -89,3 +90,4 @@ dnf is a package manager for RPM-based distributions, such as Fedora and CentOS.
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DnfPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md)

@@ -20,7 +20,7 @@ Get the default audio player.
 ### __AllParameterSets
 
 ```
-Get-DefaultAudioPlayer [[-audioPlayer] <string>] [<CommonParameters>]
+Get-DefaultAudioPlayer [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,7 +30,7 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-This function reads the ~/.config/mimeapps.list file to determine the default audio player.
+Compatibility wrapper for `Get-DefaultApplication -Category audio`.
 
 ## EXAMPLES
 
@@ -40,28 +40,6 @@ Get-DefaultAudioPlayer
 Returns the default audio player.
 
 ## PARAMETERS
-
-### -audioPlayer
-
-The default audio player.
-If not provided, the function will attempt to determine it.
-
-```yaml
-Type: System.String
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 0
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
 
 ### CommonParameters
 
@@ -76,6 +54,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+For structured MIME default mappings, use `Get-DefaultApplication`.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultAudioPlayer.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultApplication.md)

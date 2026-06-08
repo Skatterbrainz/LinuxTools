@@ -31,8 +31,15 @@ This cmdlet has the following aliases,
 ## DESCRIPTION
 
 Collects inventory of installed snap packages.
+For cross-package-manager inventory, use `Get-LinuxPackages`.
 
 ## EXAMPLES
+
+### EXAMPLE 1
+
+Get-SnapInventory
+
+Returns installed snap packages.
 
 ## PARAMETERS
 
@@ -45,3 +52,4 @@ Collects inventory of installed snap packages.
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SnapInventory.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md)

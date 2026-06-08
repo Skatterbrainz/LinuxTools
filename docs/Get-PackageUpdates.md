@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: ''
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-PackageUpdates.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 06/07/2026
 PlatyPS schema version: 2024-05-01
-title: Get-SystemInfo
+title: Get-PackageUpdates
 ---
 
-# Get-SystemInfo
+# Get-PackageUpdates
 
 ## SYNOPSIS
 
-Gets system information from a Linux system.
+Gets pending package updates without installing them.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-SystemInfo [[-Detail] <string>] [-NeoFetch] [<CommonParameters>]
+Get-PackageUpdates [[-Type] <string>] [-Summary] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,38 +30,39 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Collects system information in basic or detailed mode.
+Queries supported package managers for pending updates and returns structured objects.
+When `-Type all` is used, only available package managers are queried.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-SystemInfo
+Get-PackageUpdates
 
-Returns basic system details.
+Returns pending updates from all available package managers.
 
 ### EXAMPLE 2
 
-Get-SystemInfo -Detail Detailed
+Get-PackageUpdates -Type apt
 
-Returns expanded system details including dmidecode and lscpu fields where available.
+Returns pending APT updates.
 
 ### EXAMPLE 3
 
-Get-SystemInfo -NeoFetch
+Get-PackageUpdates -Summary
 
-Runs neofetch and returns its output.
+Returns one row per available package manager with pending update counts.
 
 ## PARAMETERS
 
-### -Detail
+### -Type
 
-Detail level to return.
-Valid values are "Basic" or "Detailed".
+Valid values are "apt", "snap", "flatpak", "dnf" or "all".
+Default is "all".
 
 ```yaml
 Type: System.String
-DefaultValue: Basic
+DefaultValue: all
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -76,9 +77,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -NeoFetch
+### -Summary
 
-If present, runs neofetch and returns its output instead of object data.
+Returns a summary count per package manager instead of one row per package.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -112,6 +113,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemInfo.md)
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ComputerInfo.md)
-
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-PackageUpdates.md)

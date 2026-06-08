@@ -13,7 +13,7 @@ title: Get-LinuxPackages
 
 ## SYNOPSIS
 
-Get Linux packages
+Get installed packages from one or more Linux package managers.
 
 ## SYNTAX
 
@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get Linux packages and basic configuration settings
+Returns installed package inventory from APT, Snap, Flatpak, DNF, or all available package managers.
+When `-Type all` is used, the command only queries package managers that are installed on the current system.
 
 ## EXAMPLES
 
@@ -40,6 +41,8 @@ Get-LinuxPackages
 
 Returns all packages.
 Same as Get-LinuxPackages -Type "all"
+
+When `-Type all` is used, only package managers available on the local system are queried.
 
 ### EXAMPLE 2
 
@@ -65,12 +68,20 @@ Get-LinuxPackages -Type "dnf"
 
 Returns only dnf packages
 
+### EXAMPLE 6
+
+Get-LinuxPackages -Type all | Group-Object SourceType
+
+Returns installed packages grouped by package manager.
+
 ## PARAMETERS
 
 ### -Type
 
 Valid values are "apt", "snap", "flatpak", "dnf" or "all".
 Default is "all".
+
+When `all` is used, unavailable package managers are skipped.
 
 ```yaml
 Type: System.String
@@ -92,7 +103,7 @@ HelpMessage: ''
 ### -Upgradable
 
 Only valid for "apt" type.
-If present, returns only upgradable packages.
+If present, returns only upgradable APT packages.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -124,6 +135,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+The returned objects include a `SourceType` property so results from multiple package managers can be combined safely.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-PackageUpdates.md)

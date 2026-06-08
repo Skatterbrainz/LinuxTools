@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AppLaunchers.md
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultApplication.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 06/07/2026
 PlatyPS schema version: 2024-05-01
-title: Get-AppLaunchers
+title: Get-DefaultApplication
 ---
 
-# Get-AppLaunchers
+# Get-DefaultApplication
 
 ## SYNOPSIS
 
-Get the application launchers on the system.
+Gets default applications from mimeapps.list.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-AppLaunchers [[-Scope] <string>] [[-Name] <string>] [-Contents] [<CommonParameters>]
+Get-DefaultApplication [[-Category] <string>] [[-MimeType] <string>] [[-Path] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,49 +30,37 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Compatibility wrapper for `Get-DesktopEntries`.
-Gets application launchers from user or system application directories.
+Reads `~/.config/mimeapps.list` and returns default application mappings by category or MIME type.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-AppLaunchers
+Get-DefaultApplication -Category browser
 
-Get all application launchers on the system for the current user.
+Returns default browser mappings.
 
 ### EXAMPLE 2
 
-Get-AppLaunchers -Scope System
+Get-DefaultApplication -MimeType "audio/*"
 
-Get all application launchers on the system for all users.
-
-### EXAMPLE 3
-
-Get-AppLaunchers -Name Firefox
-
-Get the application launcher for Firefox for the current user.
-
-### EXAMPLE 4
-
-Get-AppLaunchers -Name Firefox -Contents
-
-Get the contents of the application launcher for Firefox for the current user.
+Returns defaults for audio MIME types.
 
 ## PARAMETERS
 
-### -Contents
+### -Category
 
-If Name is provided, this returns the contents of the matching application launchers.
+Category to query.
+Valid values are "browser", "audio", "video", "image", "text", or "all".
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
+Type: System.String
+DefaultValue: all
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: Named
+  Position: 0
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -82,10 +70,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Name
+### -MimeType
 
-The name of the application launcher to get.
-If not specified, all application launchers are returned.
+Optional MIME type wildcard filter, for example "audio/*".
 
 ```yaml
 Type: System.String
@@ -104,19 +91,18 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Scope
+### -Path
 
-The scope of the application launchers to get.
-The default is "User".
+Optional path to a mimeapps.list file.
 
 ```yaml
 Type: System.String
-DefaultValue: User
+DefaultValue: ~/.config/mimeapps.list
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: 0
+  Position: 2
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -139,9 +125,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-For a unified desktop entry query surface, use `Get-DesktopEntries`.
+`Get-DefaultBrowser` and `Get-DefaultAudioPlayer` are compatibility wrappers over this command.
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AppLaunchers.md)
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DesktopEntries.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultApplication.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultBrowser.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultAudioPlayer.md)

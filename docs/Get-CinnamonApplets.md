@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Retrieves a list of installed Cinnamon applets from the user's home directory
+Retrieves a list of installed Cinnamon applets from the user's home directory.
+This command is now a thin wrapper over the shared Cinnamon component reader used by `Get-CinnamonSpices`.
 
 ## EXAMPLES
 
@@ -54,6 +55,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+For a unified Cinnamon component query surface, use `Get-CinnamonSpices -Type applets`.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonApplets.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-CinnamonSpices.md)

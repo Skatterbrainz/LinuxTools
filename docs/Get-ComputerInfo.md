@@ -30,14 +30,22 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get basic computer system and operating system information, including
-processor, make and model, OS name and version, kernel version, and so on.
+Compatibility wrapper for `Get-SystemInfo`.
+By default, this command returns detailed system information.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
 Get-ComputerInfo
+
+Returns detailed system information.
+
+### EXAMPLE 2
+
+Get-ComputerInfo -NeoFetch
+
+Runs neofetch and returns its output.
 
 ## PARAMETERS
 
@@ -76,6 +84,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+Use `Get-SystemInfo -Detail Basic` for a lighter output object.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-ComputerInfo.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-SystemInfo.md)

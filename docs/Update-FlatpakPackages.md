@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Update and upgrade Flatpak packages
+Update and upgrade Flatpak packages.
+This command can also be reached through `Update-LinuxPackages -Type flatpak`.
 
 ## EXAMPLES
 
@@ -46,6 +47,9 @@ Update-FlatpakPackages
 
 ## NOTES
 
+This command performs package manager updates.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-FlatpakPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md)

@@ -1,55 +1,51 @@
 ---
 document type: cmdlet
 external help file: linuxtools-Help.xml
-HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPackages.md
+HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-NetworkConnections.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 06/07/2026
 PlatyPS schema version: 2024-05-01
-title: Get-AptPackages
+title: Get-NetworkConnections
 ---
 
-# Get-AptPackages
+# Get-NetworkConnections
 
 ## SYNOPSIS
 
-Get a list of installed APT packages
+Gets listening and active network socket connections.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-AptPackages [-Upgradeable] [<CommonParameters>]
+Get-NetworkConnections [-ListeningOnly] [<CommonParameters>]
 ```
-
-## ALIASES
-
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
 
 ## DESCRIPTION
 
-Gets installed APT packages.
-This remains useful for APT-only workflows, while `Get-LinuxPackages` provides the consolidated multi-manager view.
+Uses `ss` to return listening and active sockets with process details when available.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-AptPackages
-Lists all installed APT packages
+Get-NetworkConnections
+
+Returns network sockets.
 
 ### EXAMPLE 2
 
-Get-AptPackages -Upgradeable
-Lists only upgradable APT packages
+Get-NetworkConnections -ListeningOnly
+
+Returns listening sockets only.
 
 ## PARAMETERS
 
-### -Upgradeable
+### -ListeningOnly
 
-Whether to list only upgradable packages
+If present, returns listening sockets only.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -81,9 +77,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-For cross-package-manager inventory, use `Get-LinuxPackages`.
-
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AptPackages.md)
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-LinuxPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-NetworkConnections.md)

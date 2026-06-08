@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Update snap packages
+Update snap packages.
+This command can also be reached through `Update-LinuxPackages -Type snap`.
 
 ## EXAMPLES
 
@@ -46,6 +47,9 @@ Update-SnapPackages
 
 ## NOTES
 
+This command performs package manager updates and may require elevated permissions.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-SnapPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md)

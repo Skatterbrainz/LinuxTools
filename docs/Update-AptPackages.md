@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Update and upgrade APT packages
+Update and upgrade APT packages.
+This command can also be reached through `Update-LinuxPackages -Type apt`.
 
 ## EXAMPLES
 
@@ -46,6 +47,9 @@ Update-AptPackages
 
 ## NOTES
 
+This command performs package manager updates and may require elevated permissions.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-AptPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md)

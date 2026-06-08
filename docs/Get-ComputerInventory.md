@@ -33,6 +33,8 @@ This cmdlet has the following aliases,
 This script will gather hardware and software inventory of the local computer and output the results to a JSON file.
 Optionally, the results can be sent to a REST API endpoint.
 
+Computer details are collected through `Get-SystemInfo -Detail Detailed`.
+
 ## EXAMPLES
 
 ### EXAMPLE 1

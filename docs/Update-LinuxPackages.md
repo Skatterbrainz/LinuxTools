@@ -13,7 +13,7 @@ title: Update-LinuxPackages
 
 ## SYNOPSIS
 
-Update and upgrade Linux packages
+Update packages using one or more Linux package managers.
 
 ## SYNTAX
 
@@ -30,7 +30,8 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Update and upgrade Linux packages
+Updates packages using APT, Snap, Flatpak, DNF, or all available package managers.
+When `-Type all` is used, the command only runs against package managers installed on the current system.
 
 ## EXAMPLES
 
@@ -40,18 +41,28 @@ Update-LinuxPackages
 
 Updates all packages
 
+When `-Type all` is used, unavailable package managers are skipped.
+
 ### EXAMPLE 2
 
 Update-LinuxPackages -Type "apt"
 
 Updates only apt packages
 
+### EXAMPLE 3
+
+Update-LinuxPackages -Type dnf
+
+Updates only DNF packages.
+
 ## PARAMETERS
 
 ### -Type
 
-Valid values are "apt", "snap", "flatpak", or "all".
+Valid values are "apt", "snap", "flatpak", "dnf", or "all".
 Default is "all".
+
+When `all` is used, unavailable package managers are skipped.
 
 ```yaml
 Type: System.String
@@ -83,6 +94,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+This command performs package manager updates and may require elevated permissions.
+
 ## RELATED LINKS
 
 - [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Update-LinuxPackages.md)
+- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-PackageUpdates.md)
