@@ -60,12 +60,12 @@ function Get-ComputerInventory {
 			Invoke-RestMethod @HashArguments
 		}
 
-		$appsAPT     = Get-AptPkgInventory
+		$appsAPT     = Get-LinuxPackages -Type apt
 		$appsFlatpak = Get-FlatpakInventory
 		$appsSnap    = Get-SnapInventory
 		$localUsers  = Get-LocalUser
 		$localGroups = Get-LocalGroup
-		$compInfo    = Get-ComputerInfo
+		$compInfo    = Get-SystemInfo -Detail Detailed
 		$netInfo     = Get-NetworkInfo -IncludePublicIP
 
 		$inventory = @{
