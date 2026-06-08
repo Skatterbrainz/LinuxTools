@@ -98,6 +98,7 @@ function Get-Certificates {
 					IsExpired        = $daysUntilExpiry -lt 0
 					SerialNumber     = $serial
 					Fingerprint      = $fingerprint
+					Path             = $certFile.FullName
 				}
 
 				if ($Detailed) {
@@ -110,7 +111,6 @@ function Get-Certificates {
 					$certInfo | Add-Member -NotePropertyName SignatureAlgorithm -NotePropertyValue $sigAlgo
 					$certInfo | Add-Member -NotePropertyName PublicKeyAlgorithm -NotePropertyValue $pubKeyAlgo
 					$certInfo | Add-Member -NotePropertyName KeySize -NotePropertyValue $keySize
-					$certInfo | Add-Member -NotePropertyName Path -NotePropertyValue $certFile.FullName
 				}
 
 				$results += $certInfo
