@@ -12,9 +12,5 @@ function Get-CinnamonExtensions {
 	#>
 	[CmdletBinding()]
 	param()
-	if (-not (Test-Path -Path "~/.local/share/cinnamon/extensions")) {
-		throw "Required path not found: ~/.local/share/cinnamon/extensions"
-	}
-	Get-ChildItem -Path "~/.local/share/cinnamon/extensions" -File -Filter "metadata.json" -Recurse | ForEach-Object {
-		Get-Content -Path $_.FullName | ConvertFrom-Json }
+	ReadCinnamonComponentData -Type 'extensions'
 }
