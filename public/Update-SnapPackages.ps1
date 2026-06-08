@@ -13,8 +13,7 @@ function Update-SnapPackages {
 	#>
 	param()
 	try {
-		write-host "Updating snap packages..."
-		sudo snap refresh
+		InvokeLinuxPackageUpdate -Type 'snap'
 	} catch {
 		Write-Error $($_.Exception.Message -join(";"))
 	}
