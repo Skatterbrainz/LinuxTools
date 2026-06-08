@@ -13,8 +13,7 @@ function Update-FlatpakPackages {
 	#>
 	param()
 	try {
-		write-host "Updating flatpak packages..."
-		flatpak update -y
+		InvokeLinuxPackageUpdate -Type 'flatpak'
 	} catch {
 		Write-Error $($_.Exception.Message -join(";"))
 	}

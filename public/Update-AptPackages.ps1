@@ -13,18 +13,7 @@ function Update-AptPackages {
 	#>
 	param()
 	try {
-		if (-not (Test-Path -Path '/usr/bin/apt')) {
-			throw "Required file not found: apt"
-		}
-		if (Test-Path -Path '/usr/bin/nala') {
-			write-host "Using Nala for package management..."
-			sudo nala update
-			sudo nala upgrade -y
-		} else {
-			write-host "Using APT for package management..."
-			apt update
-			apt upgrade -y
-		}
+		InvokeLinuxPackageUpdate -Type 'apt'
 	} catch {
 		Write-Error $($_.Exception.Message -join(";"))
 	}

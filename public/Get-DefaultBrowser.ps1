@@ -3,20 +3,19 @@ function Get-DefaultBrowser {
 	.SYNOPSIS
 		Get the default browser.
 	.DESCRIPTION
-		This function reads the ~/.config/mimeapps.list file to determine the default browser.
-	.PARAMETER browser
-		The default browser. If not provided, the function will attempt to determine it.
+		Compatibility wrapper for Get-DefaultApplication -Category browser.
 	.EXAMPLE
 		Get-DefaultBrowser
 		Returns the default browser.
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-DefaultBrowser.md
 	#>
+	[CmdletBinding()]
 	param()
-	$mimeApps = Get-Content -Path "$env:HOME/.config/mimeapps.list" -Raw
-	$browser = $null
-	if ($mimeApps -match "x-scheme-handler/https=(.*)") {
-		$browser = $matches[1]
+	$defaultBrowser = ReadDefaultApplications -Category browser |
+		Where-Object { $_.MimeType -in @('x-scheme-handler/https','x-scheme-handler/http') } |
+		Select-Object -First 1
+	if ($defaultBrowser) {
+		$defaultBrowser.DesktopEntry
 	}
-	return $browser
 }

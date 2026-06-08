@@ -20,16 +20,27 @@ function Update-LinuxPackages {
 	[CmdletBinding()]
 	param(
 		[Parameter(Mandatory=$false)]
-		[ValidateSet("apt","snap","flatpak","all")]
+		[ValidateSet("apt","snap","flatpak","dnf","all")]
 		[string]$Type = "all"
 	)
 	if ($Type -in ("apt","all")) {
-		Update-AptPackages
+		if ($Type -eq 'apt' -or (TestLinuxPackageManager -Type 'apt')) {
+			InvokeLinuxPackageUpdate -Type 'apt'
+		}
 	}
 	if ($Type -in ("snap","all")) {
-		Update-SnapPackages
+		if ($Type -eq 'snap' -or (TestLinuxPackageManager -Type 'snap')) {
+			InvokeLinuxPackageUpdate -Type 'snap'
+		}
 	}
 	if ($Type -in ("flatpak","all")) {
-		Update-FlatpakPackages
+		if ($Type -eq 'flatpak' -or (TestLinuxPackageManager -Type 'flatpak')) {
+			InvokeLinuxPackageUpdate -Type 'flatpak'
+		}
+	}
+	if ($Type -in ("dnf","all")) {
+		if ($Type -eq 'dnf' -or (TestLinuxPackageManager -Type 'dnf')) {
+			InvokeLinuxPackageUpdate -Type 'dnf'
+		}
 	}
 }
