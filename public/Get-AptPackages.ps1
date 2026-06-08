@@ -20,33 +20,7 @@ function Get-AptPackages {
 		[parameter(Mandatory=$false)][switch]$Upgradeable
 	)
 	try {
-		if (-not (Test-Path -Path '/usr/bin/apt')) {
-			throw "Required file not found: apt"
-		}
-		write-host "Updating apt cache..."
-		sudo apt update
-		if ($Upgradeable) {
-			$apps = sudo apt list --upgradable
-		} else {
-			$apps = sudo apt list
-		}
-
-		$apps | ForEach-Object {
-			$tpkg = $null
-			$tpkg = $_.Split("[")
-			$pkg  = $tpkg[0].Split(" ")
-			$stat = $tpkg[1]
-			if (![string]::IsNullOrEmpty($stat)) {
-				$stat   = $stat.TrimEnd("]")
-				$latest = $stat.Replace("upgradable from: ", "")
-			}
-			[pscustomobject]@{
-				Name            = $pkg[0]
-				Current         = $pkg[1]
-				Rev             = $pkg[2]
-				Available       = $latest
-			}
-		}
+		ReadAptPackageData -Upgradable:$Upgradeable
 	} catch {
 		Write-Error $($_.Exception.Message -join(";"))
 	}
