@@ -24,19 +24,11 @@ function Get-DnfPackages {
 		[parameter(Mandatory=$False)][string]$Name
 	)
 	try {
-		if (-not (Test-Path -Path '/usr/bin/dnf')) {
-			throw "Required file not found: dnf"
-		}
-		if (Test-Path -Path '/usr/bin/dnf') {
-			$pkgs = dnf list --installed
-			foreach ($row in $pkgs[1..$($pkgs.Count-1)]) {
-				$items = $row.Split(' ') | Where-Object {![string]::IsNullOrWhiteSpace($_)}
-				[pscustomobject]@{
-					Name    = $items[0]
-					Version = $items[1]
-					Source  = $items[2]
-				}
-			}
+		$pkgs = ReadDnfPackageData
+		if ([string]::IsNullOrWhiteSpace($Name)) {
+			$pkgs
+		} else {
+			$pkgs | Where-Object { $_.Name -like "*$Name*" }
 		}
 	} catch {
 		Write-Error $($_.Exception.Message -join(";"))
