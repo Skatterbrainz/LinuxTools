@@ -19,20 +19,20 @@ function Get-AutoStartApps {
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AutoStartApps.md
 	#>
+	[CmdletBinding()]
 	param(
 		[parameter(Mandatory=$false)][string]$Name,
 		[parameter(Mandatory=$false)][string]$Filter = "*.desktop",
 		[parameter(Mandatory=$false)][string]$Path = "$env:HOME/.config/autostart"
 	)
-	$autostart = Get-ChildItem -Path $Path -Filter $Filter -ErrorAction SilentlyContinue
-	if ($autostart) {
-		if (![string]::IsNullOrEmpty($Name)) {
-			$desktop = $autostart | Where-Object { $_.Name -eq $Name } | Foreach-Object {Get-Content -Path $_.FullName -Raw}
-		} else {
-			$desktop = $autostart | Select-Object -ExpandProperty Name
-		}
-		$desktop
-	} else {
+	$autostart = @(ReadDesktopEntries -Location autostart -Name $Name -Filter $Filter -Path $Path -Contents:([bool]$Name))
+	if (-not $autostart) {
 		Write-Warning "No auto-start applications found"
+		return
+	}
+	if (![string]::IsNullOrEmpty($Name)) {
+		$autostart | Select-Object -ExpandProperty Content
+	} else {
+		$autostart | Select-Object -ExpandProperty Name
 	}
 }
