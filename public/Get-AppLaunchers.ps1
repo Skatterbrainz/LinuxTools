@@ -36,21 +36,12 @@ function Get-AppLaunchers {
 		[parameter()][switch]$Contents
 	)
 	try {
-		$UserPath = "~/.local/share/applications"
-		$SystemPath = "/usr/share/applications"
-		$AppPath = if ($Scope -eq "User") { $UserPath } else { $SystemPath }
-		if (!(Test-Path -Path $AppPath)) {
-			throw "Path not found: $AppPath"
-		}
-		$launchers = Get-ChildItem -Path $AppPath -Filter "*.desktop" -File -ErrorAction Stop
-		if (![string]::IsNullOrEmpty($Name)) {
-			if ($Contents.IsPresent) {
-				$launchers | Where-Object { $_.BaseName -like "*$Name*" } | ForEach-Object { Get-Content -Path $_.FullName }
-			} else {
-				$launchers | Where-Object { $_.BaseName -like "*$Name*" } | Select-Object -Property BaseName, FullName -Unique
-			}
+		$location = $Scope.ToLowerInvariant()
+		$entries = @(ReadDesktopEntries -Location $location -Name $Name)
+		if ($Contents) {
+			$entries | ForEach-Object { Get-Content -Path $_.FullName }
 		} else {
-			$launchers | Select-Object -Property BaseName, FullName | Sort-Object BaseName -Unique
+			$entries | Select-Object -Property BaseName, FullName -Unique | Sort-Object BaseName
 		}
 	} catch {
 		Write-Error "Failed to get application launchers: $($_.Exception.Message)"
