@@ -36,20 +36,5 @@ function Get-LinuxPackages {
 		[parameter()][string][ValidateSet("apt","flatpak","snap","dnf","all")]$Type = "all",
 		[parameter()][switch]$Upgradable
 	)
-	if ($Type -in ("apt","all")) {
-		if ($Upgradable.IsPresent) {
-			Get-AptPkgUpgradable
-		} else {
-			Get-AptPackages
-		}
-	}
-	if ($Type -in ("flatpak","all")) {
-		Get-FlatpakInventory
-	}
-	if ($Type -in ("snap","all")) {
-		Get-SnapInventory
-	}
-	if ($Type -in ("dnf","all")) {
-		Get-DnfPackages
-	}
+	ReadLinuxPackageData -Type $Type -Upgradable:$Upgradable
 }
