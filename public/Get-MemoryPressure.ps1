@@ -29,11 +29,12 @@ function Get-MemoryPressure {
 			$rowdata.Add($_.Split('=')[0], $_.Split('=')[1])
 		}
 		$avg10Value = [double]$rowdata['avg10']
+		$t1 = 20; $t2 = 40; $t3 = 60; $t4 = 80
 		$rowdata['Rating'] = if ($avg10Value -eq 0) { 0 }
-			elseif ($avg10Value -le 20) { 1 }
-			elseif ($avg10Value -le 40) { 2 }
-			elseif ($avg10Value -le 60) { 3 }
-			elseif ($avg10Value -le 80) { 4 }
+			elseif ($avg10Value -le $t1) { 1 }
+			elseif ($avg10Value -le $t2) { 2 }
+			elseif ($avg10Value -le $t3) { 3 }
+			elseif ($avg10Value -le $t4) { 4 }
 			else { 5 }
 		[PSCustomObject]$rowdata
 	}
