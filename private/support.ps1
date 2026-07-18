@@ -71,25 +71,29 @@ function get-NullString {
 
 function TestCinnamonComponentPath {
 	param(
-		[parameter(Mandatory=$true)][ValidateSet('applets','extensions','spices')][string]$Type
+		[parameter(Mandatory=$true)][ValidateSet('applets','extensions','spices','desklets','themes')][string]$Type
 	)
 	$path = switch ($Type) {
 		'applets' { '~/.local/share/cinnamon/applets' }
 		'extensions' { '~/.local/share/cinnamon/extensions' }
 		'spices' { '~/.config/cinnamon/spices' }
+		'desklets' { '~/.local/share/cinnamon/desklets' }
+		'themes' { '~/.local/share/cinnamon/themes' }
 	}
 	Test-Path -Path $path
 }
 
 function ReadCinnamonComponentData {
 	param(
-		[parameter(Mandatory=$true)][ValidateSet('applets','extensions','spices')][string]$Type,
+		[parameter(Mandatory=$true)][ValidateSet('applets','extensions','spices','desklets','themes')][string]$Type,
 		[parameter(Mandatory=$false)][string]$Name
 	)
 	$path = switch ($Type) {
 		'applets' { '~/.local/share/cinnamon/applets' }
 		'extensions' { '~/.local/share/cinnamon/extensions' }
 		'spices' { '~/.config/cinnamon/spices' }
+		'desklets' { '~/.local/share/cinnamon/desklets' }
+		'themes' { '~/.local/share/cinnamon/themes' }
 	}
 	if (-not (Test-Path -Path $path)) {
 		throw "Required path not found: $path"
@@ -135,11 +139,11 @@ function ReadCinnamonComponentData {
 
 function ReadAllCinnamonComponents {
 	param(
-		[parameter(Mandatory=$false)][ValidateSet('applets','extensions','spices','all')][string]$Type = 'spices',
+		[parameter(Mandatory=$false)][ValidateSet('applets','extensions','spices','desklets','themes','all')][string]$Type = 'spices',
 		[parameter(Mandatory=$false)][string]$Name
 	)
 	$result = @()
-	$targets = if ($Type -eq 'all') { 'applets','extensions','spices' } else { @($Type) }
+	$targets = if ($Type -eq 'all') { 'applets','extensions','spices','desklets','themes' } else { @($Type) }
 	foreach ($target in $targets) {
 		if ($Type -ne 'all' -or (TestCinnamonComponentPath -Type $target)) {
 			$result += @(ReadCinnamonComponentData -Type $target -Name $Name)
