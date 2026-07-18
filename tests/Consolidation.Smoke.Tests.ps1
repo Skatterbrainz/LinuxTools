@@ -53,4 +53,22 @@ Describe 'Consolidated command surface' {
 			$result[0].PSObject.Properties.Name | Should -Contain 'FullName'
 		}
 	}
+
+	It 'Get-MemoryPressure returns Rating property when pressure data exists' {
+		$pressurePath = '/sys/fs/cgroup/system.slice/memory.pressure'
+		if (-not (Test-Path -Path $pressurePath)) {
+			Set-ItResult -Skipped -Because 'memory.pressure not found on this host'
+			return
+		}
+		$result = @(Get-MemoryPressure)
+		if ($result.Count -gt 0) {
+			$result[0].PSObject.Properties.Name | Should -Contain 'Type'
+			$result[0].PSObject.Properties.Name | Should -Contain 'avg10'
+			$result[0].PSObject.Properties.Name | Should -Contain 'avg60'
+			$result[0].PSObject.Properties.Name | Should -Contain 'avg300'
+			$result[0].PSObject.Properties.Name | Should -Contain 'total'
+			$result[0].PSObject.Properties.Name | Should -Contain 'Rating'
+			$result[0].Rating | Should -BeIn @(0, 1, 2, 3, 4, 5)
+		}
+	}
 }
