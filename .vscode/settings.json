@@ -1,0 +1,7 @@
+{
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use Conventional Commits. Format: type(scope): summary. Summary max 72 chars, imperative mood, no trailing period. Add a blank line and bullet list body only when needed. Prefix the commit with the version number in the related file if possible."
+    }
+  ]
+}
