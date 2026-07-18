@@ -27,7 +27,7 @@ This module is currently focused on Debian/Ubuntu/LinuxMint with some KDE-compat
 
 ## Requirements
 
-- PowerShell 7.0 or higher
+- PowerShell 7.5 or higher
 - Linux operating system (Debian/Ubuntu/LinuxMint preferred)
 - Appropriate system permissions for certain operations
 

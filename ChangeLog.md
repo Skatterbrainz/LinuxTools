@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## 📋 Version History
 
+### 1.3.1 - 07/18/2026
+- Added: Get-NeoFetchConfig
+- Added: Get-Keyring
+- Updated: Get-MemoryPressure / added rating output (0-5 scale)
+- Updated: manifest / moved minimum PowerShell to 7.5
+
 ### 1.3.0 - 06/07/2026
 - Added: Get-PackageUpdates
 - Added: Get-DefaultApplication
