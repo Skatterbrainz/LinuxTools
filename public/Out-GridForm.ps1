@@ -1,123 +1,167 @@
 function Out-GridForm {
 	<#
 	.SYNOPSIS
-		Generates a YAD grid form dialog from a collection of objects.
-	.DESCRIPTION
-		Creates a YAD grid form dialog that allows users to select items from a list of objects.
-	.PARAMETER Data
-		A collection of objects to display in the grid. Each object should have properties that will be used as columns in the grid.
-	.PARAMETER Title
-		The title of the YAD dialog window. Defaults to "Grid Form".
-	.PARAMETER Text
-		The text to display in the YAD dialog, prompting the user to make a selection. Defaults to "Select items".
-	.PARAMETER Width
-		The width of the YAD dialog window in pixels. Defaults to 600.
-	.PARAMETER Height
-		The height of the YAD dialog window in pixels. Defaults to 400.
-	.PARAMETER Separator
-		The separator used to join multiple selections when the dialog allows multiple selections. Defaults to "|".
-	.PARAMETER FontName
-		The font name to use in the YAD dialog. If not specified, the default system font will be used.
-	.PARAMETER IconPath
-		The path to the icon to display in the YAD dialog. Defaults to 'dialog-information'.
-	.PARAMETER ImagePath
-		The path to the image to display in the YAD dialog. Defaults to 'dialog-question'.
-	.PARAMETER ButtonsLayout
-		The layout of the buttons in the YAD dialog. Defaults to 'center'. Valid values are 'center', 'edge', 'end', 'spread', and 'start'.
-	.EXAMPLE
-		$files = Get-ChildItem -Path "C:\MyFiles" | Select-Object Name, Length, LastWriteTime
-		$selected = $files | Out-GridForm -Title "File List" -Text "Select files to process" -Width 800 -Height 600
-		
-		This example creates a YAD grid form dialog displaying a list of files in a specified directory, allowing the user to select one or more files for further processing.
-	.EXAMPLE
-		$data = @(
-			[pscustomobject]@{ ID = 1; Name = "Alice"; Email = "alice@contoso.com" }
-			[pscustomobject]@{ ID = 2; Name = "Bob"; Email = "bob@contoso.com" }
-		)
-		$selected = $data | Out-GridForm -Title "User Table" -Text "Select users" -Width 600 -Height 400
+		Displays a grid form for selecting objects from the pipeline.
 
-		This example creates a YAD grid form dialog displaying a table of users with their IDs, names, and emails. The user can select one or more users from the list.
-	.NOTES
-		This function requires YAD (Yet Another Dialog) to be installed on the system. It is typically used in Linux environments where YAD is available.
-		To play with this directly, type 'yad --help' in a terminal.
+	.DESCRIPTION
+		Out-GridForm presents the input objects in a sortable, selectable grid using a PyQt5 dialog.
+
+	.PARAMETER InputObject
+		The objects to display in the grid.
+
+	.PARAMETER Title
+		The title of the grid form window.
+
+	.PARAMETER OutputMode
+		Specifies whether a single or multiple rows can be selected. Valid values are 'Single' and 'Multiple'.
+
+	.PARAMETER NumSortColumn
+		An array of column names that should be sorted numerically.
+		If omitted, columns are sorted lexicographically, example "9" > "10".
+
+	.EXAMPLE
+		Get-Process | Out-GridForm -Title "Select Processes" -OutputMode Multiple
+
+		Displays a grid form with the processes, allowing multiple selection.
+	
+	.EXAMPLE
+		Get-Process | Out-GridForm -Title "Select Process" -OutputMode Single
+
+		Displays a grid form with the processes, allowing a single selection.
+	
+	.EXAMPLE
+		Get-Process | Out-GridForm -Title "Select Processes" -OutputMode Multiple -NumSortColumn "CPU"
+
+		Displays a grid form with the processes, allowing multiple selection, and sorts the "CPU" column numerically.
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Out-GridForm.md
+	.NOTES
+		This function requires PyQt5 to be installed.
+		Ensure that you have the necessary permissions to run this command.
+		Use with caution, as it will display and potentially allow selection of sensitive data.
 	#>
-	[CmdletBinding()]
-	param (
-		[Parameter(Mandatory = $true, ValueFromPipeline = $true)]
-		[psobject[]]$Data,
-		[parameter(Mandatory = $false)][string]$Title = "Grid Form",
-		[parameter(Mandatory = $false)][string]$Text = "Select items",
-		[parameter(Mandatory = $false)][int]$Width = 600,
-		[parameter(Mandatory = $false)][int]$Height = 400,
-		[parameter(Mandatory = $false)][string]$Separator = "|",
-		[parameter(Mandatory = $false)][string]$FontName,
-		[parameter(Mandatory = $false)][string]$IconPath = 'dialog-information',
-		[parameter(Mandatory = $false)][string]$ImagePath = 'dialog-question',
-		[parameter(Mandatory = $false)][string]
-		[ValidateSet('center','edge','end','spread','start')]$ButtonsLayout = 'center'
-	)
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipeline=$true, Mandatory=$true)]
+        [PSObject[]]$InputObject,
+        [string]$Title = "Grid Form",
+        [ValidateSet('Single','Multiple')]
+        [string]$OutputMode = 'Single',
+        [string[]]$NumSortColumn = @()
+    )
 
-	begin {
-		$inputData = @()
-		if (!(Test-Path -Path "/usr/bin/yad")) {
-			throw "YAD is not installed or not found in /usr/bin"
-		}
-	}
-	process {
-		if ($null -ne $Data) {
-			$inputData += $Data
-		}
-	}
-	end {
-		if (-not $inputData -or $inputData.Count -eq 0) { 
-			throw "No data provided or data is empty."
-		}
+    begin { $objects = @() }
+    process { $objects += $InputObject }
+    end {
+        if ($objects.Count -eq 0) { return }
 
-		$Fields = $inputData[0].psobject.properties.Name
-		$Columns = @("--column=Select:CHK") + ($Fields | ForEach-Object { "--column=$_" })
-		$cmd = @(
-			"yad", "--list", "--width=$Width", "--height=$Height",
-			"--title='$Title'", "--text='$Text'",
-			"--separator='$Separator'", 
-			"--center", "--always-print-result",
-			"--multiple", "--checklist",
-			"--buttons-layout='$ButtonsLayout'"
-		)
-		if ($FontName) {
-			$cmd += "--fontname='$FontName'"
-		}
-		if ($IconPath) {
-			$cmd += "--window-icon='$IconPath'"
-		}
-		if ($ImagePath) {
-			$cmd += "--image='$ImagePath'"
-		}
-		$cmd += $Columns
-		foreach ($row in $inputData) {
-			$line = @("FALSE")
-			foreach ($field in $Fields) {
-				$value = "$($row.$field)" -replace "'", "''"
-				$line += "'$value'"
-			}
-			$cmd += $line
-		}
+        $properties = $objects[0].PSObject.Properties.Name
 
-		$yadCmd = $cmd -join ' '
-		Write-Verbose "YAD Command: $yadCmd"
+        $rows = $objects | ForEach-Object {
+            $obj = [PSCustomObject]@{}
+            foreach ($p in $properties) {
+                $obj | Add-Member -NotePropertyName $p -NotePropertyValue ([string]$($_.$p))
+            }
+            $obj
+        }
 
-		$rawOutput = bash -c "$yadCmd"
+        $json = ([PSCustomObject]@{
+            columns      = $properties
+            title        = $Title
+            rows         = $rows
+            outputMode   = $OutputMode
+            numSortCols  = $NumSortColumn
+        }) | ConvertTo-Json -Depth 5
 
-		if ($rawOutput) {
-			$results = @()
-			foreach ($line in $rawOutput -split "`n") {
-				Write-Verbose "line: $line"
-				$row = ($line -split [regex]::Escape($Separator))[1..-1]
-				Write-Verbose "key: $($row[0])"
-				$results += $inputData | Where-Object { $_.$($Fields[0]) -eq $row[0] }
-			}
-			$results
-		}
-	}
-}
+        $pyPath   = [System.IO.Path]::GetTempFileName()
+        $dataPath = [System.IO.Path]::GetTempFileName()
+
+        $pyScript = @'
+import sys, json
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem,
+                             QDialog, QDialogButtonBox, QVBoxLayout,
+                             QHeaderView)
+
+with open(sys.argv[1], 'r') as f:
+    data = json.load(f)
+
+cols = data['columns']
+rows = data['rows']
+mode = data.get('outputMode', 'Single')
+num_cols = set(data.get('numSortCols', []))
+
+app = QApplication(sys.argv)
+dlg = QDialog()
+dlg.setWindowTitle(data.get('title', 'Grid'))
+dlg.resize(900, 500)
+
+table = QTableWidget(len(rows), len(cols))
+table.setHorizontalHeaderLabels(cols)
+table.setEditTriggers(QTableWidget.NoEditTriggers)
+table.setSelectionBehavior(QTableWidget.SelectRows)
+
+if mode == 'Multiple':
+    table.setSelectionMode(QTableWidget.ExtendedSelection)
+else:
+    table.setSelectionMode(QTableWidget.SingleSelection)
+
+# Populate data
+for r, row in enumerate(rows):
+    for c, col in enumerate(cols):
+        text = str(row.get(col, ''))
+        item = QTableWidgetItem(text)
+        table.setItem(r, c, item)
+        # Set numeric sort key for designated columns
+        if col in num_cols:
+            try:
+                item.setData(Qt.UserRole, float(text))
+            except ValueError:
+                pass  # non-numeric value; will sort last
+
+# Enable sorting AFTER data is in place
+table.setSortingEnabled(True)
+table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+
+buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+buttons.accepted.connect(dlg.accept)
+buttons.rejected.connect(dlg.reject)
+
+layout = QVBoxLayout()
+layout.addWidget(table)
+layout.addWidget(buttons)
+dlg.setLayout(layout)
+
+if dlg.exec_() == QDialog.Accepted:
+    selected = sorted(set(table.selectionModel().selectedRows()))
+    result = []
+    for idx in selected:
+        row_data = {}
+        for c, col in enumerate(cols):
+            item = table.item(idx.row(), c)
+            row_data[col] = item.text() if item else ''
+        result.append(row_data)
+    sys.stdout.write(json.dumps(result))
+
+sys.exit(0)
+'@
+
+    try {
+        Set-Content -Path $pyPath   -Value $pyScript -Encoding UTF8
+        Set-Content -Path $dataPath -Value $json     -Encoding UTF8
+
+        $output = & python3 $pyPath $dataPath 2>$null
+
+        if ($LASTEXITCODE -eq 0 -and $output) {
+            $selected = $output | ConvertFrom-Json
+            if ($OutputMode -eq 'Single') {
+                $selected | Select-Object -First 1
+            } else {
+                $selected
+            }
+        }
+    }
+    finally {
+        Remove-Item $pyPath, $dataPath -Force -ErrorAction SilentlyContinue
+    }
+}}

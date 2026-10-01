@@ -10,7 +10,7 @@ A comprehensive collection of PowerShell cmdlets designed to make Linux system a
 
 ## 🎯 Overview
 
-This module is currently focused on Debian/Ubuntu/LinuxMint with some KDE-compatible features. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here. Thank you!
+This module is currently focused on Debian/Ubuntu/LinuxMint and RockyLinux/KDE. If there's more you want/need or anything you find lacking, annoying, aggravating, infuriating, discombobulating, or outright unsatisfying, drop a new [Issue](https://github.com/Skatterbrainz/LinuxTools/issues) here. Thank you!
 
 ## ✨ Features
 
@@ -28,8 +28,9 @@ This module is currently focused on Debian/Ubuntu/LinuxMint with some KDE-compat
 ## Requirements
 
 - PowerShell 7.5 or higher
-- Linux operating system (Debian/Ubuntu/LinuxMint preferred)
+- Linux operating system (Debian, Ubuntu, Linux Mint, Rocky Linux, Fedora, RHEL)
 - Appropriate system permissions for certain operations
+- Some functions require Python 3
 
 ## Installation
 
