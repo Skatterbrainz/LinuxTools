@@ -4,7 +4,7 @@ external help file: linuxtools-Help.xml
 HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Out-GridForm.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 10/03/2026
 PlatyPS schema version: 2024-05-01
 title: Out-GridForm
 ---
@@ -13,76 +13,53 @@ title: Out-GridForm
 
 ## SYNOPSIS
 
-Generates a YAD grid form dialog from a collection of objects.
+Displays pipeline objects in a selectable grid form using PyQt5.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
+```powershell
+Out-GridForm [-InputObject] <PSObject[]> [[-Title] <string>] [[-OutputMode] <string>]
+ [[-NumSortColumn] <string[]>] [<CommonParameters>]
 ```
-Out-GridForm [-Data] <psobject[]> [[-Title] <string>] [[-Text] <string>] [[-Width] <int>]
- [[-Height] <int>] [[-Separator] <string>] [[-FontName] <string>] [[-IconPath] <string>]
- [[-ImagePath] <string>] [[-ButtonsLayout] <string>] [<CommonParameters>]
-```
-
-## ALIASES
-
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
 
 ## DESCRIPTION
 
-Creates a YAD grid form dialog that allows users to select items from a list of objects.
+Collects input objects from the pipeline, renders them in a sortable table dialog, and returns
+selected rows as objects. This implementation uses Python 3 + PyQt5.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-$files = Get-ChildItem -Path "C:\MyFiles" | Select-Object Name, Length, LastWriteTime
-$selected = $files | Out-GridForm -Title "File List" -Text "Select files to process" -Width 800 -Height 600
+```powershell
+Get-Process | Out-GridForm -Title "Select Process" -OutputMode Single
+```
 
-This example creates a YAD grid form dialog displaying a list of files in a specified directory, allowing the user to select one or more files for further processing.
+Displays process data and returns one selected row.
 
 ### EXAMPLE 2
 
-$data = @(
-	[pscustomobject]@{ ID = 1; Name = "Alice"; Email = "alice@contoso.com" }
-	[pscustomobject]@{ ID = 2; Name = "Bob"; Email = "bob@contoso.com" }
-)
-$selected = $data | Out-GridForm -Title "User Table" -Text "Select users" -Width 600 -Height 400
+```powershell
+Get-Process | Out-GridForm -Title "Select Processes" -OutputMode Multiple
+```
 
-This example creates a YAD grid form dialog displaying a table of users with their IDs, names, and emails.
-The user can select one or more users from the list.
+Displays process data and returns multiple selected rows.
+
+### EXAMPLE 3
+
+```powershell
+Get-Process | Out-GridForm -Title "Select Processes" -OutputMode Multiple -NumSortColumn CPU
+```
+
+Marks the `CPU` column for numeric sorting.
 
 ## PARAMETERS
 
-### -ButtonsLayout
+### -InputObject
 
-The layout of the buttons in the YAD dialog.
-Defaults to 'center'.
-Valid values are 'center', 'edge', 'end', 'spread', and 'start'.
-
-```yaml
-Type: System.String
-DefaultValue: center
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 9
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Data
-
-A collection of objects to display in the grid.
-Each object should have properties that will be used as columns in the grid.
+Objects to display in the grid.
 
 ```yaml
 Type: System.Management.Automation.PSObject[]
@@ -101,142 +78,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -FontName
-
-The font name to use in the YAD dialog.
-If not specified, the default system font will be used.
-
-```yaml
-Type: System.String
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 6
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Height
-
-The height of the YAD dialog window in pixels.
-Defaults to 400.
-
-```yaml
-Type: System.Int32
-DefaultValue: 400
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 4
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -IconPath
-
-The path to the icon to display in the YAD dialog.
-Defaults to 'dialog-information'.
-
-```yaml
-Type: System.String
-DefaultValue: dialog-information
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 7
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -ImagePath
-
-The path to the image to display in the YAD dialog.
-Defaults to 'dialog-question'.
-
-```yaml
-Type: System.String
-DefaultValue: dialog-question
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 8
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Separator
-
-The separator used to join multiple selections when the dialog allows multiple selections.
-Defaults to "|".
-
-```yaml
-Type: System.String
-DefaultValue: '|'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 5
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Text
-
-The text to display in the YAD dialog, prompting the user to make a selection.
-Defaults to "Select items".
-
-```yaml
-Type: System.String
-DefaultValue: Select items
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 2
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
 ### -Title
 
-The title of the YAD dialog window.
-Defaults to "Grid Form".
+Window title for the dialog.
 
 ```yaml
 Type: System.String
@@ -255,14 +99,35 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Width
+### -OutputMode
 
-The width of the YAD dialog window in pixels.
-Defaults to 600.
+Selection mode for the dialog.
+Valid values: `Single`, `Multiple`.
 
 ```yaml
-Type: System.Int32
-DefaultValue: 600
+Type: System.String
+DefaultValue: Single
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: [Single, Multiple]
+HelpMessage: ''
+```
+
+### -NumSortColumn
+
+Column names that should sort numerically instead of lexicographically.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -286,19 +151,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject[]
-
-{{ Fill in the Description }}
+### System.Management.Automation.PSObject
 
 ## OUTPUTS
 
+### System.Management.Automation.PSCustomObject
+
+Selected rows from the grid.
+
 ## NOTES
 
-This function requires YAD (Yet Another Dialog) to be installed on the system.
-It is typically used in Linux environments where YAD is available.
-To play with this directly, type 'yad --help' in a terminal.
-
+Requires `python3` and `PyQt5` on the host system.
 
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Out-GridForm.md)
+- [Out-GridForm source](https://github.com/Skatterbrainz/linuxtools/blob/master/public/Out-GridForm.ps1)

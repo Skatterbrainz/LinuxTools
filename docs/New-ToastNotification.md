@@ -4,7 +4,7 @@ external help file: linuxtools-Help.xml
 HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-ToastNotification.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 10/03/2026
 PlatyPS schema version: 2024-05-01
 title: New-ToastNotification
 ---
@@ -13,84 +13,47 @@ title: New-ToastNotification
 
 ## SYNOPSIS
 
-Displays a desktop notification message using notify-send
+Displays a desktop notification message using `notify-send`.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
-```
+```powershell
 New-ToastNotification [-Message] <string> [[-Title] <string>] [[-Urgency] <string>]
- [[-IconName] <string>] [-Wait] [<CommonParameters>]
+ [[-IconName] <string>] [[-Timeout] <int>] [-Wait] [[-ActionName] <string>] [<CommonParameters>]
 ```
-
-## ALIASES
-
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
 
 ## DESCRIPTION
 
-Displays a desktop notification message using notify-send with optional parameters
+Builds and runs a `notify-send` command with optional urgency, icon, timeout, wait behavior,
+and optional action button text.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
+```powershell
 New-ToastNotification -Message "Hello World!"
-Displays a notification with the message "Hello World!"
+```
 
 ### EXAMPLE 2
 
-New-ToastNotification -Message "Hello World!" -Title "Greetings"
-Displays a notification with the message "Hello World!" and the title "Greetings"
+```powershell
+New-ToastNotification -Message "Update complete" -Title "LinuxTools" -Urgency Low
+```
 
 ### EXAMPLE 3
 
-New-ToastNotification -Message "Hello World!" -Urgency critical
-Displays a critical notification with the message "Hello World!"
-
-### EXAMPLE 4
-
-New-ToastNotification -Message "Hello World!" -Icon dialog-warning.png
-Displays a notification with the message "Hello World!" and the icon dialog-warning.png
+```powershell
+New-ToastNotification -Message "Review required" -Urgency Critical -Wait -ActionName "Open"
+```
 
 ## PARAMETERS
 
-### -IconName
-
-The icon to display in the notification.
-Default is dialog-information.png
-Filenames are found in /usr/share/icons/gnome/48x48/status/
-if the specified icon is not found, no icon will be displayed
-
-```yaml
-Type: System.String
-DefaultValue: dialog-information.png
-SupportsWildcards: false
-Aliases:
-- Icon
-ParameterSets:
-- Name: (All)
-  Position: 3
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
 ### -Message
 
-The message to display in the notification.
-This can include the following HTML tags for formatting:
-<b></b> - bold
-<i></i> - italic
-<u></u> - underline
-<a href="..."></a>  - hyperlink
-<img src="..." alt="..."/> - image
+Notification body text. Supports markup accepted by your notification daemon.
 
 ```yaml
 Type: System.String
@@ -111,12 +74,11 @@ HelpMessage: ''
 
 ### -Title
 
-The title of the notification.
-Default is "Notification"
+Notification title.
 
 ```yaml
 Type: System.String
-DefaultValue: Notification
+DefaultValue: LinuxTools Message
 SupportsWildcards: false
 Aliases:
 - Summary
@@ -134,12 +96,11 @@ HelpMessage: ''
 
 ### -Urgency
 
-The urgency level of the notification (low, normal, critical).
-Default is normal
+Notification urgency level. Valid values: `Low`, `Normal`, `Critical`.
 
 ```yaml
 Type: System.String
-DefaultValue: normal
+DefaultValue: Normal
 SupportsWildcards: false
 Aliases:
 - Category
@@ -151,14 +112,56 @@ ParameterSets:
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 DontShow: false
+AcceptedValues: [Low, Normal, Critical]
+HelpMessage: ''
+```
+
+### -IconName
+
+Optional icon name or path.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- Icon
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Timeout
+
+Milliseconds before notification auto-dismiss (daemon dependent).
+
+```yaml
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
 AcceptedValues: []
 HelpMessage: ''
 ```
 
 ### -Wait
 
-Wait for the notification to be closed before continuing.
-Default is notification closes after a brief delay
+Wait for the notification to close.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -168,6 +171,27 @@ Aliases: []
 ParameterSets:
 - Name: (All)
   Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -ActionName
+
+Optional action button name.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 5
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -188,11 +212,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-## NOTES
-
-#notify-send "<b>Hello World!</b>This is a message from PowerShell" -u critical -i /usr/share/icons/gnome/48x48/status/dialog-warning.png
-
-
 ## RELATED LINKS
 
-- [](https://github.com/Skatterbrainz/linuxtools/blob/master/docs/New-ToastNotification.md)
+- [New-ToastNotification source](https://github.com/Skatterbrainz/linuxtools/blob/master/public/New-ToastNotification.ps1)
