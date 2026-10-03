@@ -3,7 +3,7 @@ function Get-DefaultApplication {
 	.SYNOPSIS
 		Gets default applications from mimeapps.list.
 	.DESCRIPTION
-		Reads ~/.config/mimeapps.list and returns default application mappings by category or MIME type.
+		Reads MIME defaults from mimeapps.list when available and falls back to desktop entry metadata on KDE systems when no mimeapps file exists.
 	.PARAMETER Category
 		Category to query. Valid values are browser, audio, video, image, text, or all.
 	.PARAMETER MimeType
