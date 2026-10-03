@@ -548,8 +548,8 @@ function ReadMimeAppsDefaults {
 	param(
 		[parameter(Mandatory=$false)][string]$Path = "$env:HOME/.config/mimeapps.list"
 	)
-	if (-not (Test-Path -Path $Path)) {
-		throw "File not found: $Path"
+	if (-not [string]::IsNullOrWhiteSpace($Path) -and -not (Test-Path -Path $Path)) {
+		return @{}
 	}
 	$content = Get-Content -Path $Path
 	$defaults = @{}
@@ -581,13 +581,89 @@ function ReadMimeAppsDefaults {
 	$defaults
 }
 
+function ReadDesktopEntryDefaults {
+	param(
+		[parameter(Mandatory=$false)][string[]]$Paths = @(
+			"$env:HOME/.local/share/applications",
+			"/usr/share/applications"
+		)
+	)
+	$defaults = @{}
+	foreach ($path in $Paths) {
+		if (-not (Test-Path -Path $path)) {
+			continue
+		}
+		Get-ChildItem -Path $path -Filter '*.desktop' -File -ErrorAction SilentlyContinue | ForEach-Object {
+			$desktopName = $_.BaseName
+			$mimeTypes = @()
+			foreach ($line in (Get-Content -Path $_.FullName -ErrorAction SilentlyContinue)) {
+				$trimmed = $line.Trim()
+				if ([string]::IsNullOrWhiteSpace($trimmed) -or $trimmed.StartsWith('#') -or $trimmed.StartsWith(';')) {
+					continue
+				}
+				if ($trimmed -match '^MimeType=(.*)$') {
+					$mimeTypes = @(
+						($matches[1].Trim() -split ';') | ForEach-Object { $_.Trim() } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+					)
+					break
+				}
+			}
+			foreach ($mimeType in $mimeTypes) {
+				if (-not $defaults.ContainsKey($mimeType)) {
+					$defaults[$mimeType] = $desktopName
+				}
+			}
+		}
+	}
+	$defaults
+}
+
 function ReadDefaultApplications {
+	<#
+	.SYNOPSIS
+		Reads default application mappings from mimeapps.list.
+	.DESCRIPTION
+		Reads the specified mimeapps.list file and returns default application mappings by category or MIME type.
+	.PARAMETER Category
+		Category to query. Valid values are browser, audio, video, image, text, or all.
+	.PARAMETER MimeType
+		Optional MIME type wildcard filter, for example "audio/*".
+	.PARAMETER Path
+		Optional path to a mimeapps.list file. Defaults to ~/.config/mimeapps.list.
+	.NOTES
+		Adjusts search based on Cinnamon, GNOME or KDE desktop environments.
+	#>
 	param(
 		[parameter(Mandatory=$false)][ValidateSet('browser','audio','video','image','text','all')][string]$Category = 'all',
 		[parameter(Mandatory=$false)][string]$MimeType,
 		[parameter(Mandatory=$false)][string]$Path = "$env:HOME/.config/mimeapps.list"
 	)
-	$defaults = ReadMimeAppsDefaults -Path $Path
+	$defaults = @{}
+	$candidatePaths = @()
+	if (-not [string]::IsNullOrWhiteSpace($Path)) {
+		$candidatePaths += $Path
+	}
+	$candidatePaths += @(
+		"$env:HOME/.config/mimeapps.list",
+		"$env:HOME/.local/share/applications/mimeapps.list",
+		"/etc/xdg/mimeapps.list"
+	)
+	$candidatePaths = @($candidatePaths | Select-Object -Unique)
+	foreach ($candidatePath in $candidatePaths) {
+		if (-not (Test-Path -Path $candidatePath)) {
+			continue
+		}
+		$mimeDefaults = ReadMimeAppsDefaults -Path $candidatePath
+		foreach ($key in $mimeDefaults.Keys) {
+			$defaults[$key] = $mimeDefaults[$key]
+		}
+	}
+	if ($defaults.Count -eq 0) {
+		$desktopDefaults = ReadDesktopEntryDefaults
+		foreach ($key in $desktopDefaults.Keys) {
+			$defaults[$key] = $desktopDefaults[$key]
+		}
+	}
 	$rows = foreach ($key in $defaults.Keys) {
 		[pscustomobject]@{
 			MimeType      = $key
@@ -625,7 +701,7 @@ function ReadDesktopEntries {
 		[parameter(Mandatory=$false)][string]$Filter = '*.desktop'
 	)
 	$paths = switch ($Location) {
-		'user' { @('~/.local/share/applications') }
+		'user' { @('~/.local/share/applications', '~/Desktop') }
 		'system' { @('/usr/share/applications') }
 		'autostart' {
 			if ([string]::IsNullOrWhiteSpace($Path)) {
