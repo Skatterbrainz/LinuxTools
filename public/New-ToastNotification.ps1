@@ -14,13 +14,18 @@ function New-ToastNotification {
 	.PARAMETER Title
 		The title of the notification. Default is "Notification"
 	.PARAMETER Urgency
-		The urgency level of the notification (low, normal, critical). Default is normal
+		The urgency level of the notification (Low, Normal, Critical). Default is Normal
 	.PARAMETER IconName
-		The icon to display in the notification. Default is dialog-information.png
-		Filenames are found in /usr/share/icons/gnome/48x48/status/
-		if the specified icon is not found, no icon will be displayed
+		The icon to display in the notification. Cinnamon requires the full path to the icon file.
+		Default is no icon.
+	.PARAMETER Timeout
+		The time in milliseconds before the notification closes automatically. Default is the notification closes after a brief delay.
+		Note that if Urgency is Critical, the notification may not respect the Timeout setting.
 	.PARAMETER Wait
 		Wait for the notification to be closed before continuing. Default is notification closes after a brief delay
+	.PARAMETER ActionName
+		The name of the action button to display in the notification. If provided, implies -Wait
+		If not specified, no action button will be displayed.
 	.EXAMPLE
 		New-ToastNotification -Message "Hello World!"
 		Displays a notification with the message "Hello World!"
@@ -33,6 +38,10 @@ function New-ToastNotification {
 	.EXAMPLE
 		New-ToastNotification -Message "Hello World!" -Icon dialog-warning.png
 		Displays a notification with the message "Hello World!" and the icon dialog-warning.png
+	.EXAMPLE
+		New-ToastNotification -Message "Hello World!" -ActionName "OK"
+		Displays a notification with the message "Hello World!" and an action button labeled "OK",
+		if clicked, will return 0 (zero) as the response.
 	.NOTES
 		#notify-send "<b>Hello World!</b>This is a message from PowerShell" -u critical -i /usr/share/icons/gnome/48x48/status/dialog-warning.png
 	.LINK
@@ -41,24 +50,30 @@ function New-ToastNotification {
 	[CmdletBinding()]
 	param (
 		[parameter(Mandatory=$true)][string]$Message,
-		[parameter()][alias('Summary')][string]$Title = "Notification",
-		[parameter()][alias('Category')][string][ValidateSet('low','normal','critical')]$Urgency = 'normal',
-		[parameter()][alias('Icon')][string]$IconName = 'dialog-information.png',
-		[parameter()][switch]$Wait
+		[parameter(Mandatory=$false)][alias('Summary')][string]$Title = "LinuxTools Message",
+		[parameter(Mandatory=$false)][alias('Category')][string][ValidateSet('Low','Normal','Critical')]$Urgency = 'Normal',
+		[parameter(Mandatory=$false)][alias('Icon')][string]$IconName,
+		[parameter(Mandatory=$false)][int]$Timeout,
+		[parameter(Mandatory=$false)][switch]$Wait,
+		[parameter(Mandatory=$false)][string]$ActionName
 	)
 	try {
-		$iconPath = '/usr/share/icons/gnome/48x48/status/'
-		$iconFile = Join-Path $iconPath $IconName
-		if (!(Test-Path -Path $Icon)) {
-			Write-Warning "Iconfile not found: $Icon"
-			$block = "notify-send -u $Urgency"
-		} else {
-			$block = "notify-send -u $Urgency -i $iconfile"
-		}
+		$notifyParamsBlock = "notify-send --urgency $Urgency"
 		if ($Wait.IsPresent) {
-			$block += " -w"
+			$notifyParamsBlock += " --wait"
 		}
-		Invoke-Expression "$block '$Title' '$Message'"
+		if ($Timeout) {
+			$notifyParamsBlock += " --expire-time $Timeout"
+		}
+
+		if (![string]::IsNullOrEmpty($IconName)) {
+			$notifyParamsBlock += " --icon $IconName"
+		}
+		if (![string]::IsNullOrEmpty($ActionName)) {
+			$notifyParamsBlock += " --action `"$ActionName`""
+		}
+		Write-Verbose "command: $notifyParamsBlock '$Title' '$Message'"
+		Invoke-Expression "$notifyParamsBlock '$Title' '$Message'"
 	} catch {
 		Write-Error $_.Exception.Message
 	}
