@@ -86,7 +86,8 @@ function New-KDialogForm {
 		[parameter(Mandatory=$false)]$DefaultValues
 	)
 	if (!(Get-Command -Name "kdialog" -ErrorAction SilentlyContinue)) {
-		throw "KDialog is not installed or not available in the system path."
+		Write-Warning "KDialog is not installed or not available in the system path."
+		return
 	}
 	$cmdString = "kdialog"
 	if ($InputValues) {
