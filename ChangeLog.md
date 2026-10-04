@@ -5,15 +5,17 @@ All notable changes to this project are documented in this file.
 ## 📋 Version History
 
 ### 1.4.0 - 10/03/2026
+- Added: New-KDialogForm (for KDE desktop environments)
 - Updated: Get-MemoryPressure / added rating output (0-5 scale)
 - Updated: Rewrote Out-GridForm to use PyQt5 for cross-platform support (Cinnamon, KDE, XFCE, MATE, GNOME, X11 or Wayland). No longer relies on yad.
 - Updated: Added KDE support to Get-DesktopThemes
 - Updated: New-ToastNotification to work with multiple desktop environments
+- Updated: Get-DefaultApplication to support KDE
+- Updated: Get-AppLaunchers to support KDE
 
 ### 1.3.1 - 07/18/2026
 - Added: Get-NeoFetchConfig
 - Added: Get-Keyring
-- Added: New-KDialogForm (for KDE desktop environments)
 - Updated: manifest / moved minimum PowerShell to 7.5
 
 ### 1.3.0 - 06/07/2026
