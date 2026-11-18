@@ -4,6 +4,9 @@ All notable changes to this project are documented in this file.
 
 ## 📋 Version History
 
+### 1.5.0 - 11/18/2026
+- Added: Get-UpdateHistory
+
 ### 1.4.0 - 10/03/2026
 - Added: New-KDialogForm (for KDE desktop environments)
 - Updated: Get-MemoryPressure / added rating output (0-5 scale)
