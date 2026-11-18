@@ -4,7 +4,9 @@ function Get-UpdateHistory {
 		Retrieves the update history from the system's package manager logs.
 	
 	.DESCRIPTION
-		Retrieves and parses update history events from the system's package manager logs, optionally filtered by a search pattern, start date, end date, and whether to include archived logs.
+		Retrieves and parses update history events from the system's package manager logs, optionally 
+		filtered by a search pattern, start date, end date, and whether to include archived logs.
+		Works with apt, zypper, snap, dnf, yum, and flatpak package managers.
 	.PARAMETER SearchPattern
 		Optional. A string to filter the update history entries.
 	.PARAMETER StartDate
@@ -31,6 +33,52 @@ function Get-UpdateHistory {
 		[parameter(Mandatory=$false)]
 		[switch]$IncludeArchived
 	)
+	#region helper functions
+	function New-UpdateHistoryEvent {
+		param(
+			[Parameter(Mandatory = $true)]
+			[string]$PackageManager,
+			[Parameter(Mandatory = $false)]
+			[Nullable[datetime]]$StartDate,
+			[Parameter(Mandatory = $false)]
+			[Nullable[datetime]]$EndDate,
+			[Parameter(Mandatory = $false)]
+			[string]$CommandLine,
+			[Parameter(Mandatory = $false)]
+			[string]$RequestedBy,
+			[Parameter(Mandatory = $false)]
+			[string]$Install,
+			[Parameter(Mandatory = $false)]
+			[string]$Upgrade,
+			[Parameter(Mandatory = $false)]
+			[string]$Remove,
+			[Parameter(Mandatory = $false)]
+			[string]$Purge,
+			[Parameter(Mandatory = $false)]
+			[string]$Downgrade,
+			[Parameter(Mandatory = $false)]
+			[string]$Reinstall,
+			[Parameter(Mandatory = $false)]
+			[string]$SourceFile,
+			[Parameter(Mandatory = $false)]
+			[string]$RawEvent
+		)
+		[PSCustomObject]@{
+			PackageManager = $PackageManager
+			StartDate      = $StartDate
+			EndDate        = $EndDate
+			CommandLine    = $CommandLine
+			RequestedBy    = $RequestedBy
+			Install        = $Install
+			Upgrade        = $Upgrade
+			Remove         = $Remove
+			Purge          = $Purge
+			Downgrade      = $Downgrade
+			Reinstall      = $Reinstall
+			SourceFile     = $SourceFile
+			RawEvent       = $RawEvent
+		}
+	}
 	function ConvertTo-AptHistoryEvent {
 		param(
 			[Parameter(Mandatory = $true)]
@@ -56,31 +104,31 @@ function Get-UpdateHistory {
 		[datetime]$endDateTime = [datetime]::MinValue
 		$hasStartDate = [datetime]::TryParse($startDateValue, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$startDateTime)
 		$hasEndDate = [datetime]::TryParse($endDateValue, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$endDateTime)
-		[PSCustomObject]@{
-			StartDate   = if ($hasStartDate) { $startDateTime } else { $null }
-			EndDate     = if ($hasEndDate) { $endDateTime } else { $null }
-			Commandline = $fields['Commandline']
-			RequestedBy = $fields['Requested-By']
-			Install     = $fields['Install']
-			Upgrade     = $fields['Upgrade']
-			Remove      = $fields['Remove']
-			Purge       = $fields['Purge']
-			Downgrade   = $fields['Downgrade']
-			Reinstall   = $fields['Reinstall']
-			SourceFile  = $Source
-			RawEvent    = ($Block -join "`n").Trim()
-		}
+		New-UpdateHistoryEvent `
+			-PackageManager 'apt' `
+			-StartDate $(if ($hasStartDate) { $startDateTime } else { $null }) `
+			-EndDate $(if ($hasEndDate) { $endDateTime } else { $null }) `
+			-CommandLine $fields['Commandline'] `
+			-RequestedBy $fields['Requested-By'] `
+			-Install $fields['Install'] `
+			-Upgrade $fields['Upgrade'] `
+			-Remove $fields['Remove'] `
+			-Purge $fields['Purge'] `
+			-Downgrade $fields['Downgrade'] `
+			-Reinstall $fields['Reinstall'] `
+			-SourceFile $Source `
+			-RawEvent (($Block -join "`n").Trim())
 	}
 	function Get-AptHistoryEvents {
 		param(
 			[Parameter(Mandatory = $true)]
-			[object[]]$Lines,
+			[object[]]$Block,
 			[Parameter(Mandatory = $true)]
 			[string]$Source
 		)
 		$events = @()
 		$currentBlock = @()
-		foreach ($line in $Lines) {
+		foreach ($line in $Block) {
 			$line = [string]$line
 			if ([string]::IsNullOrWhiteSpace($line)) {
 				if ($currentBlock.Count -gt 0) {
@@ -98,75 +146,161 @@ function Get-UpdateHistory {
 		}
 		$events
 	}
-	# check the Linux distro to determine what package managers are available and where the logs are
+	function Get-YumHistoryEvents {
+		param(
+			[Parameter(Mandatory = $true)]
+			[object[]]$Block,
+			[Parameter(Mandatory = $true)]
+			[string]$Source
+		)
+		$events = @()
+		foreach ($line in $Block) {
+			$events += New-UpdateHistoryEvent -PackageManager 'yum' -SourceFile $Source -RawEvent ([string]$line)
+		}
+		$events
+	}
+	function Get-FlatpakHistoryEvents {
+		param(
+			[Parameter(Mandatory = $true)]
+			[string]$Source
+		)
+		$events = @()
+		$history = flatpak history
+		foreach ($line in $history) {
+			$events += New-UpdateHistoryEvent -PackageManager 'flatpak' -SourceFile $Source -RawEvent ([string]$line)
+		}
+		$events
+	}
+	function Get-SnapHistoryEvents {
+		param(
+			[Parameter(Mandatory = $true)]
+			[object[]]$Block,
+			[Parameter(Mandatory = $true)]
+			[string]$Source
+		)
+		$events = @()
+		foreach ($line in $Block) {
+			$events += New-UpdateHistoryEvent -PackageManager 'snap' -SourceFile $Source -RawEvent ([string]$line)
+		}
+		$events
+	}
+	function Get-ZypperHistoryEvents {
+		param(
+			[Parameter(Mandatory = $true)]
+			[object[]]$Block,
+			[Parameter(Mandatory = $true)]
+			[string]$Source
+		)
+		$events = @()
+		foreach ($line in $Block) {
+			$events += New-UpdateHistoryEvent -PackageManager 'zypper' -SourceFile $Source -RawEvent ([string]$line)
+		}
+		$events
+	}
+	function Get-DnfHistoryEvents {
+		param(
+			[Parameter(Mandatory = $true)]
+			[object[]]$Block,
+			[Parameter(Mandatory = $true)]
+			[string]$Source
+		)
+		$events = @()
+		foreach ($line in $Block) {
+			$events += New-UpdateHistoryEvent -PackageManager 'dnf' -SourceFile $Source -RawEvent ([string]$line)
+		}
+		$events
+	}
+	#endregion
+
 	# also any rollback logs if available, such as gzipped logs: zgrep -h "Start-Date\|Upgrade:" /var/log/apt/history.log*
 	$distro = (cat /etc/os-release | grep '^ID=' | cut -d'=' -f2).Trim('"')
-	switch ($distro) {
-		'ubuntu' {
-			# Ubuntu uses apt
-			$logPath = '/var/log/apt/history.log'
-			$archived = '/var/log/apt/history.log.*.gz'
-		}
-		'debian' {
-			# Debian uses apt
-			$logPath = '/var/log/apt/history.log'
-			$archived = '/var/log/apt/history.log.*.gz'
-		}
-		'centos' {
-			# CentOS uses yum
-			$logPath = '/var/log/yum.log'
-		}
-		'fedora' {
-			# Fedora uses dnf
-			$logPath = '/var/log/dnf.log'
-		}
-		'linuxmint' {
-			# based on Ubuntu
-			$logPath = '/var/log/apt/history.log'
-			$archived = '/var/log/apt/history.log.*.gz'
-		}
-		default {
-			throw "Unsupported Linux distribution: $distro"
-		}
+	Write-Host "Detected Linux distribution: $distro"
+
+	$packageManagers = @()
+
+	if (Get-Command "apt" -ErrorAction SilentlyContinue) {
+		$aptLogPath = '/var/log/apt/history.log'
+		$aptArchived = '/var/log/apt/history.log.*.gz'
+		$packageManagers += @{ Name = 'apt' ; LogPath = $aptLogPath }
 	}
-	
-	if (!(Test-Path -Path $logPath)) {
-		throw "Log path not found: $logPath"
+	if (Get-Command "yum" -ErrorAction SilentlyContinue) {
+		$yumLogPath = '/var/log/yum.log'
+		$packageManagers += @{ Name = 'yum' ; LogPath = $yumLogPath }
+	}
+	if (Get-Command "dnf" -ErrorAction SilentlyContinue) {
+		$dnfLogPath = '/var/log/dnf.log'
+		$packageManagers += @{ Name = 'dnf' ; LogPath = $dnfLogPath }
+	}
+	if (Get-Command "snap" -ErrorAction SilentlyContinue) {
+		# do not rely on a log file but use: snap changes --abs-time
+		$packageManagers += @{ Name = 'snap' ; LogPath = $null }
+	}
+	if (Get-Command "zypper" -ErrorAction SilentlyContinue) {
+		$zypperLogPath = '/var/log/zypper.log'
+		$packageManagers += @{ Name = 'zypper' ; LogPath = $zypperLogPath }
+	}
+	if (Get-Command "flatpak" -ErrorAction SilentlyContinue) {
+		# do not rely on a log file but use: flatpak history
+		$packageManagers += @{ Name = 'flatpak' ; LogPath = $null }
 	}
 
-	if ($distro -in @('ubuntu', 'debian', 'linuxmint')) {
-		$logFiles = @($logPath)
-		if ($IncludeArchived -and $archived) {
-			$logFiles += (Get-ChildItem -Path $archived -ErrorAction SilentlyContinue | Sort-Object -Property Name | Select-Object -ExpandProperty FullName)
+	$events = @()
+
+	foreach ($pm in $packageManagers) {
+		Write-Verbose "Detected package manager: $($pm.Name)"
+		if ($pm.Name -eq 'flatpak') {
+			$events += Get-FlatpakHistoryEvents -Source 'flatpak'
+			continue
 		}
-		$events = @()
-		foreach ($file in $logFiles) {
-			$lines = if ($file.EndsWith('.gz')) {
-				if (-not (Get-Command zcat -ErrorAction SilentlyContinue)) {
-					throw "The command 'zcat' is required to read archived apt history logs."
+		if ($pm.Name -eq 'snap') {
+			$events += Get-SnapHistoryEvents -Block (snap changes --abs-time) -Source 'snap changes --abs-time'
+			continue
+		}
+		foreach ($logPath in $pm.LogPath) {
+			Write-Verbose "Log path: $logPath"
+			if ($pm.Name -eq 'apt') {
+				# Process the apt log file
+				$logFiles = @($logPath)
+				if ($IncludeArchived -and $aptArchived) {
+					$logFiles += (Get-ChildItem -Path $aptArchived -ErrorAction SilentlyContinue | Sort-Object -Property Name | Select-Object -ExpandProperty FullName)
 				}
-				& zcat -f -- $file
-			} else {
-				Get-Content -Path $file
+				foreach ($file in $logFiles) {
+					Write-Verbose "Processing apt log file: $file"
+					if (-not (Test-Path -Path $file)) { continue }
+					$events += Get-AptHistoryEvents -Block (Get-Content -Path $file) -Source $file
+				}
 			}
-			if ($null -eq $lines) { continue }
-			if ($lines -is [string] -and [string]::IsNullOrWhiteSpace($lines)) { continue }
-			$events += Get-AptHistoryEvents -Lines @($lines) -Source $file
+			if ($pm.Name -eq 'yum') {
+				# Process the yum log file
+				$events += Get-YumHistoryEvents -Block (Get-Content -Path $logPath) -Source $logPath
+			}
+			if ($pm.Name -eq 'dnf') {
+				# Process the dnf log file
+				$events += Get-DnfHistoryEvents -Block (Get-Content -Path $logPath) -Source $logPath
+			}
+			if ($pm.Name -eq 'snap') {
+				# Process the snap log file
+				$events += Get-SnapHistoryEvents -Block (Get-Content -Path $logPath) -Source $logPath
+			}
+			if ($pm.Name -eq 'zypper') {
+				# Process the zypper log file
+				$events += Get-ZypperHistoryEvents -Block (Get-Content -Path $logPath) -Source $logPath
+			}
+			if ($pm.Name -eq 'flatpak') {
+				# handled before log-path loop
+			}
 		}
+	} # foreach ($pm in $packageManagers)
 
-		if ($StartDate) {
-			$events = $events | Where-Object { $null -ne $_.StartDate -and $_.StartDate -ge $StartDate }
-		}
-		if ($EndDate) {
-			$events = $events | Where-Object { $null -ne $_.StartDate -and $_.StartDate -le $EndDate }
-		}
-		if (-not [string]::IsNullOrWhiteSpace($SearchPattern)) {
-			$events = $events | Where-Object { $_.RawEvent -match $SearchPattern }
-		}
-
-		return $events
+	if ($StartDate) {
+		$events = $events | Where-Object { $null -ne $_.StartDate -and $_.StartDate -ge $StartDate }
+	}
+	if ($EndDate) {
+		$events = $events | Where-Object { $null -ne $_.StartDate -and $_.StartDate -le $EndDate }
+	}
+	if (-not [string]::IsNullOrWhiteSpace($SearchPattern)) {
+		$events = $events | Where-Object { $_.RawEvent -match $SearchPattern }
 	}
 
-	$pattern = if ([string]::IsNullOrWhiteSpace($SearchPattern)) { 'upgrade|install|remove|purge' } else { $SearchPattern }
-	Get-Content -Path $logPath | Select-String -Pattern $pattern
+	return $events
 }
