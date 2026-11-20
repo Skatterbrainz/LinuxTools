@@ -4,8 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## 📋 Version History
 
-### 1.5.0 - 11/18/2026
+### 1.5.0 - 11/19/2026
 - Added: Get-UpdateHistory
+- Added: Get-RpmPackages
+- Added: Get-YumPackages
+- Updated: Get-TimeZone for KDE support
+- Updated: Get-AuthLog
 
 ### 1.4.0 - 10/03/2026
 - Added: New-KDialogForm (for KDE desktop environments)
