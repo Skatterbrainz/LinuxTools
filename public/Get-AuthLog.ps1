@@ -5,8 +5,6 @@ function Get-AuthLog {
 	.DESCRIPTION
 		Parses the authentication log file located at /var/log/auth.log (or a specified path) and returns structured data.
 		You can filter the log entries by providing a filter string.
-	.PARAMETER Path
-		The path to the authentication log file. Default is "/var/log/auth.log".
 	.PARAMETER Filter
 		A filter string to match against the log entries. Only entries that match this filter will be returned.
 	.EXAMPLE
@@ -14,15 +12,19 @@ function Get-AuthLog {
 		This example retrieves all log entries from the authentication log that contain the string "pam_unix".
 	.EXAMPLE
 		Get-AuthLog
-		This example retrieves all log entries from the default authentication log file "/var/log/auth.log".
+		This example retrieves all log entries from the default authentication log file.
 	.LINK
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AuthLog.md
 	#>
 	[CmdletBinding()]
 	param(
-		[parameter(Mandatory = $false)][string]$Path = "/var/log/auth.log",
 		[parameter(Mandatory = $false)][string]$Filter
 	)
+	if (Test-Path -Path '/var/log/auth.log') {
+		$Path = '/var/log/auth.log'
+	} elseif (Test-Path -Path '/var/log/audit/audit.log') {
+		$Path = '/var/log/audit/audit.log'
+	}
 	$lines = Get-Content -Path $Path
 	if (![string]::IsNullOrWhiteSpace($Filter)) {
 		$lines = $lines | Where-Object { $_ -match $Filter }
