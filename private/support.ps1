@@ -221,6 +221,28 @@ function ReadDnfPackageData {
 	}
 }
 
+function ReadYumPackageData {
+	param()
+	if (-not (Test-Path -Path '/usr/bin/yum')) {
+		throw "Required file not found: yum"
+	}
+	$pkgs = yum list installed 2>$null
+	foreach ($row in $pkgs) {
+		if ([string]::IsNullOrWhiteSpace($row) -or $row -match '^Installed Packages') {
+			continue
+		}
+		$items = $row.Split(' ') | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+		if ($items.Count -ge 3) {
+			[pscustomobject]@{
+				SourceType = 'yum'
+				Name       = $items[0]
+				Version    = $items[1]
+				Source     = $items[2]
+			}
+		}
+	}
+}
+
 function ReadSnapPackageData {
 	param()
 	Write-Host "Listing snaps..."
