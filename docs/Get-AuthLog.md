@@ -4,7 +4,7 @@ external help file: linuxtools-Help.xml
 HelpUri: https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-AuthLog.md
 Locale: en-US
 Module Name: linuxtools
-ms.date: 11/09/2025
+ms.date: 11/20/2026
 PlatyPS schema version: 2024-05-01
 title: Get-AuthLog
 ---
@@ -20,7 +20,7 @@ Parses the authentication log file and returns structured data.
 ### __AllParameterSets
 
 ```
-Get-AuthLog [[-Path] <string>] [[-Filter] <string>] [<CommonParameters>]
+Get-AuthLog [[-Filter] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,20 +30,21 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Parses the authentication log file located at /var/log/auth.log (or a specified path) and returns structured data.
-You can filter the log entries by providing a filter string.
+Parses authentication log data and returns structured output.
+The command uses `/var/log/auth.log` when present, and falls back to `/var/log/audit/audit.log` when `auth.log` is not available.
+You can filter returned entries using the `-Filter` parameter.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-AuthLog -Path "/var/log/auth.log" -Filter "pam_unix"
-This example retrieves all log entries from the authentication log that contain the string "pam_unix".
+Get-AuthLog -Filter "pam_unix"
+This example retrieves log entries containing the string "pam_unix".
 
 ### EXAMPLE 2
 
 Get-AuthLog
-This example retrieves all log entries from the default authentication log file "/var/log/auth.log".
+This example retrieves all log entries from the detected authentication log source.
 
 ## PARAMETERS
 
@@ -69,28 +70,6 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Path
-
-The path to the authentication log file.
-Default is "/var/log/auth.log".
-
-```yaml
-Type: System.String
-DefaultValue: /var/log/auth.log
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 0
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
 ### CommonParameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
@@ -103,6 +82,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+
+Output contains parsed fields including date, hostname, process name, process ID, and message text.
 
 ## RELATED LINKS
 
