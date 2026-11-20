@@ -4,7 +4,7 @@ function Get-UpdateHistory {
 		Retrieves the update history from the system's package manager logs.
 	
 	.DESCRIPTION
-		Retrieves and parses update history events from the system's package manager logs, optionally 
+		Retrieves and parses update history events from package manager logs and history commands, optionally 
 		filtered by a search pattern, start date, end date, and whether to include archived logs.
 		Works with apt, zypper, snap, dnf, yum, and flatpak package managers.
 	.PARAMETER SearchPattern
@@ -155,7 +155,37 @@ function Get-UpdateHistory {
 		)
 		$events = @()
 		foreach ($line in $Block) {
-			$events += New-UpdateHistoryEvent -PackageManager 'yum' -SourceFile $Source -RawEvent ([string]$line)
+			$rawLine = [string]$line
+			if ([string]::IsNullOrWhiteSpace($rawLine)) { continue }
+			if ($rawLine -match '^\s*ID\s*\|') { continue }
+			if ($rawLine -match '^\s*-+\s*$') { continue }
+			if ($rawLine -match '^\s*(?<Id>\d+)\s*\|(?<User>[^|]*)\|(?<DateTime>[^|]*)\|(?<Actions>[^|]*)\|(?<Altered>.+)$') {
+				$parsedDate = [datetime]::MinValue
+				$dateText = $matches['DateTime'].Trim()
+				$hasParsedDate = [datetime]::TryParse(
+					$dateText,
+					[System.Globalization.CultureInfo]::InvariantCulture,
+					[System.Globalization.DateTimeStyles]::AllowWhiteSpaces,
+					[ref]$parsedDate
+				)
+				if (-not $hasParsedDate) {
+					$hasParsedDate = [datetime]::TryParse(
+						$dateText,
+						[System.Globalization.CultureInfo]::CurrentCulture,
+						[System.Globalization.DateTimeStyles]::AllowWhiteSpaces,
+						[ref]$parsedDate
+					)
+				}
+				$events += New-UpdateHistoryEvent `
+					-PackageManager 'yum' `
+					-StartDate $(if ($hasParsedDate) { $parsedDate } else { $null }) `
+					-CommandLine 'sudo yum history list' `
+					-RequestedBy $matches['User'].Trim() `
+					-SourceFile $Source `
+					-RawEvent ("ID={0}; DateTime={1}; Actions={2}; Altered={3}" -f $matches['Id'].Trim(), $dateText, $matches['Actions'].Trim(), $matches['Altered'].Trim())
+				continue
+			}
+			$events += New-UpdateHistoryEvent -PackageManager 'yum' -CommandLine 'sudo yum history list' -SourceFile $Source -RawEvent $rawLine
 		}
 		$events
 	}
@@ -224,8 +254,7 @@ function Get-UpdateHistory {
 		$packageManagers += @{ Name = 'apt' ; LogPath = $aptLogPath }
 	}
 	if (Get-Command "yum" -ErrorAction SilentlyContinue) {
-		$yumLogPath = '/var/log/yum.log'
-		$packageManagers += @{ Name = 'yum' ; LogPath = $yumLogPath }
+		$packageManagers += @{ Name = 'yum' ; LogPath = $null }
 	}
 	if (Get-Command "dnf" -ErrorAction SilentlyContinue) {
 		$dnfLogPath = '/var/log/dnf.log'
@@ -256,6 +285,10 @@ function Get-UpdateHistory {
 			$events += Get-SnapHistoryEvents -Block (snap changes --abs-time) -Source 'snap changes --abs-time'
 			continue
 		}
+		if ($pm.Name -eq 'yum') {
+			$events += Get-YumHistoryEvents -Block (& sudo yum history list) -Source 'sudo yum history list'
+			continue
+		}
 		foreach ($logPath in $pm.LogPath) {
 			Write-Verbose "Log path: $logPath"
 			if ($pm.Name -eq 'apt') {
@@ -269,10 +302,6 @@ function Get-UpdateHistory {
 					if (-not (Test-Path -Path $file)) { continue }
 					$events += Get-AptHistoryEvents -Block (Get-Content -Path $file) -Source $file
 				}
-			}
-			if ($pm.Name -eq 'yum') {
-				# Process the yum log file
-				$events += Get-YumHistoryEvents -Block (Get-Content -Path $logPath) -Source $logPath
 			}
 			if ($pm.Name -eq 'dnf') {
 				# Process the dnf log file
