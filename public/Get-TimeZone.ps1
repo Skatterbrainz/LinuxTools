@@ -12,5 +12,11 @@ function Get-TimeZone {
 		https://github.com/Skatterbrainz/linuxtools/blob/master/docs/Get-TimeZone.md
 	#>
 	param()
-	Invoke-Command -ScriptBlock { cat /etc/timezone }
+	# adjust path based on linux distro
+	if (Test-Path -Path '/etc/timezone') {
+		Invoke-Command -ScriptBlock { cat /etc/timezone }
+	}
+	elseif (Test-Path -Path '/etc/localtime') {
+		Invoke-Command -ScriptBlock { readlink /etc/localtime } # returns "../usr/share/zoneinfo/Region/City"
+	}
 }
